@@ -1,12 +1,116 @@
-﻿<Window x:Class="SAE_DEV_WPF.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SAE_DEV_WPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+﻿<Window
+    x:Class="SAE_DEV_WPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE_DEV_WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MATINFO"
+    Width="350"
+    Height="300"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
-    </Grid>
+
+
+    <StackPanel
+        Margin="0"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Orientation="Vertical">
+        <Border
+            Width="306"
+            Height="238"
+            Margin="20,10,20,10"
+            Background="White"
+            BorderBrush="Red"
+            CornerRadius="25">
+            <StackPanel Margin="0,0,0,20" Orientation="Vertical">
+                <Label
+                    Margin="2,5,2,0"
+                    HorizontalAlignment="Center"
+                    VerticalContentAlignment="Bottom"
+                    Content="Bienvenue"
+                    FontSize="25"
+                    FontWeight="Bold" />
+                <Label
+                    Margin="2,0,2,10"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Top"
+                    Content="Connectez-vous"
+                    FontSize="20"
+                    FontStyle="Italic"
+                    FontWeight="Medium" />
+
+                <Grid Margin="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110" />
+                        <ColumnDefinition Width="200" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,5"
+                        HorizontalContentAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        Content="Identifiant : " />
+                    <TextBox
+                        x:Name="txtUserId"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10,5,37,5"
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,5"
+                        HorizontalContentAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        Content="Mot de passe : " />
+                    <PasswordBox
+                        x:Name="txtPassword"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10,5,37,5"
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center" />
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="btnLog"
+                            Width="100"
+                            Height="30"
+                            Margin="2,10"
+                            Background="#80ff00"
+                            BorderBrush="White"
+                            Content="SE CONNECTER"
+                            Foreground="Black" />
+                        <Button
+                            x:Name="btnClose"
+                            Width="100"
+                            Margin="2,10"
+                            Background="#ff2d2d"
+                            BorderBrush="White"
+                            Content="FERMER"
+                            Foreground="Black" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+
+
 </Window>

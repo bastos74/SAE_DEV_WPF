@@ -1,0 +1,55 @@
+﻿<Window x:Class="SAE_DEV_WPF.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAE_DEV_WPF"
+        mc:Ignorable="d"
+        Title="MATINFO" Height="475" Width="600">
+
+    <Window.Resources>
+        <!-- template pour inserer une case a cocher dans un listview : la case est cochee sur la selection d'un item -->
+        <DataTemplate x:Key="caseACocher">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+
+
+    <Grid>
+
+        <Menu>
+            <MenuItem Header="_Gerer">
+                <MenuItem Header="_Creer" x:Name="NouvelleParti"/>
+                <MenuItem Header="_Modifier" x:Name="Quitter"/>
+                <MenuItem Header="_Supprimer" x:Name="Supp"/>
+            </MenuItem>
+            <MenuItem Header="_A porpos" x:Name="apropos"  />
+        </Menu>
+
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,400,109">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn CellTemplate="{StaticResource caseACocher}" Width="30"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <DataGrid ItemsSource="{Binding LesVoitures}"
+            Margin="251,28,41,27" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Personnel" Binding="{Binding Marque}" Width="*"/>
+                <DataGridTextColumn Header="Catégorie" Binding="{Binding Modele}" Width="*"/>
+                <DataGridTextColumn Header="Materiel" Binding="{Binding Annee}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="54,340,0,0" VerticalAlignment="Top" Height="31" Width="91"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="54,389,0,0" VerticalAlignment="Top" Height="31" Width="91"/>
+
+
+
+
+    </Grid>
+</Window>
