@@ -1,18 +1,92 @@
-﻿<Window x:Class="SAE_DEV_WPF.WindowCreer"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SAE_DEV_WPF"
-        mc:Ignorable="d"
-        Title="WindowCreer" Height="450" Width="800">
+﻿<Window
+    x:Class="SAE_DEV_WPF.WindowCreer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE_DEV_WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="WindowCreer"
+    Width="600"
+    Height="470"
+    MinWidth="600"
+    MinHeight="470"
+    mc:Ignorable="d">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Height="25" Width="120" Margin="20,20,0,0" VerticalAlignment="Top" >
-            <ComboBoxItem Content="Catégorie" IsSelected="True"/>
-            <ComboBoxItem Content="Matériel"/>
-            <ComboBoxItem Content="Personnel"/>
-            <ComboBoxItem Content="Attribution"/>
-        </ComboBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <!--  Partie 1  -->
+        <Label
+            x:Name="lbCategorie"
+            Grid.Row="0"
+            Margin="0,0,0,75"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            AutomationProperties.IsRowHeader="True"
+            Content="Catégorie"
+            FontWeight="Bold" />
+        <DataGrid
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Margin="0,24,0,0"
+            VerticalAlignment="Top"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Nom" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--  Partie 2  -->
+        <Label
+            x:Name="lbMateriel"
+            Grid.Row="1"
+            Margin="0,0,0,75"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            AutomationProperties.IsRowHeader="True"
+            Content="Matériel"
+            FontWeight="Bold" />
+        <DataGrid
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Margin="0,24,0,0"
+            VerticalAlignment="Top"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Code Barre" />
+                <DataGridTextColumn Width="*" Header="Reference Constructeur" />
+                <DataGridTextColumn Width="*" Header="Nom" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--  Partie 3  -->
+        <Label
+            x:Name="lbPersonnel"
+            Grid.Row="2"
+            Margin="0,0,0,75"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            AutomationProperties.IsRowHeader="True"
+            Content="Personnel"
+            FontWeight="Bold" />
+        <DataGrid
+            Grid.Row="2"
+            Grid.RowSpan="2"
+            Margin="0,24,0,0"
+            VerticalAlignment="Top"
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Nom" />
+                <DataGridTextColumn Width="*" Header="Prénom" />
+                <DataGridTextColumn Width="*" Header="Email" />
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

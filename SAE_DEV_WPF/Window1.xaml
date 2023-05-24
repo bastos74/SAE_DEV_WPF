@@ -8,10 +8,10 @@
         Title="MATINFO" Height="475" Width="600">
 
     <Window.Resources>
-        <!-- template pour inserer une case a cocher dans un listview : la case est cochee sur la selection d'un item -->
+        
         <DataTemplate x:Key="caseACocher">
             <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
+                <CheckBox/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -26,10 +26,10 @@
                 <MenuItem Header="_Modifier" x:Name="Quitter"/>
                 <MenuItem Header="_Supprimer" x:Name="Supp"/>
             </MenuItem>
-            <MenuItem Header="_A porpos" x:Name="apropos"  />
+            <MenuItem Header="_A propos" x:Name="apropos"  />
         </Menu>
 
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,41,400,109">
+        <ListView Margin="10,41,400,109">
             <ListView.View>
                 <GridView>
                     <GridViewColumn CellTemplate="{StaticResource caseACocher}" Width="30"/>
@@ -37,12 +37,11 @@
             </ListView.View>
         </ListView>
 
-        <DataGrid ItemsSource="{Binding LesVoitures}"
-            Margin="251,28,41,27" AutoGenerateColumns="False">
+        <DataGrid Margin="251,28,41,27" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Personnel" Binding="{Binding Marque}" Width="*"/>
-                <DataGridTextColumn Header="Catégorie" Binding="{Binding Modele}" Width="*"/>
-                <DataGridTextColumn Header="Materiel" Binding="{Binding Annee}" Width="*"/>
+                <DataGridTextColumn Header="Personnel" Width="*"/>
+                <DataGridTextColumn Header="Catégorie" Width="*"/>
+                <DataGridTextColumn Header="Materiel" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Valider" HorizontalAlignment="Left" Margin="54,340,0,0" VerticalAlignment="Top" Height="31" Width="91"/>
