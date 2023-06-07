@@ -22,19 +22,17 @@
         <Label
             x:Name="lbCategorie"
             Grid.Row="0"
-            Margin="0,0,0,75"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Catégorie"
-            FontWeight="Bold" />
+            FontWeight="Bold" Grid.ColumnSpan="2" />
         <DataGrid
             Grid.Row="0"
-            Grid.RowSpan="2"
             Margin="0,24,0,0"
             VerticalAlignment="Top"
             d:ItemsSource="{d:SampleData ItemCount=5}"
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Nom" />
             </DataGrid.Columns>
@@ -43,20 +41,18 @@
         <!--  Partie 2  -->
         <Label
             x:Name="lbMateriel"
-            Grid.Row="1"
-            Margin="0,0,0,75"
+            Margin="0,151,0,0"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Matériel"
-            FontWeight="Bold" />
+            FontWeight="Bold" Grid.ColumnSpan="2" Grid.RowSpan="2" />
         <DataGrid
             Grid.Row="1"
-            Grid.RowSpan="2"
             Margin="0,24,0,0"
             VerticalAlignment="Top"
             d:ItemsSource="{d:SampleData ItemCount=5}"
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Code Barre" />
                 <DataGridTextColumn Width="*" Header="Reference Constructeur" />
@@ -68,19 +64,17 @@
         <Label
             x:Name="lbPersonnel"
             Grid.Row="2"
-            Margin="0,0,0,75"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Personnel"
-            FontWeight="Bold" />
+            FontWeight="Bold" Grid.ColumnSpan="2" />
         <DataGrid
             Grid.Row="2"
-            Grid.RowSpan="2"
             Margin="0,24,0,0"
             VerticalAlignment="Top"
             d:ItemsSource="{d:SampleData ItemCount=5}"
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Nom" />
                 <DataGridTextColumn Width="*" Header="Prénom" />
