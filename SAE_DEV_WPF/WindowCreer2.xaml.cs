@@ -43,6 +43,10 @@ namespace SAE_DEV_WPF
         DataGrid dataGridPersonnel = new DataGrid();
         DataGrid dataGridMateriel = new DataGrid();
         DataGrid dataGridAttribution = new DataGrid();
+
+        DataGridTextColumn column1 = new DataGridTextColumn();
+        DataGridTextColumn column2 = new DataGridTextColumn();
+        DataGridTextColumn column3 = new DataGridTextColumn();
         public WindowCreer2()
         {
             InitializeComponent();
@@ -117,6 +121,17 @@ namespace SAE_DEV_WPF
 
         private void cbitMateriel_Selected(object sender, RoutedEventArgs e)
         {
+            grid.Children.Remove(stackPanelPersonnel);
+
+            grid.Children.Remove(stackPanelMateriel);
+            stackPanelMateriel.Children.Remove(labelMateriel);
+            stackPanelMateriel.Children.Remove(dataGridMateriel);
+
+            dataGridMateriel.Columns.Remove(column1);
+            dataGridMateriel.Columns.Remove(column2);
+            dataGridMateriel.Columns.Remove(column3);
+
+
             // Création du StackPanel
 
             stackPanelMateriel.Margin = new Thickness(0, -136, 0, 137);
@@ -141,17 +156,17 @@ namespace SAE_DEV_WPF
             Grid.SetColumnSpan(dataGridMateriel, 2);
 
             // Création des colonnes du DataGrid
-            DataGridTextColumn column1 = new DataGridTextColumn();
+           
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Header = "Code Barre";
             dataGridMateriel.Columns.Add(column1);
 
-            DataGridTextColumn column2 = new DataGridTextColumn();
+           
             column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column2.Header = "Reference Constructeur";
             dataGridMateriel.Columns.Add(column2);
 
-            DataGridTextColumn column3 = new DataGridTextColumn();
+            
             column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column3.Header = "Nom";
             dataGridMateriel.Columns.Add(column3);
@@ -169,7 +184,7 @@ namespace SAE_DEV_WPF
 
 
 
-            tbexemple1.Text = "Exemple";
+            /*tbexemple1.Text = "Exemple";
             tbexemple1.FontSize = 16;
             tbexemple1.HorizontalAlignment = HorizontalAlignment.Center;
             tbexemple1.VerticalAlignment = VerticalAlignment.Center;
@@ -178,7 +193,7 @@ namespace SAE_DEV_WPF
             Grid.SetRow(tbexemple1, 1);
 
 
-            grid.Children.Add(tbexemple1);
+            grid.Children.Add(tbexemple1);*/
             
         }
 

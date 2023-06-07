@@ -21,7 +21,13 @@
             <ComboBoxItem x:Name="cbitPersonnel" Content="Personnel" Selected="cbitPersonnel_Selected"/>
             <ComboBoxItem x:Name="cbitAttribution" Content="Attribution" Selected="cbitAttribution_Selected"/>
         </ComboBox>
-        
-        
+        <Label Content="Nom" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Margin="50,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+        <Label Content="Prénom" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBox HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="400,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Margin="440,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+
+
     </Grid>
 </Window>
