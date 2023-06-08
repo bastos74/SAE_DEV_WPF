@@ -19,7 +19,8 @@
         </Grid.RowDefinitions>
 
         <!--  Partie 1  -->
-        <Label
+        <StackPanel>
+            <Label
             x:Name="lbCategorie"
             Grid.Row="0"
             VerticalAlignment="Top"
@@ -27,16 +28,18 @@
             AutomationProperties.IsRowHeader="True"
             Content="Catégorie"
             FontWeight="Bold" Grid.ColumnSpan="2" />
-        <DataGrid
+            <DataGrid
             Grid.Row="0"
             Margin="0,24,0,0"
             VerticalAlignment="Top"
             d:ItemsSource="{d:SampleData ItemCount=5}"
             AutoGenerateColumns="False" Grid.ColumnSpan="2">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Nom" />
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="Nom" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
 
         <!--  Partie 2  -->
         <Label

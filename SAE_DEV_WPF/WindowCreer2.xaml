@@ -9,7 +9,7 @@
         Width="600"
         Height="470"
         MinWidth="600"
-        MinHeight="470">
+        MinHeight="470" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
@@ -21,14 +21,7 @@
             <ComboBoxItem x:Name="cbitPersonnel" Content="Personnel" Selected="cbitPersonnel_Selected"/>
             <ComboBoxItem x:Name="cbitAttribution" Content="Attribution" Selected="cbitAttribution_Selected"/>
         </ComboBox>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Label x:Name="lbNom" Content="Nom" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="tbNom"  Grid.Row="1" TextWrapping="Wrap" Text="" Width="120" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <Label x:Name="lbPrenom" Content="Prénom" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Margin="50,0,0,0"/>
-            <TextBox x:Name="tbPrenom" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" />
-            <Label x:Name="lbEmail" Content="Email" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Margin="50,0,0,0"/>
-            <TextBox x:Name="tbEmail" HorizontalAlignment="Left"  Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" Margin="0,0,0,0"/>
-        </StackPanel>
+        
         
 
 
