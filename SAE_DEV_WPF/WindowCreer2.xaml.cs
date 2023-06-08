@@ -29,7 +29,8 @@ namespace SAE_DEV_WPF
         TextBox tbexemple1 = new TextBox();
 
         StackPanel stackPanelCategorie = new StackPanel();
-        StackPanel stackPanelPersonnel = new StackPanel();
+        StackPanel stackPanelPersonnelHaut = new StackPanel();
+        StackPanel stackPanelPersonnelBas = new StackPanel();
         StackPanel stackPanelMateriel = new StackPanel();
         StackPanel stackPanelAttribution = new StackPanel();
 
@@ -64,23 +65,22 @@ namespace SAE_DEV_WPF
         private void cbitPersonnel_Selected(object sender, RoutedEventArgs e)
         {
             grid.Children.Remove(stackPanelMateriel);
-           
-
-
-
 
 
             // Création du StackPanel
 
-            stackPanelPersonnel.Margin = new Thickness(0, -136, 0, 137);
-            Grid.SetRow(stackPanelPersonnel, 0);
+            stackPanelPersonnelHaut.Margin = new Thickness(0, -136, 0, 0);
+            Grid.SetRow(stackPanelPersonnelHaut, 0);
+
+            Grid.SetRow(stackPanelPersonnelBas, 1);
+            stackPanelPersonnelBas.Orientation = Orientation.Horizontal;
 
             // Création du Label
 
             labelPersonnel.Content = "Personnel";
             labelPersonnel.FontWeight = FontWeights.Bold;
             labelPersonnel.HorizontalAlignment = HorizontalAlignment.Center;
-            labelPersonnel.Margin = new Thickness(0, 151, 0, 0);
+            labelPersonnel.Margin = new Thickness(55, 151, 0, 0);
             Grid.SetRow(labelPersonnel, 1);
             Grid.SetColumnSpan(labelPersonnel, 2);
             Grid.SetRowSpan(labelPersonnel, 2);
@@ -109,19 +109,90 @@ namespace SAE_DEV_WPF
             column3.Header = "Email";
             dataGridPersonnel.Columns.Add(column3);
 
+
+
+
+
+            // Création du Label lbNom
+            Label lbNom = new Label();
+            lbNom.Name = "lbNom";
+            lbNom.Content = "Nom";
+            lbNom.HorizontalAlignment = HorizontalAlignment.Left;
+            Grid.SetRow(lbNom, 1);
+            lbNom.VerticalAlignment = VerticalAlignment.Center;
+
+            // Création du TextBox tbNom
+            TextBox tbNom = new TextBox();
+            tbNom.Name = "tbNom";
+            Grid.SetRow(tbNom, 1);
+            tbNom.TextWrapping = TextWrapping.Wrap;
+            tbNom.Text = "";
+            tbNom.Width = 120;
+            tbNom.VerticalAlignment = VerticalAlignment.Center;
+            tbNom.HorizontalAlignment = HorizontalAlignment.Left;
+
+            // Création du Label lbPrenom
+            Label lbPrenom = new Label();
+            lbPrenom.Name = "lbPrenom";
+            lbPrenom.Content = "Prénom";
+            lbPrenom.HorizontalAlignment = HorizontalAlignment.Left;
+            Grid.SetRow(lbPrenom, 1);
+            lbPrenom.VerticalAlignment = VerticalAlignment.Center;
+            lbPrenom.Margin = new Thickness(50, 0, 0, 0);
+
+            // Création du TextBox tbPrenom
+            TextBox tbPrenom = new TextBox();
+            tbPrenom.Name = "tbPrenom";
+            tbPrenom.HorizontalAlignment = HorizontalAlignment.Left;
+            Grid.SetRow(tbPrenom, 1);
+            tbPrenom.TextWrapping = TextWrapping.Wrap;
+            tbPrenom.Text = "";
+            tbPrenom.VerticalAlignment = VerticalAlignment.Center;
+            tbPrenom.Width = 120;
+
+            // Création du Label lbEmail
+            Label lbEmail = new Label();
+            lbEmail.Name = "lbEmail";
+            lbEmail.Content = "Email";
+            lbEmail.HorizontalAlignment = HorizontalAlignment.Left;
+            Grid.SetRow(lbEmail, 1);
+            lbEmail.VerticalAlignment = VerticalAlignment.Center;
+            lbEmail.Margin = new Thickness(50, 0, 0, 0);
+
+            // Création du TextBox tbEmail
+            TextBox tbEmail = new TextBox();
+            tbEmail.Name = "tbEmail";
+            tbEmail.HorizontalAlignment = HorizontalAlignment.Left;
+            Grid.SetRow(tbEmail, 1);
+            tbEmail.TextWrapping = TextWrapping.Wrap;
+            tbEmail.Text = "";
+            tbEmail.VerticalAlignment = VerticalAlignment.Center;
+            tbEmail.Width = 120;
+            tbEmail.Margin = new Thickness(0, 0, 0, 0);
+
             // Ajout du Label et du DataGrid dans le StackPanel
-            stackPanelPersonnel.Children.Add(labelPersonnel);
-            stackPanelPersonnel.Children.Add(dataGridPersonnel);
+            stackPanelPersonnelHaut.Children.Add(labelPersonnel);
+            stackPanelPersonnelHaut.Children.Add(dataGridPersonnel);
+
+            stackPanelPersonnelBas.Children.Add(lbNom);
+            stackPanelPersonnelBas.Children.Add(tbNom);
+            stackPanelPersonnelBas.Children.Add(lbPrenom);
+            stackPanelPersonnelBas.Children.Add(tbPrenom);
+            stackPanelPersonnelBas.Children.Add(lbEmail);
+            stackPanelPersonnelBas.Children.Add(tbEmail);
 
             // Ajout du StackPanel au Grid parent (votre grille)
             // grid est une référence à votre Grid parent
-            grid.Children.Add(stackPanelPersonnel);
+            grid.Children.Add(stackPanelPersonnelHaut);
+
+            grid.Children.Add(stackPanelPersonnelBas);
 
         }
 
         private void cbitMateriel_Selected(object sender, RoutedEventArgs e)
         {
-            grid.Children.Remove(stackPanelPersonnel);
+            grid.Children.Remove(stackPanelPersonnelHaut);
+            grid.Children.Remove(stackPanelPersonnelBas);
 
             grid.Children.Remove(stackPanelMateriel);
             stackPanelMateriel.Children.Remove(labelMateriel);
@@ -142,7 +213,7 @@ namespace SAE_DEV_WPF
             labelMateriel.Content = "Matériel";
             labelMateriel.FontWeight = FontWeights.Bold;
             labelMateriel.HorizontalAlignment = HorizontalAlignment.Center;
-            labelMateriel.Margin = new Thickness(0, 151, 0, 0);
+            labelMateriel.Margin = new Thickness(55, 151, 0, 0);
             Grid.SetRow(labelMateriel, 1);
             Grid.SetColumnSpan(labelMateriel, 2);
             Grid.SetRowSpan(labelMateriel, 2);
