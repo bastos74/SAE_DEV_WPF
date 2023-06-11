@@ -440,7 +440,7 @@ namespace SAE_DEV_WPF
             labelNomCategorie.HorizontalAlignment = HorizontalAlignment.Left;
             Grid.SetRow(labelNomCategorie, 1);
             labelNomCategorie.VerticalAlignment = VerticalAlignment.Center;
-            labelNomCategorie.Margin = new Thickness(225, 0, 0, 0);
+            labelNomCategorie.Margin = new Thickness(208, 0, 0, 0);
 
             // Création du TextBox textboxNomCategorie
 
