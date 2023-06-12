@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAE_DEV_WPF"
         mc:Ignorable="d"
-        Title="WindowCreer"
+        Title="Modifier"
         Width="600"
         Height="470"
         MinWidth="600"
@@ -21,8 +21,9 @@
             <ComboBoxItem x:Name="cbitPersonnel" Content="Personnel" Selected="cbitPersonnel_Selected"/>
             <ComboBoxItem x:Name="cbitAttribution" Content="Attribution" Selected="cbitAttribution_Selected"/>
         </ComboBox>
-        
-        
+        <Button Content="Valider" HorizontalAlignment="Center" Height="33" Margin="0,108,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+
+
 
 
     </Grid>
