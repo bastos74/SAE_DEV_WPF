@@ -304,7 +304,7 @@ namespace SAE_DEV_WPF
             column3Materiel.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column3Materiel.Header = "Nom";
             dataGridMateriel.Columns.Add(column3Materiel);
-
+            
 
             // Création du Label labelCodeBarre
 

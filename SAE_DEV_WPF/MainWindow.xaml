@@ -97,7 +97,7 @@
                             Background="#80ff00"
                             BorderBrush="White"
                             Content="SE CONNECTER"
-                            Foreground="Black" />
+                            Foreground="Black" Click="btnLog_Click" />
                         <Button
                             x:Name="btnClose"
                             Width="100"
