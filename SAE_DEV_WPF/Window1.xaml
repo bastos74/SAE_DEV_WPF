@@ -25,9 +25,9 @@
 
         <Menu>
             <MenuItem Header="_Gerer">
-                <MenuItem x:Name="NouvelleParti" Header="_Creer" />
-                <MenuItem x:Name="Quitter" Header="_Modifier" />
-                <MenuItem x:Name="Supp" Header="_Supprimer" />
+                
+                <MenuItem x:Name="Modifier" Header="_Modifier" />
+                
             </MenuItem>
             <MenuItem x:Name="apropos" Header="_A propos" />
         </Menu>

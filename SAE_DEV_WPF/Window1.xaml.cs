@@ -22,6 +22,11 @@ namespace SAE_DEV_WPF
         public Window1()
         {
             InitializeComponent();
+
+            MainWindow fenetre = new MainWindow();
+            fenetre.ShowDialog();
+
+
         }
     }
 }

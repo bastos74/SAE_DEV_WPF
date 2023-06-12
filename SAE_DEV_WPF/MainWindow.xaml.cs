@@ -23,12 +23,14 @@ namespace SAE_DEV_WPF
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
 
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
-            var w = new Window1();
-            w.Show();
+            Close();
+            
         }
     }
 }
