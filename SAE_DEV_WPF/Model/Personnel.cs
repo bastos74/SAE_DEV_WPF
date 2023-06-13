@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace SAE_DEV_WPF.Model
 {
@@ -89,7 +90,19 @@ namespace SAE_DEV_WPF.Model
 
         public ObservableCollection<Personnel> FindAll()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Personnel> lepersonnel = new ObservableCollection<Personnel>();
+            DataAccess accesBD = new DataAccess();
+            String requete = "select idpersonnel ,  emailpersonnel , nompersonnel , prenompersonnel from personnel;";
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Personnel p = new Personnel(int.Parse(row["idpersonnel"].ToString()), (String)row["emailpersonnel"], (String)row["nompersonnel"],(String)row["prenompersonnel"]);
+                    lepersonnel.Add(p);
+                }
+            }
+            return lepersonnel;
         }
 
         public ObservableCollection<Personnel> FindBySelection(string criteres)
