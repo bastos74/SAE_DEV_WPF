@@ -16,6 +16,9 @@ namespace SAE_DEV_WPF.Model
         // Matériel
         public ObservableCollection<Materiel> LesMateriels { get; set; }
 
+        //Catégorie
+        public ObservableCollection<Categorie> LesCategories { get; set; }
+
         public ApplicationData()
         {
             // Find all Pour le personnel 
@@ -24,6 +27,9 @@ namespace SAE_DEV_WPF.Model
 
             Materiel m = new Materiel();
             LesMateriels = m.FindAll();
+
+            Categorie c = new Categorie();
+            LesCategories = c.FindAll();
         }
     }
 }
