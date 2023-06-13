@@ -68,7 +68,8 @@ namespace SAE_DEV_WPF
 
         private void miCategorie_Click(object sender, RoutedEventArgs e)
         {
-            winCat.Show();
+            winCat = new WinCategorie(this);
+            winCat.ShowDialog();
         }
     }
 }
