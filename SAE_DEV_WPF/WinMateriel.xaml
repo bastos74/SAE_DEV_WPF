@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE_DEV_WPF"
-    xmlns:model="clr-namespace:SAE_DEV_WPF.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:SAE_DEV_WPF.Model"
     Title="Modifier le matériel"
     Width="600"
     Height="470"
@@ -13,7 +13,7 @@
     MinHeight="470"
     mc:Ignorable="d">
     <Window.DataContext>
-        <model:ApplicationData x:Name="applicationData"/>
+        <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -24,26 +24,101 @@
 
         <Label
             x:Name="lbMateriel"
+            Height="42"
             VerticalAlignment="Top"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Matériel"
-            FontWeight="Bold" Height="42" />
+            FontWeight="Bold" />
         <!--  Partie 2  -->
 
         <DataGrid
             Grid.Row="1"
-            ItemsSource="{Binding Path=LesMateriels}"
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding Path=LesMateriels}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Code Barre" Binding="{Binding CodeBarre}" />
-                <DataGridTextColumn Width="*" Header="Reference Constructeur" Binding="{Binding RefConstructeur}"/>
-                <DataGridTextColumn Width="*" Header="Nom" Binding="{Binding Nom}"/>
-                <DataGridTextColumn Width="*" Header="Catégorie" Binding="{Binding Categorie}"/>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding CodeBarre}"
+                    Header="Code Barre" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding RefConstructeur}"
+                    Header="Reference Constructeur" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Nom}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Categorie}"
+                    Header="Catégorie" />
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="2"/>
-        <StackPanel Grid.Row="2"/>
+        
+        <!-- ZONE ENTREE UTILISATEUR -->
+        
+
+        <Grid Grid.Row="2" Height="100" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- CODE BARRE -->
+            <StackPanel Grid.Column="0">
+                <Label
+                    x:Name="lCodeBarreM"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Code Barre" Height="40" />
+                <TextBox
+                    x:Name="tbCodeBarreM"
+                    Text=""
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <!-- REFERENCE CONSTRUCTEUR -->
+            <StackPanel Grid.Column="1">
+                <Label
+                    x:Name="lRefConstM"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Référence Constructeur" Height="40" />
+                <TextBox
+                    x:Name="tbRefConstM"
+                    Text=""
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <!-- NOM -->
+            <StackPanel Grid.Column="2">
+                <Label
+                    x:Name="lNomM"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Nom" Height="40" />
+                <TextBox
+                    x:Name="tbNomM"
+                    Text=""
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <!-- CATEGORIE -->
+            <StackPanel Grid.Column="3">
+                <Label
+                    x:Name="lCategorieM"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Categorie" Height="40" />
+                <TextBox
+                    x:Name="tbCategorieM"
+                    Text=""
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            
+        </Grid>
+        
     </Grid>
 </Window>
