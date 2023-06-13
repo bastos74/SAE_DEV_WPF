@@ -14,15 +14,17 @@ namespace SAE_DEV_WPF.Model
         private string nom;
         private ObservableCollection<Materiel> lesMateriels;
 
+        private int id;
+
         public Categorie(){}
 
-        public Categorie(string nom, ObservableCollection<Materiel> lesMateriels)
+        public Categorie(int id, string nom)
         {
+            this.Id = id;
             this.Nom = nom;
-            this.LesMateriels = lesMateriels;
         }
 
-        public Categorie(string nom) : this(nom, new ObservableCollection<Materiel>()){}
+        //public Categorie(int id, string nom) : this(id, nom, new ObservableCollection<Materiel>()){}
 
         public string Nom
         {
@@ -47,6 +49,19 @@ namespace SAE_DEV_WPF.Model
             set
             {
                 lesMateriels = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
             }
         }
 
