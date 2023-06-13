@@ -9,8 +9,26 @@ namespace SAE_DEV_WPF.Model
 {
     public class ApplicationData
     {
+        // Pour le personnel 
+        public ObservableCollection<Personnel> lepersonnel { get; set; }
+        
+        
+        
+        public ApplicationData()
+        {
+            // Find all Pour le personnel 
+            Personnel p = new Personnel();
+            lepersonnel = p.FindAll();
 
-      
+
+
+
+
+
+
+
+        }
+
 
     }
 }

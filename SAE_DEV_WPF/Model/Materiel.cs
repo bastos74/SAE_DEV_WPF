@@ -136,7 +136,7 @@ namespace SAE_DEV_WPF.Model {
         }
 
 
-            public ObservableCollection<Materiel> FindBySelection(string criteres)
+        public ObservableCollection<Materiel> FindBySelection(string criteres)
         {
             throw new NotImplementedException();
         }
