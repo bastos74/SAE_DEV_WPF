@@ -19,8 +19,9 @@ namespace SAE_DEV_WPF.Model {
 
         public Materiel() { }
 
-        public Materiel(long codeBarre, string refConstructeur, string nom, Categorie categorie)
+        public Materiel(int id, long codeBarre, string refConstructeur, string nom, Categorie categorie)
         {
+            this.Id = id;
             this.CodeBarre = codeBarre;
             this.RefConstructeur = refConstructeur;
             this.Nom = nom;
