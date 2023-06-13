@@ -35,7 +35,7 @@ namespace SAE_DEV_WPF.Model /// A MODIFIER SI VOTRE PROJET A UN AUTRE NOM
           {
                 NpgSQLConnect = new NpgsqlConnection
                 {
-                    ConnectionString = "Server=iutannecy-deptinfo.fr;port=5432;Database=sae201;Search Path=mathinfoauto;uid=clehug;password=LMwggD;"
+                    ConnectionString = "Server=iutannecy-deptinfo.fr;port=5432;Database=sae201;Search Path=matinfoauto;uid=clehug;password=LMwggD;"
                 }; // A MODIFIER POUR VOTR BD 
                 NpgSQLConnect.Open();
                 

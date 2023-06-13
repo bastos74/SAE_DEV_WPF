@@ -20,13 +20,20 @@ namespace SAE_DEV_WPF
     /// </summary>
     public partial class Window1 : Window
     {
+        WinMateriel winMat;
+
         public Window1()
         {
             InitializeComponent();
+            this.Show();
 
+            // Initialisation fenêtre matériel
+            winMat = new WinMateriel(this);
+
+            /*
             DataAccess accesBD = new DataAccess();
             bool res = accesBD.OpenConnection();
-            MessageBox.Show("Résultat de la connexion : " + res);
+            MessageBox.Show("Résultat de la connexion : " + res);*/
 
 
             MainWindow fenetre = new MainWindow();
@@ -42,6 +49,11 @@ namespace SAE_DEV_WPF
         {
             aPropos fenetreApropos = new aPropos();
             fenetreApropos.ShowDialog();
+        }
+
+        private void miMateriel_Click(object sender, RoutedEventArgs e)
+        {
+            winMat.Show();
         }
     }
 }

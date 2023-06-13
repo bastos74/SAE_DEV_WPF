@@ -12,6 +12,9 @@
     MinWidth="600"
     MinHeight="470"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <model:ApplicationData x:Name="applicationData"/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -31,14 +34,15 @@
 
         <DataGrid
             Grid.Row="1"
-            d:ItemsSource="{d:SampleData ItemCount=5}"
-            AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            ItemsSource="{Binding Path=LesMateriels}"
+            AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Code Barre" />
-                <DataGridTextColumn Width="*" Header="Reference Constructeur" />
-                <DataGridTextColumn Width="*" Header="Nom" />
-                <DataGridTextColumn Width="*" Header="Catégorie" />
+                <DataGridTextColumn Width="*" Header="Code Barre" Binding="{Binding CodeBarre}" />
+                <DataGridTextColumn Width="*" Header="Reference Constructeur" Binding="{Binding RefConstructeur}"/>
+                <DataGridTextColumn Width="*" Header="Nom" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Width="*" Header="Catégorie" Binding="{Binding Categorie}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Grid.Row="2"/>
     </Grid>
 </Window>

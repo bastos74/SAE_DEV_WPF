@@ -11,15 +11,14 @@ using System.Data;
 namespace SAE_DEV_WPF.Model {
     public class Materiel : Crud<Materiel>
     {
-        private long codeBarre;
-        private String refConstructeur, nom;
+        private String refConstructeur, nom, codeBarre;
         private Categorie categorie;
 
         private int id, fk_categorie;
 
         public Materiel() { }
 
-        public Materiel(int id, long codeBarre, string refConstructeur, string nom)
+        public Materiel(int id, String codeBarre, string refConstructeur, string nom)
         {
             this.Id = id;
             this.CodeBarre = codeBarre;
@@ -27,7 +26,7 @@ namespace SAE_DEV_WPF.Model {
             this.Nom = nom;
         }
 
-        public long CodeBarre
+        public String CodeBarre
         {
             get
             {
@@ -118,7 +117,7 @@ namespace SAE_DEV_WPF.Model {
         
         public ObservableCollection<Materiel> FindAll()
         {   
-            ObservableCollection<Materiel> lesEtudiants = new ObservableCollection<Materiel>();
+            ObservableCollection<Materiel> lesMateriels = new ObservableCollection<Materiel>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idmateriel, idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire from materiel ;";
             DataTable datas = accesBD.GetData(requete);
@@ -126,11 +125,11 @@ namespace SAE_DEV_WPF.Model {
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()) ,long.Parse(row["codebarreinventaire"].ToString()), (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"]);
-                    lesEtudiants.Add(e);
+                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()) , (String)row["codebarreinventaire"], (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"]);
+                    lesMateriels.Add(e);
                 }
             }
-            return lesEtudiants;
+            return lesMateriels;
                     
             throw new NotImplementedException();
         }
