@@ -37,5 +37,11 @@ namespace SAE_DEV_WPF
                 this.Close();
             }
         }
+
+        private void apropos_Click(object sender, RoutedEventArgs e)
+        {
+            aPropos fenetreApropos = new aPropos();
+            fenetreApropos.ShowDialog();
+        }
     }
 }

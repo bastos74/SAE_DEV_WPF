@@ -33,7 +33,7 @@
                 </MenuItem>
                 
             </MenuItem>
-            <MenuItem x:Name="apropos" Header="_A propos" />
+            <MenuItem x:Name="apropos" Header="_A propos" Click="apropos_Click" />
         </Menu>
 
         <ListView Margin="10,41,400,109">

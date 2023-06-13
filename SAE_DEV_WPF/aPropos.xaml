@@ -1,0 +1,20 @@
+﻿<Window x:Class="SAE_DEV_WPF.aPropos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAE_DEV_WPF"
+        mc:Ignorable="d"
+        Title="A propos" Height="375" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Nom de l'application : MATINFO&#x0a;Version : 1.0.0&#x0a;&#x0a;À propos de MATINFO :&#x0a;MATINFO est une application conçue pour faciliter l'attribution de vos matériel.&#x0a;Elle offre une interface simple et intuitive pour vous aider à rester organisé et productif.&#x0a;&#x0a;&#x0a;Nous espérons que vous apprécierez l'utilisation de MATINFO.&#x0a;Si vous avez des questions, des commentaires ou des suggestions, n'hésitez pas à nous &#x0a;contacter à l'adresse suivante : support@matinfo.com.&#x0a;&#x0a;Merci d'utiliser MATINFO !&#x0a;&#x0a;L'équipe MATINFO" 
+       ContentStringFormat="{}{0}" HorizontalAlignment="Center" Height="275" VerticalAlignment="Center" Width="480">
+            
+            
+
+
+        </Label>
+          
+
+    </Grid>
+</Window>
