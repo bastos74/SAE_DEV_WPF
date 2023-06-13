@@ -41,7 +41,7 @@
         <DataGrid
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            ItemsSource="{Binding Path= lepersonnel}"
+            ItemsSource="{Binding Path= LesPersonnels}"
             AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Email"  Binding="{Binding Nom}" />

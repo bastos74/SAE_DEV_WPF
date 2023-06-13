@@ -11,7 +11,7 @@ namespace SAE_DEV_WPF.Model
     public class ApplicationData
     {
         // Pour le personnel 
-        public ObservableCollection<Personnel> lepersonnel { get; set; }
+        public ObservableCollection<Personnel> LesPersonnels { get; set; }
 
         // Matériel
         public ObservableCollection<Materiel> LesMateriels { get; set; }
@@ -20,7 +20,7 @@ namespace SAE_DEV_WPF.Model
         {
             // Find all Pour le personnel 
             Personnel p = new Personnel();
-            lepersonnel = p.FindAll();
+            LesPersonnels = p.FindAll();
 
             Materiel m = new Materiel();
             LesMateriels = m.FindAll();
