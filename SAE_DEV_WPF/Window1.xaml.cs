@@ -58,12 +58,14 @@ namespace SAE_DEV_WPF
 
         private void miMateriel_Click(object sender, RoutedEventArgs e)
         {
-            winMat.Show();
+            winMat = new WinMateriel(this);
+            winMat.ShowDialog();
         }
 
         private void miPersonnel_Click(object sender, RoutedEventArgs e)
         {
-            winPer.Show();
+            winPer = new WinPersonnel(this);
+            winPer.ShowDialog();
         }
 
         private void miCategorie_Click(object sender, RoutedEventArgs e)
