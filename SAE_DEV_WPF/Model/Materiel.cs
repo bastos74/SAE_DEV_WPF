@@ -126,7 +126,7 @@ namespace SAE_DEV_WPF.Model {
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()) ,long.Parse(row["codebarreinventaire"].ToString()), (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"], int.Parse(row[""]);
+                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()) ,long.Parse(row["codebarreinventaire"].ToString()), (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"]);
                     lesEtudiants.Add(e);
                 }
             }
