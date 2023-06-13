@@ -44,5 +44,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2"/>
+        <StackPanel Grid.Row="2"/>
     </Grid>
 </Window>
