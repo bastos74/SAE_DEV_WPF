@@ -115,8 +115,9 @@ namespace SAE_DEV_WPF.Model {
             throw new NotImplementedException();
         }
 
+        
         public ObservableCollection<Materiel> FindAll()
-        {
+        {   /*
             ObservableCollection<Materiel> lesEtudiants = new ObservableCollection<Materiel>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idmateriel, idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire from materiel ;";
@@ -125,14 +126,17 @@ namespace SAE_DEV_WPF.Model {
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel e = new Materiel(long.Parse(row["codebarreinventaire"].ToString()), (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"]);
+                    Materiel e = new Materiel(long.Parse(row["codebarreinventaire"].ToString()), (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"], int.Parse(row[""]);
                     lesEtudiants.Add(e);
                 }
             }
             return lesEtudiants;
+                    */
+            throw new NotImplementedException();
         }
 
-        public ObservableCollection<Materiel> FindBySelection(string criteres)
+
+            public ObservableCollection<Materiel> FindBySelection(string criteres)
         {
             throw new NotImplementedException();
         }

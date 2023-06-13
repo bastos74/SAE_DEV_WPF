@@ -16,8 +16,9 @@ namespace SAE_DEV_WPF.Model
 
         public Personnel() { }
 
-        public Personnel(string nom, string prenom, string email)
+        public Personnel(int id, string nom, string prenom, string email)
         {
+            this.Id = id;
             this.Email = email;
             this.Nom = nom;
             this.Prenom = prenom;
