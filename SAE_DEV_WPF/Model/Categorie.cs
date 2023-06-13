@@ -18,14 +18,13 @@ namespace SAE_DEV_WPF.Model
 
         public Categorie(){}
 
-        public Categorie(int id, string nom, ObservableCollection<Materiel> lesMateriels)
+        public Categorie(int id, string nom)
         {
             this.Id = id;
             this.Nom = nom;
-            this.LesMateriels = lesMateriels;
         }
 
-        public Categorie(int id, string nom) : this(id, nom, new ObservableCollection<Materiel>()){}
+        //public Categorie(int id, string nom) : this(id, nom, new ObservableCollection<Materiel>()){}
 
         public string Nom
         {

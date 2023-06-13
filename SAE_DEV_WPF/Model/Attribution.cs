@@ -20,11 +20,11 @@ namespace SAE_DEV_WPF.Model
 
         public Attribution() { }
 
-        public Attribution(int id, Materiel materiel, Personnel personnel, DateTime date, string commentaire)
+        public Attribution(int id, /*, Materiel materiel, Personnel personnel*/ DateTime date, string commentaire)
         {
             this.Id = id;
-            this.Materiel = materiel;
-            this.Personnel = personnel;
+            //this.Materiel = materiel;
+            //this.Personnel = personnel;
             this.Date = date;
             this.Commentaire = commentaire;
         }
