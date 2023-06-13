@@ -16,6 +16,8 @@ namespace SAE_DEV_WPF.Model
         private DateTime date;
         private string commentaire;
 
+        private int id, fk_materiel, fk_personnel;
+
         public Attribution() { }
 
         public Attribution(Materiel materiel, Personnel personnel, DateTime date, string commentaire)
@@ -75,6 +77,45 @@ namespace SAE_DEV_WPF.Model
             set
             {
                 commentaire = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public int Fk_materiel
+        {
+            get
+            {
+                return fk_materiel;
+            }
+
+            set
+            {
+                fk_materiel = value;
+            }
+        }
+
+        public int Fk_personnel
+        {
+            get
+            {
+                return fk_personnel;
+            }
+
+            set
+            {
+                fk_personnel = value;
             }
         }
 

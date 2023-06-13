@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace SAE_DEV_WPF.Model {
     public class Materiel : Crud<Materiel>
@@ -13,6 +14,8 @@ namespace SAE_DEV_WPF.Model {
         private long codeBarre;
         private String refConstructeur, nom;
         private Categorie categorie;
+
+        private int id, fk_categorie;
 
         public Materiel() { }
 
@@ -76,6 +79,32 @@ namespace SAE_DEV_WPF.Model {
             }
         }
 
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public int Fk_categorie
+        {
+            get
+            {
+                return fk_categorie;
+            }
+
+            set
+            {
+                fk_categorie = value;
+            }
+        }
+
         public void Create()
         {
             throw new NotImplementedException();
@@ -88,7 +117,19 @@ namespace SAE_DEV_WPF.Model {
 
         public ObservableCollection<Materiel> FindAll()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Materiel> lesEtudiants = new ObservableCollection<Materiel>();
+            DataAccess accesBD = new DataAccess();
+            String requete = "select idmateriel, idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire from materiel ;";
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Materiel e = new Materiel(long.Parse(row["codebarreinventaire"].ToString()), (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"]);
+                    lesEtudiants.Add(e);
+                }
+            }
+            return lesEtudiants;
         }
 
         public ObservableCollection<Materiel> FindBySelection(string criteres)

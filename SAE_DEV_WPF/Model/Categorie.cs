@@ -14,6 +14,8 @@ namespace SAE_DEV_WPF.Model
         private string nom;
         private ObservableCollection<Materiel> lesMateriels;
 
+        private int id;
+
         public Categorie(){}
 
         public Categorie(string nom, ObservableCollection<Materiel> lesMateriels)
@@ -47,6 +49,19 @@ namespace SAE_DEV_WPF.Model
             set
             {
                 lesMateriels = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
             }
         }
 

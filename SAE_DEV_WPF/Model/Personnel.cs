@@ -12,6 +12,8 @@ namespace SAE_DEV_WPF.Model
     {
         private String email, nom, prenom;
 
+        private int id;
+
         public Personnel() { }
 
         public Personnel(string nom, string prenom, string email)
@@ -57,6 +59,19 @@ namespace SAE_DEV_WPF.Model
             set
             {
                 prenom = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
             }
         }
     }
