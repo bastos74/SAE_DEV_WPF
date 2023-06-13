@@ -6,7 +6,7 @@
         xmlns:model="clr-namespace:SAE_DEV_WPF.Model"
         xmlns:local="clr-namespace:SAE_DEV_WPF"
         mc:Ignorable="d"
-        Title="Modifier la catégorie" Width="600" Height="470" MinWidth="600" MinHeight="470">
+        Title="Modifier la catégorie" Width="600" Height="470" MinWidth="600" MinHeight="470" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData"/>
     </Window.DataContext>
