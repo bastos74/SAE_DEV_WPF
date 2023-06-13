@@ -17,7 +17,7 @@ namespace SAE_DEV_WPF
     /// <summary>
     /// Logique d'interaction pour WinMateriel.xaml
     /// </summary>
-    public partial class WinMateriel : Window
+    public partial class WinMateriel : Window 
     {
         public WinMateriel()
         {

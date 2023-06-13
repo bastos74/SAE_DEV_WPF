@@ -5,10 +5,11 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.ObjectModel;
 
 namespace SAE_DEV_WPF.Model
 {
-    public class Personnel
+    public class Personnel : Crud<Personnel>
     {
         private String email, nom, prenom;
 
@@ -74,6 +75,36 @@ namespace SAE_DEV_WPF.Model
             {
                 id = value;
             }
+        }
+
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Personnel> FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Personnel> FindBySelection(string criteres)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }
