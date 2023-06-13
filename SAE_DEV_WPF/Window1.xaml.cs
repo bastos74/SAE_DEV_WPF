@@ -23,10 +23,15 @@ namespace SAE_DEV_WPF
         {
             InitializeComponent();
 
+            
+
             MainWindow fenetre = new MainWindow();
             fenetre.ShowDialog();
 
-
+            if(fenetre.femer == true)
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -53,13 +53,13 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Label
+                    <Label x:Name="lbIdentifiant"
                         Grid.Row="0"
                         Grid.Column="0"
                         Margin="0,5"
                         HorizontalContentAlignment="Right"
                         VerticalContentAlignment="Center"
-                        Content="Identifiant : " />
+                        Content="Identifiant : "   />
                     <TextBox
                         x:Name="txtUserId"
                         Grid.Row="0"
@@ -68,7 +68,7 @@
                         HorizontalContentAlignment="Left"
                         VerticalContentAlignment="Center" />
 
-                    <Label
+                    <Label x:Name="lbPassword"
                         Grid.Row="1"
                         Grid.Column="0"
                         Margin="0,5"
@@ -97,15 +97,15 @@
                             Background="#80ff00"
                             BorderBrush="White"
                             Content="SE CONNECTER"
-                            Foreground="Black" Click="btnSeConnecter_Click" />
+                            Foreground="Black" Click="btnSeConnecter_Click" IsDefault="True" />
                         <Button
-                            x:Name="btnClose"
+                            x:Name="btnFermer"
                             Width="100"
                             Margin="2,10"
                             Background="#ff2d2d"
                             BorderBrush="White"
                             Content="FERMER"
-                            Foreground="Black" />
+                            Foreground="Black" Click="btnFermer_Click" />
                     </StackPanel>
                 </Grid>
             </StackPanel>

@@ -16,10 +16,10 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <ComboBox x:Name="CbCategorie" Grid.Row="0" HorizontalAlignment="Left" Height="25" Width="120" Margin="20,20,0,0" VerticalAlignment="Top" >
-            <ComboBoxItem x:Name="cbitCategorie" Content="Catégorie" IsSelected="True" Selected="cbitCategorie_Selected" />
-            <ComboBoxItem x:Name="cbitMateriel" Content="Matériel" Selected="cbitMateriel_Selected"/>
-            <ComboBoxItem x:Name="cbitPersonnel" Content="Personnel" Selected="cbitPersonnel_Selected"/>
-            <ComboBoxItem x:Name="cbitAttribution" Content="Attribution" Selected="cbitAttribution_Selected"/>
+            <ComboBoxItem x:Name="cbitCategorie" Content="Catégorie" IsSelected="True"   />
+            <ComboBoxItem x:Name="cbitMateriel" Content="Matériel" />
+            <ComboBoxItem x:Name="cbitPersonnel" Content="Personnel" />
+            <ComboBoxItem x:Name="cbitAttribution" Content="Attribution" />
         </ComboBox>
         <Button Content="Valider" HorizontalAlignment="Center" Height="33" Margin="0,108,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
 

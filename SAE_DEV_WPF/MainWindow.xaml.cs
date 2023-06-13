@@ -20,6 +20,8 @@ namespace SAE_DEV_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+       public bool femer = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,10 +29,33 @@ namespace SAE_DEV_WPF
 
         }
 
-        private void btnLog_Click(object sender, RoutedEventArgs e)
+        private void btnSeConnecter_Click(object sender, RoutedEventArgs e)
+        {
+            if(txtUserId.Text == "admin" && txtPassword.Password == "passwordadmin")
+            {
+                Close();
+            }
+            else
+            {
+                                
+                if (!(txtUserId.Text == "admin"))
+                {
+                    lbIdentifiant.Foreground = Brushes.Red;
+                }
+                if (!(txtPassword.Password == "passwordadmin"))
+                {
+                    lbPassword.Foreground = Brushes.Red;
+                }
+                txtUserId.Text = "";
+                txtPassword.Password = "";
+            }          
+            
+        }
+
+        private void btnFermer_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            
+            femer= true;
         }
     }
 }

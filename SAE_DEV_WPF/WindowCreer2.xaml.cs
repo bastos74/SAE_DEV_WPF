@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace SAE_DEV_WPF
         TextBox tbAttribution = new TextBox();
         TextBox tbexemple1 = new TextBox();
 
-        
+
         StackPanel stackPanelPersonnelHaut = new StackPanel();
         StackPanel stackPanelPersonnelBas = new StackPanel();
         StackPanel stackPanelMaterielHaut = new StackPanel();
@@ -38,7 +39,7 @@ namespace SAE_DEV_WPF
         StackPanel stackPanelCategorieBas = new StackPanel();
 
         TextBox textboxNomPerssonel = new TextBox();
-        TextBox textboxPrenom = new TextBox(); 
+        TextBox textboxPrenom = new TextBox();
         TextBox textboxEmail = new TextBox();
         TextBox textboxCodeBarre = new TextBox();
         TextBox textboxReferenceConstructeur = new TextBox();
@@ -49,7 +50,7 @@ namespace SAE_DEV_WPF
         Label labelNomPerssonel = new Label();
         Label labelPrenom = new Label();
         Label labelEmail = new Label();
-        Label labelMateriel= new Label();
+        Label labelMateriel = new Label();
         Label labelCodeBarre = new Label();
         Label labelReferenceConstructeur = new Label();
         Label labelNomMateriel = new Label();
@@ -73,7 +74,7 @@ namespace SAE_DEV_WPF
         public WindowCreer2()
         {
             InitializeComponent();
-            
+
 
 
 
@@ -101,7 +102,7 @@ namespace SAE_DEV_WPF
 
             stackPanelPersonnelHaut.Children.Remove(labelPersonnel);
             stackPanelPersonnelHaut.Children.Remove(dataGridPersonnel);
-            
+
             stackPanelPersonnelBas.Children.Remove(labelNomPerssonel);
             stackPanelPersonnelBas.Children.Remove(textboxNomPerssonel);
             stackPanelPersonnelBas.Children.Remove(labelPrenom);
@@ -179,7 +180,7 @@ namespace SAE_DEV_WPF
             textboxNomPerssonel.HorizontalAlignment = HorizontalAlignment.Left;
 
             // Création du Label lbPrenom
-            
+
             labelPrenom.Name = "labelPrenom";
             labelPrenom.Content = "Prénom";
             labelPrenom.HorizontalAlignment = HorizontalAlignment.Left;
@@ -188,7 +189,7 @@ namespace SAE_DEV_WPF
             labelPrenom.Margin = new Thickness(40, 0, 0, 0);
 
             // Création du TextBox tbPrenom
-            
+
             textboxPrenom.Name = "tbPrenom";
             textboxPrenom.HorizontalAlignment = HorizontalAlignment.Left;
             Grid.SetRow(textboxPrenom, 1);
@@ -198,7 +199,7 @@ namespace SAE_DEV_WPF
             textboxPrenom.Width = 120;
 
             // Création du Label lbEmail
-            
+
             labelEmail.Name = "labelEmail";
             labelEmail.Content = "Email";
             labelEmail.HorizontalAlignment = HorizontalAlignment.Left;
@@ -207,7 +208,7 @@ namespace SAE_DEV_WPF
             labelEmail.Margin = new Thickness(40, 0, 0, 0);
 
             // Création du TextBox tbEmail
-            
+
             textboxEmail.Name = "tbEmail";
             textboxEmail.HorizontalAlignment = HorizontalAlignment.Left;
             Grid.SetRow(textboxEmail, 1);
@@ -304,7 +305,7 @@ namespace SAE_DEV_WPF
             column3Materiel.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column3Materiel.Header = "Nom";
             dataGridMateriel.Columns.Add(column3Materiel);
-            
+
 
             // Création du Label labelCodeBarre
 
@@ -380,92 +381,5 @@ namespace SAE_DEV_WPF
             grid.Children.Add(stackPanelMaterielBas);
 
         }
-
-        private void cbitCategorie_Selected(object sender, RoutedEventArgs e)
-        {
-            grid.Children.Remove(stackPanelPersonnelHaut);
-            grid.Children.Remove(stackPanelPersonnelBas);
-
-            grid.Children.Remove(stackPanelMaterielHaut);
-            grid.Children.Remove(stackPanelMaterielBas);
-
-            grid.Children.Remove(stackPanelCategorieHaut);
-            grid.Children.Remove(stackPanelCategorieBas);
-
-            stackPanelCategorieHaut.Children.Remove(labelCategorie);
-            stackPanelCategorieHaut.Children.Remove(dataGriCategorie);
-
-            stackPanelCategorieBas.Children.Remove(labelNomCategorie);
-            stackPanelCategorieBas.Children.Remove(textboxNomCategorie);
-
-            dataGriCategorie.Columns.Remove(column1Categorie);
-
-
-            // Création du StackPanel
-
-
-            Grid.SetRow(stackPanelCategorieHaut, 0);
-            stackPanelCategorieHaut.Margin = new Thickness(0, -136, 0, 0);
-
-            Grid.SetRow(stackPanelCategorieBas, 1);
-            stackPanelCategorieBas.Orientation = Orientation.Horizontal;
-
-            // Création du Label labelCategorie
-
-            labelCategorie.Content = "Catégorie";
-            labelCategorie.FontWeight = FontWeights.Bold;
-            labelCategorie.HorizontalAlignment = HorizontalAlignment.Center;
-            labelCategorie.Margin = new Thickness(55, 151, 0, 0);
-            Grid.SetRow(labelCategorie, 1);
-            Grid.SetColumnSpan(labelCategorie, 2);
-            Grid.SetRowSpan(labelCategorie, 2);
-            labelCategorie.Width = 130;
-
-            // Création du DataGrid
-
-            dataGriCategorie.Margin = new Thickness(0, 24, 0, 0);
-            dataGriCategorie.VerticalAlignment = VerticalAlignment.Top;
-            dataGriCategorie.AutoGenerateColumns = false;
-            Grid.SetColumnSpan(dataGriCategorie, 2); ;
-
-            // Création des colonnes du DataGrid
-
-            column1Categorie.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column1Categorie.Header = "Nom";
-            dataGriCategorie.Columns.Add(column1Categorie);
-
-            // Création du Label labelNomCategorie
-            labelNomCategorie.Name = "labelNomCategorie";
-            labelNomCategorie.Content = "Nom";
-            labelNomCategorie.HorizontalAlignment = HorizontalAlignment.Left;
-            Grid.SetRow(labelNomCategorie, 1);
-            labelNomCategorie.VerticalAlignment = VerticalAlignment.Center;
-            labelNomCategorie.Margin = new Thickness(208, 0, 0, 0);
-
-            // Création du TextBox textboxNomCategorie
-
-            textboxNomCategorie.Name = "textboxNomCategorie";
-            Grid.SetRow(textboxCodeBarre, 1);
-            textboxNomCategorie.TextWrapping = TextWrapping.Wrap;
-            textboxNomCategorie.Text = "";
-            textboxNomCategorie.Width = 100;
-            textboxNomCategorie.VerticalAlignment = VerticalAlignment.Center;
-            textboxNomCategorie.HorizontalAlignment = HorizontalAlignment.Left;
-
-            // Ajout des éléments au StackPanel
-            stackPanelCategorieHaut.Children.Add(labelCategorie);
-            stackPanelCategorieHaut.Children.Add(dataGriCategorie);
-
-            stackPanelCategorieBas.Children.Add(labelNomCategorie);
-            stackPanelCategorieBas.Children.Add(textboxNomCategorie);
-
-            // Ajout du StackPanel à la grille parent (votre Grid)
-            // grid est une référence à votre Grid parent
-            grid.Children.Add(stackPanelCategorieHaut);
-            grid.Children.Add(stackPanelCategorieBas);
-
-
-        }
     }
-    
 }
