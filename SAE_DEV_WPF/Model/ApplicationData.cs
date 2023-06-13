@@ -12,22 +12,16 @@ namespace SAE_DEV_WPF.Model
     {
         // Pour le personnel 
         public ObservableCollection<Personnel> lepersonnel { get; set; }
-        
-        
-        
+
+        // Matériel
+        public ObservableCollection<Materiel> LesMateriels { get; set; }
+
         public ApplicationData()
         {
             // Find all Pour le personnel 
             Personnel p = new Personnel();
             lepersonnel = p.FindAll();
 
-
-
-
-        public ObservableCollection<Materiel> LesMateriels { get; set; }
-
-        public ApplicationData()
-        {
             Materiel m = new Materiel();
             LesMateriels = m.FindAll();
         }
