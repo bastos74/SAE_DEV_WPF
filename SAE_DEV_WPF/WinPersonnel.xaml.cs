@@ -20,9 +20,10 @@ namespace SAE_DEV_WPF
     /// </summary>
     public partial class WinPersonnel : Window 
     {
-        public WinPersonnel()
+        public WinPersonnel(Window1 owner)
         {
             InitializeComponent();
+            this.Owner = owner;
 
         }
     }

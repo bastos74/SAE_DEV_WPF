@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,14 +22,16 @@ namespace SAE_DEV_WPF
     public partial class Window1 : Window
     {
         WinMateriel winMat;
+        WinPersonnel winPer;
 
         public Window1()
         {
             InitializeComponent();
             this.Show();
 
-            // Initialisation fenêtre matériel
+            // Initialisation des fenêtres
             winMat = new WinMateriel(this);
+            winPer = new WinPersonnel(this);
 
             /*
             DataAccess accesBD = new DataAccess();
@@ -54,6 +57,11 @@ namespace SAE_DEV_WPF
         private void miMateriel_Click(object sender, RoutedEventArgs e)
         {
             winMat.Show();
+        }
+
+        private void miPersonnel_Click(object sender, RoutedEventArgs e)
+        {
+            winPer.Show();
         }
     }
 }

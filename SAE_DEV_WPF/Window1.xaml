@@ -29,7 +29,7 @@
                 <MenuItem x:Name="Modifier" Header="_Modifier">
                     <MenuItem x:Name="miCategorie" Header="_Catégorie"/>
                     <MenuItem x:Name="miMateriel" Header="_Matériel" Click="miMateriel_Click"/>
-                    <MenuItem x:Name="miPersonnel" Header="_Personnel"/>
+                    <MenuItem x:Name="miPersonnel" Header="_Personnel" Click="miPersonnel_Click"/>
                 </MenuItem>
                 
             </MenuItem>
