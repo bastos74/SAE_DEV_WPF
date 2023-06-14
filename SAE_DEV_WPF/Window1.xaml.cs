@@ -23,6 +23,7 @@ namespace SAE_DEV_WPF
     {
         WinMateriel winMat;
         WinPersonnel winPer;
+        WinCategorie winCat;
 
         public Window1()
         {
@@ -32,6 +33,7 @@ namespace SAE_DEV_WPF
             // Initialisation des fenêtres
             winMat = new WinMateriel(this);
             winPer = new WinPersonnel(this);
+            winCat = new WinCategorie(this);
 
             /*
             DataAccess accesBD = new DataAccess();
@@ -64,6 +66,12 @@ namespace SAE_DEV_WPF
         {
             winPer = new WinPersonnel(this);
             winPer.ShowDialog();
+        }
+
+        private void miCategorie_Click(object sender, RoutedEventArgs e)
+        {
+            winCat = new WinCategorie(this);
+            winCat.ShowDialog();
         }
     }
 }

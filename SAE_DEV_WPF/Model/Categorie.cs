@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace SAE_DEV_WPF.Model
 {
@@ -87,6 +88,20 @@ namespace SAE_DEV_WPF.Model
 
         public ObservableCollection<Categorie> FindAll()
         {
+            ObservableCollection<Categorie> lesCategories = new ObservableCollection<Categorie>();
+            DataAccess accesBD = new DataAccess();
+            String requete = "select idcategorie, nomcategorie from categorie_materiel ;";
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Categorie e = new Categorie(int.Parse(row["idcategorie"].ToString()), (String)row["nomcategorie"]);
+                    lesCategories.Add(e);
+                }
+            }
+            return lesCategories;
+
             throw new NotImplementedException();
         }
 
