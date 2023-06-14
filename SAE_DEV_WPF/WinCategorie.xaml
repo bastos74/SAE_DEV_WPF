@@ -36,7 +36,60 @@
                 
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="2"/>
-        <StackPanel Grid.Row="2"/>
+
+        <!--  ZONE ENTREE UTILISATEUR  -->
+        <Grid
+            Grid.Row="2"
+            Height="100"
+            VerticalAlignment="Top">
+           
+
+            
+            <!--  NOM CATEGORIE  -->
+            <StackPanel>
+                <Label
+                    x:Name="lNomC"
+                    Height="40"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Nom catégorie"
+                    FontWeight="Bold" />
+                <TextBox
+                    x:Name="tbNomC"
+                    Text=""
+                    TextWrapping="Wrap" 
+                    Width="200"/>
+            </StackPanel>
+            
+
+        </Grid>
+
+        <Grid
+            Grid.Row="2"
+            Height="51"
+            Margin="0,100,0,0"
+            VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="0"
+                Margin="10,10,10,10"
+                Content="Ajouter"
+                FontWeight="Bold" />
+            <Button
+                Grid.Column="1"
+                Margin="10,10,10,10"
+                Content="Modifier"
+                FontWeight="Bold" />
+            <Button
+                Grid.Column="2"
+                Margin="10,10,10,10"
+                Content="Supprimer"
+                FontWeight="Bold" />
+
+        </Grid>
     </Grid>
 </Window>

@@ -28,6 +28,14 @@ namespace SAE_DEV_WPF
         public Window1()
         {
             InitializeComponent();
+            MainWindow fenetre = new MainWindow();
+            fenetre.ShowDialog();
+
+            if(fenetre.femer == true)
+            {
+                this.Close();
+            }
+
             this.Show();
 
             // Initialisation des fenêtres
@@ -41,13 +49,6 @@ namespace SAE_DEV_WPF
             MessageBox.Show("Résultat de la connexion : " + res);*/
 
 
-            MainWindow fenetre = new MainWindow();
-            fenetre.ShowDialog();
-
-            if(fenetre.femer == true)
-            {
-                this.Close();
-            }
         }
 
         private void apropos_Click(object sender, RoutedEventArgs e)
