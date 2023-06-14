@@ -24,5 +24,20 @@ namespace SAE_DEV_WPF
             InitializeComponent();
             this.Owner = owner;
         }
+
+        private void lAjouter_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void lModifer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
