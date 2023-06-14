@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_DEV_WPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,13 +22,33 @@ namespace SAE_DEV_WPF
     {
         public WinMateriel(WinAttribution owner)
         {
-            InitializeComponent();
             this.Owner = owner;
+            this.DataContext = owner.DataContext; // On assigne notre DataContext à cette fenêtre, à faire avant l'initialisation
+
+            InitializeComponent();
+
+            dgMateriel.Items.Refresh();
         }
 
         private void lAjouter_Click(object sender, RoutedEventArgs e)
         {
-            applicationData.LesMateriels[dgMateriel.SelectedIndex].Create();
+            if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
+            {
+                // On crée le nouvel objet matériel
+                Materiel m = new Materiel(Util.ConvertToOneUpperCase(tbCategorieM.Text), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
+
+                // On ajoute le nouveau matériel dans la BDD
+                m.Create();
+                applicationData.LesMateriels.Add(m);
+                applicationData.LesMateriels.Last().FindAll(); // tentative d'actualisation
+
+                // On reset les champs
+                tbCategorieM.Text = "";
+                tbCodeBarreM.Text = "";
+                tbNomM.Text = "";
+                tbRefConstM.Text = "";
+            }
+            else ((Button)sender).Background = Brushes.LightPink;
         }
 
         private void lModifer_Click(object sender, RoutedEventArgs e)

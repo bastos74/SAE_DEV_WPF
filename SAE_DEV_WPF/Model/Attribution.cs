@@ -17,6 +17,7 @@ namespace SAE_DEV_WPF.Model
         private Personnel personnel;
         private DateTime date;
         private string commentaire;
+        private string nommateriel, nompersonnel;
 
         private int id, fk_materiel, fk_personnel;
 

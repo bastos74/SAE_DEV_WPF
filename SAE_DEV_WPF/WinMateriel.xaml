@@ -47,7 +47,7 @@
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding RefConstructeur}"
-                    Header="Reference Constructeur" />
+                    Header="Reference Constructeur"/>
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Nom}"
@@ -93,7 +93,7 @@
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Content="Référence Constructeur"
-                    FontWeight="Bold" />
+                    FontWeight="Bold" FontSize="12" />
                 <TextBox
                     x:Name="tbRefConstM"
                     Text=""

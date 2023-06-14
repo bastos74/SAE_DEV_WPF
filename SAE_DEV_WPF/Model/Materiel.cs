@@ -26,6 +26,15 @@ namespace SAE_DEV_WPF.Model {
             this.Nom = nom;
             this.CatName = categorieName;
         }
+
+        public Materiel(string catFormate, string nomMat, string refConst, string codeBarre) // Constructeur pour INSERT
+        {
+            this.CodeBarre = codeBarre;
+            this.RefConstructeur = refConst;
+            this.Nom = nomMat;
+            this.CatName = catFormate;
+        }
+
         public string RefConstructeur
         {
             get
@@ -119,7 +128,23 @@ namespace SAE_DEV_WPF.Model {
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            DataTable datas;
+            String requeteSelect, requeteInsert;
+
+            // On définit l'id de la categorie à partir de son nom
+            requeteSelect = $"select * from categorie_materiel where nomcategorie = '{Categorie}';";
+            datas = accesBD.GetData(requeteSelect);
+            Fk_categorie = int.Parse(datas.Rows[0]["idcategorie"].ToString());
+
+            // On définit l'ID du materiel
+            requeteSelect = "nextval('materiel_idmateriel_seq'::regclass)";
+            datas = accesBD.GetData(requeteSelect);
+            Id = int.Parse(datas.Rows[0][0].ToString());
+
+            // INSERT -- Faire refactor sans insérer l'id
+            requeteInsert = $"INSERT INTO materiel (idmateriel, idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire) VALUES({Id}, {Fk_categorie}, '{Nom}', '{RefConstructeur}', '{CodeBarre}'); ";
+            accesBD.SetData(requeteInsert);       
         }
 
         public void Delete()
@@ -145,7 +170,6 @@ namespace SAE_DEV_WPF.Model {
             }
             return lesMateriels;
                     
-            throw new NotImplementedException();
         }
 
 
