@@ -19,7 +19,7 @@ namespace SAE_DEV_WPF
     /// </summary>
     public partial class WinCategorie : Window
     {
-        public WinCategorie(Window1 owner)
+        public WinCategorie(WinAttribution owner)
         {
             InitializeComponent();
             this.Owner = owner;

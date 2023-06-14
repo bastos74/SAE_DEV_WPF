@@ -20,7 +20,7 @@ namespace SAE_DEV_WPF
     /// </summary>
     public partial class WinPersonnel : Window 
     {
-        public WinPersonnel(Window1 owner)
+        public WinPersonnel(WinAttribution owner)
         {
             InitializeComponent();
             this.Owner = owner;

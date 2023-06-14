@@ -19,7 +19,7 @@ namespace SAE_DEV_WPF
     /// </summary>
     public partial class WinMateriel : Window 
     {
-        public WinMateriel(Window1 owner)
+        public WinMateriel(WinAttribution owner)
         {
             InitializeComponent();
             this.Owner = owner;
