@@ -36,7 +36,32 @@
                 
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="2"/>
-        <StackPanel Grid.Row="2"/>
+
+        <!--  ZONE ENTREE UTILISATEUR  -->
+        <Grid
+            Grid.Row="2"
+            Height="100"
+            VerticalAlignment="Top">
+
+
+
+            <!--  NOM CATEGORIE  -->
+            <StackPanel>
+                <Label
+                    x:Name="lNomC"
+                    Height="40"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Nom catégorie"
+                    FontWeight="Bold" />
+                <TextBox
+                    x:Name="tbNomC"
+                    Text=""
+                    TextWrapping="Wrap" 
+                    Width="200"/>
+            </StackPanel>
+
+
+        </Grid>
     </Grid>
 </Window>
