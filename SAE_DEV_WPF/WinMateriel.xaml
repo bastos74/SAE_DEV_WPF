@@ -34,7 +34,7 @@
             FontWeight="Bold" />
         <!--  Partie 2  -->
 
-        <DataGrid
+        <DataGrid x:Name="dgMateriel"
             Grid.Row="1"
             AutoGenerateColumns="False"
             IsReadOnly="True"

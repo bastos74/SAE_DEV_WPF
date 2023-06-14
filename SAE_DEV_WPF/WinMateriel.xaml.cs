@@ -27,7 +27,7 @@ namespace SAE_DEV_WPF
 
         private void lAjouter_Click(object sender, RoutedEventArgs e)
         {
-            
+            applicationData.LesMateriels[dgMateriel.SelectedIndex].Create();
         }
 
         private void lModifer_Click(object sender, RoutedEventArgs e)
