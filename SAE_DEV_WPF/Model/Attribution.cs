@@ -6,6 +6,8 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.IO.Packaging;
 
 namespace SAE_DEV_WPF.Model
 {
@@ -20,13 +22,15 @@ namespace SAE_DEV_WPF.Model
 
         public Attribution() { }
 
-        public Attribution(int id, /*, Materiel materiel, Personnel personnel*/ DateTime date, string commentaire)
+        public Attribution(int id,  DateTime date, string commentaire , string nommateriel, string nompersonnel)
         {
             this.Id = id;
             //this.Materiel = materiel;
             //this.Personnel = personnel;
             this.Date = date;
             this.Commentaire = commentaire;
+            this.Nommateriel = nommateriel;
+            this.Nompersonnel = nompersonnel;
         }
 
         public Materiel Materiel
@@ -120,6 +124,13 @@ namespace SAE_DEV_WPF.Model
             }
         }
 
+        public string Nommateriel { get => nommateriel; set => nommateriel = value; }
+        public string Nompersonnel { get => nompersonnel; set => nompersonnel = value; }
+
+
+
+
+
         public void Create()
         {
             throw new NotImplementedException();
@@ -132,7 +143,22 @@ namespace SAE_DEV_WPF.Model
 
         public ObservableCollection<Attribution> FindAll()
         {
-            throw new NotImplementedException();
+
+            ObservableCollection<Attribution> lesAttributions = new ObservableCollection<Attribution>();
+
+            DataAccess accesBD = new DataAccess();
+            String requete = " select idattribution , dateattribution , commentaireattribution , nommateriel , nompersonel from attribution " +
+                "  join personnel on     ";
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Attribution a = new Attribution(int.Parse(row["idattribution"].ToString()),  DateTime.Parse((String)row["dateattribution"]) ,(String)row["commentaireattribution"], (String)row["nommateriel"], (String)row["nompersonnel"]);
+                    lesAttributions.Add(a);
+                }
+            }
+            return lesAttributions;
         }
 
         public ObservableCollection<Attribution> FindBySelection(string criteres)
