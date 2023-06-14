@@ -11,34 +11,21 @@ using System.Data;
 namespace SAE_DEV_WPF.Model {
     public class Materiel : Crud<Materiel>
     {
-        private String refConstructeur, nom, codeBarre;
+        private String refConstructeur, nom, codeBarre, catName;
         private Categorie categorie;
 
         private int id, fk_categorie;
 
         public Materiel() { }
 
-        public Materiel(int id, String codeBarre, string refConstructeur, string nom)
+        public Materiel(int id, String codeBarre, string refConstructeur, string nom, string categorieName)
         {
             this.Id = id;
             this.CodeBarre = codeBarre;
             this.RefConstructeur = refConstructeur;
             this.Nom = nom;
+            this.CatName = categorieName;
         }
-
-        public String CodeBarre
-        {
-            get
-            {
-                return codeBarre;
-            }
-
-            set
-            {
-                codeBarre = value;
-            }
-        }
-
         public string RefConstructeur
         {
             get
@@ -62,6 +49,19 @@ namespace SAE_DEV_WPF.Model {
             set
             {
                 nom = value;
+            }
+        }
+
+        public string CodeBarre
+        {
+            get
+            {
+                return codeBarre;
+            }
+
+            set
+            {
+                codeBarre = value;
             }
         }
 
@@ -104,6 +104,19 @@ namespace SAE_DEV_WPF.Model {
             }
         }
 
+        public string CatName
+        {
+            get
+            {
+                return catName;
+            }
+
+            set
+            {
+                catName = value;
+            }
+        }
+
         public void Create()
         {
             throw new NotImplementedException();
@@ -119,13 +132,14 @@ namespace SAE_DEV_WPF.Model {
         {   
             ObservableCollection<Materiel> lesMateriels = new ObservableCollection<Materiel>();
             DataAccess accesBD = new DataAccess();
-            String requete = "select idmateriel, idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire from materiel ;";
+            String requete = "select idmateriel, categorie_materiel.idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire, categorie_materiel.nomcategorie from materiel " +
+                "join categorie_materiel on categorie_materiel.idcategorie = materiel.idcategorie;";
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()) , (String)row["codebarreinventaire"], (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"]);
+                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()) , (String)row["codebarreinventaire"], (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"], (String)row["nomcategorie"]);
                     lesMateriels.Add(e);
                 }
             }

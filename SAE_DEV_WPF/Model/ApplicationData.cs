@@ -26,23 +26,29 @@ namespace SAE_DEV_WPF.Model
             Personnel p = new Personnel();
             LesPersonnels = p.FindAll();
 
-            Materiel m = new Materiel();
-            LesMateriels = m.FindAll();
-
+            // CATEGORIE
             Categorie c = new Categorie();
             LesCategories = c.FindAll();
 
+            // MATERIEL
+            Materiel m = new Materiel();
+            LesMateriels = m.FindAll();
+
+            /*
             // pour chaque materiel, on lui affecte son groupe
             foreach (Materiel mat in LesMateriels.ToList())
             {
-                mat.Categorie = LesCategorie.ToList().Find(g => g.Id == unEtud.FK_IdGroupe);
+                mat.Categorie = LesCategories.ToList().Find(g => g.Id == mat.Fk_categorie);
+                //throw new Exception(mat.Categorie.Nom);
             }
-            // pour chaque categorie, on affecte toutes les références des matériel appartenant au groupe
-            foreach (Groupe unGroupe in LesGroupes.ToList())
+            // pour chaque categorie, on affecte toutes les références des matériel
+            foreach (Categorie cat in LesCategories.ToList())
             {
-                unGroupe.LesEtudiants = new ObservableCollection<Etudiant>(
-                LesEtudiants.ToList().FindAll(e => e.FK_IdGroupe == unGroupe.Id));
+                cat.LesMateriels = new ObservableCollection<Materiel>(
+                LesMateriels.ToList().FindAll(e => e.Fk_categorie == cat.Id));
             }
+            */
+            
         }
     }
 }
