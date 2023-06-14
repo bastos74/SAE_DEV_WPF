@@ -11,7 +11,8 @@
     Height="470"
     MinWidth="600"
     MinHeight="470"
-    mc:Ignorable="d" WindowStartupLocation="CenterScreen">
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
@@ -57,68 +58,105 @@
                     Header="Catégorie" />
             </DataGrid.Columns>
         </DataGrid>
-        
-        <!-- ZONE ENTREE UTILISATEUR -->
-        
 
-        <Grid Grid.Row="2" Height="100" VerticalAlignment="Top">
+        <!--  ZONE ENTREE UTILISATEUR  -->
+        <Grid
+            Grid.Row="2"
+            Height="100"
+            VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            
-            <!-- CODE BARRE -->
+
+            <!--  CODE BARRE  -->
             <StackPanel Grid.Column="0">
                 <Label
                     x:Name="lCodeBarreM"
+                    Height="40"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
-                    Content="Code Barre" Height="40" />
+                    Content="Code Barre"
+                    FontWeight="Bold" />
                 <TextBox
                     x:Name="tbCodeBarreM"
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
-            <!-- REFERENCE CONSTRUCTEUR -->
+            <!--  REFERENCE CONSTRUCTEUR  -->
             <StackPanel Grid.Column="1">
                 <Label
                     x:Name="lRefConstM"
+                    Height="40"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
-                    Content="Référence Constructeur" Height="40" />
+                    Content="Référence Constructeur"
+                    FontWeight="Bold" />
                 <TextBox
                     x:Name="tbRefConstM"
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
-            <!-- NOM -->
+            <!--  NOM  -->
             <StackPanel Grid.Column="2">
                 <Label
                     x:Name="lNomM"
+                    Height="40"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
-                    Content="Nom" Height="40" />
+                    Content="Nom"
+                    FontWeight="Bold" />
                 <TextBox
                     x:Name="tbNomM"
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
-            <!-- CATEGORIE -->
+            <!--  CATEGORIE  -->
             <StackPanel Grid.Column="3">
                 <Label
                     x:Name="lCategorieM"
+                    Height="40"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
-                    Content="Categorie" Height="40" />
+                    Content="Catégorie"
+                    FontWeight="Bold" />
                 <TextBox
                     x:Name="tbCategorieM"
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
-            
+
         </Grid>
-        
+
+        <Grid
+            Grid.Row="2"
+            Height="51"
+            Margin="0,100,0,0"
+            VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="0"
+                Margin="10,10,10,10"
+                Content="Ajouter"
+                FontWeight="Bold" />
+            <Button
+                Grid.Column="1"
+                Margin="10,10,10,10"
+                Content="Modifier"
+                FontWeight="Bold" />
+            <Button
+                Grid.Column="2"
+                Margin="10,10,10,10"
+                Content="Supprimer"
+                FontWeight="Bold" />
+
+        </Grid>
+
     </Grid>
 </Window>
