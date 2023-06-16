@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_DEV_WPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +22,41 @@ namespace SAE_DEV_WPF
     {
         public WinCategorie(WinAttribution owner)
         {
-            InitializeComponent();
             this.Owner = owner;
+            this.DataContext = owner.DataContext; // On assigne notre DataContext à cette fenêtre, à faire avant l'initialisation
+
+            InitializeComponent();
+
+            dgCategorie.Items.Refresh();
+        }
+
+        private void btAjouter_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(tbNomC.Text))
+            {
+                // On crée le nouvel objet matériel
+                Categorie c = new Categorie(Util.ConvertToOneUpperCase(tbNomC.Text));
+
+                // On ajoute le nouveau matériel dans la BDD
+                c.Create();
+                applicationData.LesCategories.Add(c);
+                applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+
+                // On reset les champs
+                tbNomC.Text = "";
+                
+            }
+            else ((Button)sender).Background = Brushes.LightPink;
+        }
+
+        private void btModifier_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
