@@ -54,21 +54,7 @@ namespace SAE_DEV_WPF
                 tbCodeBarreM.BorderBrush = Brushes.Red;
             }
 
-            bool verif;
-            // On vérifie que les champs ne soient pas vides
-            if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
-            {
-                verif = true;
-                // On vérifie que chauqe champ ne dépasse pas le charcter varying de la base
-                if(!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
-                {
-                    verif = false;
-                }
-            }
-            else verif = false;
-
-
-            if (verif)
+            if (AreChampCorrectEtNonVide())
             {
                 // On crée le nouvel objet matériel
                 Materiel m = new Materiel(Util.ConvertToOneUpperCase(tbCategorieM.Text), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
@@ -80,8 +66,7 @@ namespace SAE_DEV_WPF
 
                 // On reset les champs
                 ResetChamp();
-
-                
+ 
             }
            
         }
@@ -130,7 +115,7 @@ namespace SAE_DEV_WPF
             tbRefConstM.Text = "";
         }
 
-        private bool AreChampCorrect()
+        private bool AreChampCorrectEtNonVide()
         {
             bool verif;
 
