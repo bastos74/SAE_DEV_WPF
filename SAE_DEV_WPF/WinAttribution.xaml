@@ -56,7 +56,7 @@
             AutoGenerateColumns="False"
             ItemsSource="{Binding Path=LesAttributions}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Personnel" />
+                <DataGridTextColumn Width="*" Header="Personnel" Binding="{Binding Personnel.Nom}"/>
                 <DataGridTextColumn Width="*" Header="Catégorie" />
                 <DataGridTextColumn Width="*" Header="Materiel" />
             </DataGrid.Columns>
