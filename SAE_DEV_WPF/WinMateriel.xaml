@@ -54,7 +54,7 @@
                     Header="Nom" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding CatName}"
+                    Binding="{Binding Categorie.Nom}"
                     Header="Catégorie" />
             </DataGrid.Columns>
         </DataGrid>

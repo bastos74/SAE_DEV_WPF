@@ -22,17 +22,20 @@ namespace SAE_DEV_WPF.Model
 
         public ApplicationData()
         {
+            // CATEGORIE -- à faire en 1er
+            Categorie c = new Categorie();
+            LesCategories = c.FindAll();
+            
             // Find all Pour le personnel 
             Personnel p = new Personnel();
             LesPersonnels = p.FindAll();
 
-            // CATEGORIE
-            Categorie c = new Categorie();
-            LesCategories = c.FindAll();
-
             // MATERIEL
             Materiel m = new Materiel();
+            Materiel.Ad = this;
             LesMateriels = m.FindAll();
+
+
 
             /*
             // pour chaque materiel, on lui affecte son groupe

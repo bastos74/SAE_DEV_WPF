@@ -7,32 +7,37 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Linq;
 
-namespace SAE_DEV_WPF.Model {
+namespace SAE_DEV_WPF.Model
+{
     public class Materiel : Crud<Materiel>
     {
-        private String refConstructeur, nom, codeBarre, catName;
+        public static ApplicationData Ad;
+        private String refConstructeur, nom, codeBarre;
         private Categorie categorie;
 
         private int id, fk_categorie;
 
         public Materiel() { }
 
-        public Materiel(int id, String codeBarre, string refConstructeur, string nom, string categorieName)
+        public Materiel(int id, String codeBarre, string refConstructeur, string nom, Categorie c) // Constructeur pour INSERT
         {
             this.Id = id;
             this.CodeBarre = codeBarre;
             this.RefConstructeur = refConstructeur;
             this.Nom = nom;
-            this.CatName = categorieName;
+            //this.Ad = ad;
+            this.Categorie = c;
+            //this.CatName = categorieName;
         }
 
-        public Materiel(string catFormate, string nomMat, string refConst, string codeBarre) // Constructeur pour INSERT
+        public Materiel(string catFormate, string nomMat, string refConst, string codeBarre) // Constructeur pour CREATE
         {
             this.CodeBarre = codeBarre;
             this.RefConstructeur = refConst;
             this.Nom = nomMat;
-            this.CatName = catFormate;
+            this.Categorie = Ad.LesCategories.ToList().Find(x => x.Nom == catFormate);
         }
 
         public string RefConstructeur
@@ -113,19 +118,6 @@ namespace SAE_DEV_WPF.Model {
             }
         }
 
-        public string CatName
-        {
-            get
-            {
-                return catName;
-            }
-
-            set
-            {
-                catName = value;
-            }
-        }
-
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
@@ -133,18 +125,18 @@ namespace SAE_DEV_WPF.Model {
             String requeteSelect, requeteInsert;
 
             // On définit l'id de la categorie à partir de son nom
-            requeteSelect = $"select * from categorie_materiel where nomcategorie = '{Categorie}';";
+            requeteSelect = $"select idcategorie from categorie_materiel where nomcategorie = '{Categorie.Nom}';";
             datas = accesBD.GetData(requeteSelect);
             Fk_categorie = int.Parse(datas.Rows[0]["idcategorie"].ToString());
 
             // On définit l'ID du materiel
-            requeteSelect = "nextval('materiel_idmateriel_seq'::regclass)";
+            requeteSelect = "SELECT nextval('materiel_idmateriel_seq'::regclass);";
             datas = accesBD.GetData(requeteSelect);
             Id = int.Parse(datas.Rows[0][0].ToString());
 
             // INSERT -- Faire refactor sans insérer l'id
-            requeteInsert = $"INSERT INTO materiel (idmateriel, idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire) VALUES({Id}, {Fk_categorie}, '{Nom}', '{RefConstructeur}', '{CodeBarre}'); ";
-            accesBD.SetData(requeteInsert);       
+            requeteInsert = $"INSERT INTO materiel (idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire) VALUES({Fk_categorie}, '{Nom}', '{RefConstructeur}', '{CodeBarre}'); ";
+            accesBD.SetData(requeteInsert);
         }
 
         public void Delete()
@@ -152,9 +144,9 @@ namespace SAE_DEV_WPF.Model {
             throw new NotImplementedException();
         }
 
-        
+
         public ObservableCollection<Materiel> FindAll()
-        {   
+        {
             ObservableCollection<Materiel> lesMateriels = new ObservableCollection<Materiel>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idmateriel, categorie_materiel.idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire, categorie_materiel.nomcategorie from materiel " +
@@ -164,12 +156,13 @@ namespace SAE_DEV_WPF.Model {
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()) , (String)row["codebarreinventaire"], (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"], (String)row["nomcategorie"]);
+                    Categorie = Ad.LesCategories.ToList().Find(x => x.Id == int.Parse(row["idcategorie"].ToString()));
+                    Materiel e = new Materiel(int.Parse(row["idmateriel"].ToString()), (String)row["codebarreinventaire"], (String)row["referenceconstructeurmateriel"], (String)row["nommateriel"], Categorie);
                     lesMateriels.Add(e);
                 }
             }
             return lesMateriels;
-                    
+
         }
 
 
