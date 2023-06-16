@@ -31,23 +31,23 @@ namespace SAE_DEV_WPF
 
         private void btnSeConnecter_Click(object sender, RoutedEventArgs e)
         {
-            if(txtUserId.Text == "admin" && txtPassword.Password == "passwordadmin")
+            if(tbIdentifiant.Text == "admin" && tbPassword.Password == "passwordadmin")
             {
                 Close();
             }
             else
             {
                                 
-                if (!(txtUserId.Text == "admin"))
+                if (!(tbIdentifiant.Text == "admin"))
                 {
-                    lbIdentifiant.Foreground = Brushes.Red;
+                    tbIdentifiant.BorderBrush = Brushes.Red;
                 }
-                if (!(txtPassword.Password == "passwordadmin"))
+                if (!(tbPassword.Password == "passwordadmin"))
                 {
-                    lbPassword.Foreground = Brushes.Red;
+                    tbPassword.BorderBrush = Brushes.Red;
                 }
-                txtUserId.Text = "";
-                txtPassword.Password = "";
+                tbIdentifiant.Text = "";
+                tbPassword.Password = "";
             }          
             
         }
