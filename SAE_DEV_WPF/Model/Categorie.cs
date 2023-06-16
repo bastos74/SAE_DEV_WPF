@@ -97,7 +97,7 @@ namespace SAE_DEV_WPF.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete()

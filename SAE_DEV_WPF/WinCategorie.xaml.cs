@@ -51,6 +51,9 @@ namespace SAE_DEV_WPF
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
         {
+            
+            
+
 
         }
 

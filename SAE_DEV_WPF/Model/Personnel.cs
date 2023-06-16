@@ -109,7 +109,14 @@ namespace SAE_DEV_WPF.Model
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            DataTable datas;
+            String requeteSelect, requeteDelete;
+
+            requeteSelect = "Select  ";
+               
+
+
         }
 
         public ObservableCollection<Personnel> FindAll()
