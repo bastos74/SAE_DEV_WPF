@@ -26,6 +26,18 @@ namespace SAE_DEV_WPF.Model
             this.Prenom = prenom;
         }
 
+
+        // Constructeur pour INSERT 
+        public Personnel( string nom, string prenom, string email)
+        {
+            this.Email = email;
+            this.Nom = nom;
+            this.Prenom = prenom;
+        }
+
+
+
+
         public string Email
         {
             get
@@ -80,7 +92,19 @@ namespace SAE_DEV_WPF.Model
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            DataTable datas;
+            String requeteSelect, requeteInsert;
+           
+
+            // On définit l'ID du personnel
+            requeteSelect = "select nextval('personnel_idpersonnel_seq'::regclass);";
+            datas = accesBD.GetData(requeteSelect);
+            Id = int.Parse(datas.Rows[0][0].ToString());
+
+            // INSERT -- Faire refactor sans insérer l'id
+            requeteInsert = $"INSERT INTO personnel (emailpersonnel , nompersonnel, prenompersonnel) VALUES({Email}, '{Nom}', '{Prenom}'); ";
+            accesBD.SetData(requeteInsert);
         }
 
         public void Delete()

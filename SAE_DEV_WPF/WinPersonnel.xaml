@@ -11,10 +11,11 @@
     Height="470"
     MinWidth="600"
     MinHeight="470"
-    mc:Ignorable="d" WindowStartupLocation="CenterScreen">
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
     <Window.DataContext>
-        <model:ApplicationData x:Name="applicationData"/>
+        <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
 
 
@@ -39,14 +40,24 @@
         <!--  Partie 2  -->
 
         <DataGrid
+            x:Name="dgPersonnel"
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            ItemsSource="{Binding Path= LesPersonnels}"
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Path=LesPersonnels}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Email"  Binding="{Binding Nom}" />
-                <DataGridTextColumn Width="*" Header="Nom"  Binding="{Binding Prenom}"  />
-                <DataGridTextColumn Width="*" Header="Prenom" Binding="{Binding Email}" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Nom}"
+                    Header="Email" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Prenom}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Email}"
+                    Header="Prenom" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -76,6 +87,7 @@
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
+            
             <!--  NOM  -->
             <StackPanel Grid.Column="1">
                 <Label
@@ -90,6 +102,7 @@
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
+            
             <!--  PRENOM  -->
             <StackPanel Grid.Column="2">
                 <Label
@@ -122,7 +135,7 @@
                 Grid.Column="0"
                 Margin="10,10,10,10"
                 Content="Ajouter"
-                FontWeight="Bold" />
+                FontWeight="Bold" Click="Button_Click_Ajouter" />
             <Button
                 Grid.Column="1"
                 Margin="10,10,10,10"
@@ -138,10 +151,9 @@
     </Grid>
 </Window>
 
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
