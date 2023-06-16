@@ -32,14 +32,10 @@ namespace SAE_DEV_WPF
 
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
-            tbNomC.BorderBrush = Util.GetBaseColor();
-            
+            tbNomC.BorderBrush = Util.GetBaseColorTextBox();
 
-            if (String.IsNullOrEmpty(tbNomC.Text))
-            {
-                tbNomC.BorderBrush = Brushes.Red;
-            }
-            
+            ChangeColorChampVide();
+
             if (!String.IsNullOrEmpty(tbNomC.Text))
             {
                 // On crée le nouvel objet matériel
@@ -80,6 +76,20 @@ namespace SAE_DEV_WPF
                 applicationData.LesCategories.Remove(c);
                 dgCategorie.Items.Refresh();
                 c.Delete();
+            }
+        }
+
+        private void ChangeColorChampVide()
+        {
+            List<TextBox> lesTextBox = new List<TextBox>();
+            lesTextBox.Add(tbNomC);            
+
+            foreach (TextBox tb in lesTextBox)
+            {
+                if (String.IsNullOrEmpty(tb.Text))
+                {
+                    tb.BorderBrush = Brushes.Red;
+                }
             }
         }
     }

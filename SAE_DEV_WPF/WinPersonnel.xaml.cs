@@ -32,34 +32,20 @@ namespace SAE_DEV_WPF
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
 
-            tbEmailP.BorderBrush = Util.GetBaseColor();
-            tbNomP.BorderBrush = Util.GetBaseColor();
-            tbPrenomP.BorderBrush = Util.GetBaseColor();
+            tbEmailP.BorderBrush = Util.GetBaseColorTextBox();
+            tbNomP.BorderBrush = Util.GetBaseColorTextBox();
+            tbPrenomP.BorderBrush = Util.GetBaseColorTextBox();
 
-            if (String.IsNullOrEmpty(tbEmailP.Text) || !Util.IsEmailFormat(tbEmailP.Text))
+            ChangeColorChampVide();
+            if (!Util.IsEmailFormat(tbEmailP.Text))
             {
                 tbEmailP.BorderBrush = Brushes.Red;
             }
-            if (String.IsNullOrEmpty(tbNomP.Text))
-            {
-                tbNomP.BorderBrush = Brushes.Red;
-            }
-            if (String.IsNullOrEmpty(tbPrenomP.Text))
-            {
-                tbPrenomP.BorderBrush = Brushes.Red;
-            }
-            
+
             if (!String.IsNullOrEmpty(tbEmailP.Text) && !String.IsNullOrEmpty(tbNomP.Text) && !String.IsNullOrEmpty(tbPrenomP.Text))
             {
-                tbEmailP.BorderBrush = Util.GetBaseColor();
-                tbNomP.BorderBrush = Util.GetBaseColor();
-                tbPrenomP.BorderBrush = Util.GetBaseColor();
-
-                if (!Util.IsEmailFormat(tbEmailP.Text))
-                {
-                    tbEmailP.BorderBrush = Brushes.Red;
-                    return;
-                }
+               
+                
 
                 // On crée le nouvel objet Personnel 
                 Personnel p = new Personnel(tbNomP.Text, tbPrenomP.Text, tbEmailP.Text);
@@ -105,6 +91,22 @@ namespace SAE_DEV_WPF
                 p.Delete();
             }
 
+        }
+
+        private void ChangeColorChampVide()
+        {
+            List<TextBox> lesTextBox = new List<TextBox>();
+            lesTextBox.Add(tbEmailP);
+            lesTextBox.Add(tbNomP);
+            lesTextBox.Add(tbPrenomP);
+
+            foreach (TextBox tb in lesTextBox)
+            {
+                if (String.IsNullOrEmpty(tb.Text))
+                {
+                    tb.BorderBrush = Brushes.Red;
+                }
+            }
         }
     }
 }

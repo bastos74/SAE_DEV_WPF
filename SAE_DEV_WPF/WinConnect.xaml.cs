@@ -38,8 +38,8 @@ namespace SAE_DEV_WPF
             }
             else
             {
-                tbIdentifiant.BorderBrush = Util.GetBaseColor();
-                tbPassword.BorderBrush = Util.GetBaseColor();              
+                tbIdentifiant.BorderBrush = Util.GetBaseColorTextBox();
+                tbPassword.BorderBrush = Util.GetBaseColorTextBox();              
 
                 
                 if (String.IsNullOrEmpty(tbIdentifiant.Text))
@@ -49,9 +49,10 @@ namespace SAE_DEV_WPF
                 if (String.IsNullOrEmpty(tbPassword.Password))
                 {
                     tbPassword.BorderBrush = Brushes.Red;
-                }               
+                } 
                 
-                    tbPassword.Password = "";
+                
+                tbPassword.Password = "";
                 
             }          
             
