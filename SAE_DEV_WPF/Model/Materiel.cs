@@ -142,11 +142,11 @@ namespace SAE_DEV_WPF.Model
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
-            String requeteDelete;
+            string requeteDelete;
 
-            // INSERT -- Faire refactor sans insérer l'id
-            string requete = $"DELETE FROM materiel WHERE idmateriel = {Id};";
-            accesBD.SetData(requete);
+            // DELETE
+            requeteDelete = $"DELETE FROM materiel WHERE idmateriel = {Id};";
+            accesBD.SetData(requeteDelete);
         }
 
 
