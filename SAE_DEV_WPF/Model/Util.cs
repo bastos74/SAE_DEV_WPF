@@ -38,6 +38,10 @@ namespace SAE_DEV_WPF.Model
         {
             return new SolidColorBrush(Color.FromRgb(221, 221, 221));
         }
+        public static Brush GetBaseColorTextBox()
+        {
+            return new SolidColorBrush(Color.FromRgb(171, 173, 179));
+        }
 
         public static bool HasTheGoodLength(string text, int length)
         {

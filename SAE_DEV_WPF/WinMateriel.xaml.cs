@@ -32,10 +32,10 @@ namespace SAE_DEV_WPF
 
         private void lAjouter_Click(object sender, RoutedEventArgs e)
         {
-            tbCategorieM.BorderBrush = Util.GetBaseColor();
-            tbNomM.BorderBrush = Util.GetBaseColor();
-            tbRefConstM.BorderBrush = Util.GetBaseColor();
-            tbCodeBarreM.BorderBrush = Util.GetBaseColor();
+            tbCategorieM.BorderBrush = Util.GetBaseColorTextBox();
+            tbNomM.BorderBrush = Util.GetBaseColorTextBox();
+            tbRefConstM.BorderBrush = Util.GetBaseColorTextBox();
+            tbCodeBarreM.BorderBrush = Util.GetBaseColorTextBox();
 
             if (String.IsNullOrEmpty(tbCategorieM.Text))
             {

@@ -32,7 +32,7 @@ namespace SAE_DEV_WPF
 
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
-            tbNomC.BorderBrush = Util.GetBaseColor();
+            tbNomC.BorderBrush = Util.GetBaseColorTextBox();
             
 
             if (String.IsNullOrEmpty(tbNomC.Text))
