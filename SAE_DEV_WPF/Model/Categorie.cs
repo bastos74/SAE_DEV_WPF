@@ -108,7 +108,12 @@ namespace SAE_DEV_WPF.Model
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            string requeteDelete;
+
+            // DELETE
+            requeteDelete = $"DELETE FROM categorie_materiel WHERE idcategorie = {Id};";
+            accesBD.SetData(requeteDelete);
         }
 
         public ObservableCollection<Categorie> FindAll()

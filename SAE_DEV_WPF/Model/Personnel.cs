@@ -110,13 +110,11 @@ namespace SAE_DEV_WPF.Model
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
-            DataTable datas;
-            String requeteSelect, requeteDelete;
+            string requeteDelete;
 
-            requeteSelect = "Select  ";
-               
-
-
+            // DELETE
+            requeteDelete = $"DELETE FROM personnel WHERE idpersonnel = {Id};";
+            accesBD.SetData(requeteDelete);
         }
 
         public ObservableCollection<Personnel> FindAll()

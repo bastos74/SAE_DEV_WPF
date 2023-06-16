@@ -45,10 +45,9 @@ namespace SAE_DEV_WPF
                 // On reset les champs
                 tbNomC.Text = "";
 
-                ((Button)sender).Background = Util.GetBaseColor();
-
             }
-            else ((Button)sender).Background = Brushes.LightPink;
+            else tbNomC.BorderBrush = Brushes.Red;
+                
         }
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
@@ -65,7 +64,10 @@ namespace SAE_DEV_WPF
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-
+            Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
+            applicationData.LesCategories.Remove(c);
+            dgCategorie.Items.Refresh();
+            c.Delete();
         }
     }
 }
