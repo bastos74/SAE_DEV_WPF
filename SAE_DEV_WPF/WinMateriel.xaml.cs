@@ -32,7 +32,43 @@ namespace SAE_DEV_WPF
 
         private void lAjouter_Click(object sender, RoutedEventArgs e)
         {
-            if (AreChampCorrect())
+            tbCategorieM.BorderBrush = Util.GetBaseColor();
+            tbNomM.BorderBrush = Util.GetBaseColor();
+            tbRefConstM.BorderBrush = Util.GetBaseColor();
+            tbCodeBarreM.BorderBrush = Util.GetBaseColor();
+
+            if (String.IsNullOrEmpty(tbCategorieM.Text))
+            {
+                tbCategorieM.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbNomM.Text))
+            {
+                tbNomM.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbRefConstM.Text))
+            {
+                tbRefConstM.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbCodeBarreM.Text))
+            {
+                tbCodeBarreM.BorderBrush = Brushes.Red;
+            }
+
+            bool verif;
+            // On vérifie que les champs ne soient pas vides
+            if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
+            {
+                verif = true;
+                // On vérifie que chauqe champ ne dépasse pas le charcter varying de la base
+                if(!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
+                {
+                    verif = false;
+                }
+            }
+            else verif = false;
+
+
+            if (verif)
             {
                 // On crée le nouvel objet matériel
                 Materiel m = new Materiel(Util.ConvertToOneUpperCase(tbCategorieM.Text), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
@@ -45,9 +81,9 @@ namespace SAE_DEV_WPF
                 // On reset les champs
                 ResetChamp();
 
-                ((Button)sender).Background = Util.GetBaseColor();
-            }else ((Button)sender).Background = Brushes.LightPink;
-
+                
+            }
+           
         }
 
         private void lModifer_Click(object sender, RoutedEventArgs e)
