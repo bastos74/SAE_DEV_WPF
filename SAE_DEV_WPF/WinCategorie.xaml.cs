@@ -47,7 +47,7 @@ namespace SAE_DEV_WPF
 
             }
             else tbNomC.BorderBrush = Brushes.Red;
-                //((Button)sender).Background = Brushes.LightPink;
+                
         }
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace SAE_DEV_WPF
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }
