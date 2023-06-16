@@ -27,7 +27,7 @@ namespace SAE_DEV_WPF.Model
             if (atIndex <= 0 || atIndex != input.LastIndexOf('@') || atIndex >= input.Length - 1)
                 return false;
 
-            // Vérifier qu'il y a un caractère . après le caractère @ et qu'il y a au moins un caractère entre les deux
+            // Vérifier qu'il y a un . après le caractère @ et qu'il y a au moins un caractère entre les deux
             if (dotIndex <= atIndex || dotIndex >= input.Length - 1)
                 return false;
 
