@@ -47,6 +47,8 @@ namespace SAE_DEV_WPF
                 tbCodeBarreM.Text = "";
                 tbNomM.Text = "";
                 tbRefConstM.Text = "";
+
+                ((Button)sender).Background = Util.GetBaseColor();
             }
             else ((Button)sender).Background = Brushes.LightPink;
         }
