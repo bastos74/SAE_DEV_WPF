@@ -69,6 +69,16 @@ namespace SAE_DEV_WPF
 
         private void lModifer_Click(object sender, RoutedEventArgs e)
         {
+            Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];           
+            applicationData.LesMateriels[dgMateriel.SelectedIndex].Nom = tbNomM.Text;
+            applicationData.LesMateriels[dgMateriel.SelectedIndex].RefConstructeur = tbRefConstM.Text;
+            applicationData.LesMateriels[dgMateriel.SelectedIndex].CodeBarre = tbCodeBarreM.Text;
+            
+            //applicationData.LesMateriels[dgMateriel.SelectedIndex].Categorie.Nom = tbCategorieM.Text;
+            
+            dgMateriel.Items.Refresh();
+            m.Update();
+            applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
 
         }
 

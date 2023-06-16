@@ -51,8 +51,7 @@ namespace SAE_DEV_WPF
         }
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {    
             Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
             applicationData.LesCategories[dgCategorie.SelectedIndex].Nom = tbNomC.Text;
             dgCategorie.Items.Refresh();

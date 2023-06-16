@@ -171,7 +171,12 @@ namespace SAE_DEV_WPF.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requeteUpdate;
+
+            // requete UPDATE 
+            requeteUpdate = $"UPDATE materiel SET nommateriel = '{Nom}' , referenceconstructeurmateriel = '{RefConstructeur}' , codebarinventaire = '{CodeBarre}' , idcategorie {Categorie.Id} WHERE idmateriel = {Id};";
+            accesBD.SetData(requeteUpdate);
         }
     }
 }
