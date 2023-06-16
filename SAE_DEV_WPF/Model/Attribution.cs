@@ -8,30 +8,30 @@ using System;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.IO.Packaging;
+using System.Linq;
 
 namespace SAE_DEV_WPF.Model
 {
     public class Attribution : Crud<Attribution>
     {
+        public static ApplicationData Ad;
+
         private Materiel materiel;
         private Personnel personnel;
         private DateTime date;
         private string commentaire;
-        private string nommateriel, nompersonnel;
-
-        private int id, fk_materiel, fk_personnel;
 
         public Attribution() { }
 
-        public Attribution(int id,  DateTime date, string commentaire , string nommateriel, string nompersonnel)
+        public Attribution(DateTime date, string commentaire, Materiel m, Personnel p)
         {
-            this.Id = id;
-            //this.Materiel = materiel;
-            //this.Personnel = personnel;
+            //this.Id = id;
             this.Date = date;
             this.Commentaire = commentaire;
-            this.Nommateriel = nommateriel;
-            this.Nompersonnel = nompersonnel;
+            this.Materiel = m;
+            this.Personnel = p;
+            //this.Nommateriel = nommateriel;
+            //this.Nompersonnel = nompersonnel;
         }
 
         public Materiel Materiel
@@ -86,52 +86,6 @@ namespace SAE_DEV_WPF.Model
             }
         }
 
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-
-            set
-            {
-                id = value;
-            }
-        }
-
-        public int Fk_materiel
-        {
-            get
-            {
-                return fk_materiel;
-            }
-
-            set
-            {
-                fk_materiel = value;
-            }
-        }
-
-        public int Fk_personnel
-        {
-            get
-            {
-                return fk_personnel;
-            }
-
-            set
-            {
-                fk_personnel = value;
-            }
-        }
-
-        public string Nommateriel { get => nommateriel; set => nommateriel = value; }
-        public string Nompersonnel { get => nompersonnel; set => nompersonnel = value; }
-
-
-
-
-
         public void Create()
         {
             throw new NotImplementedException();
@@ -144,19 +98,20 @@ namespace SAE_DEV_WPF.Model
 
         public ObservableCollection<Attribution> FindAll()
         {
-
             ObservableCollection<Attribution> lesAttributions = new ObservableCollection<Attribution>();
-
             DataAccess accesBD = new DataAccess();
-            String requete = " select idattribution , dateattribution , commentaireattribution , nommateriel , nompersonel from attribution " +
-                "  join personnel on     ";
+            String requete = "select dateattribution, commentaireattribution, materiel.idmateriel, personnel.idpersonnel from est_attribue " +
+                "join materiel on est_attribue.idmateriel = materiel.idmateriel " +
+                "join personnel on est_attribue.idpersonnel = personnel.idpersonnel ";
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Attribution a = new Attribution(int.Parse(row["idattribution"].ToString()),  DateTime.Parse((String)row["dateattribution"]) ,(String)row["commentaireattribution"], (String)row["nommateriel"], (String)row["nompersonnel"]);
-                    lesAttributions.Add(a);
+                    Materiel = Ad.LesMateriels.ToList().Find(x => x.Id == int.Parse(row["idmateriel"].ToString()));
+                    Personnel = Ad.LesPersonnels.ToList().Find(x => x.Id == int.Parse(row["idpersonnel"].ToString()));
+                    Attribution e = new Attribution(DateTime.Parse(row["dateattribution"].ToString()), (String)row["commentaireattribution"], Materiel, Personnel);
+                    lesAttributions.Add(e);
                 }
             }
             return lesAttributions;

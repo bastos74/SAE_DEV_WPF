@@ -4,11 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE_DEV_WPF"
+    xmlns:model="clr-namespace:SAE_DEV_WPF.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MATINFO"
     Width="600"
     Height="475"
     mc:Ignorable="d" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <model:ApplicationData x:Name="applicationData"/>
+    </Window.DataContext>
+
 
     <Window.Resources>
         <!--  template pour inserer une case a cocher dans un listview : la case est cochee sur la selection d'un item  -->
@@ -54,11 +59,12 @@
         <DataGrid
             Margin="251,28,41,27"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding Path=LesAttributions}">
+            ItemsSource="{Binding Path=LesAttributions}" HeadersVisibility="Column">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Personnel" Binding="{Binding Personnel.Nom}"/>
-                <DataGridTextColumn Width="*" Header="Catégorie" />
-                <DataGridTextColumn Width="*" Header="Materiel" />
+                <DataGridTextColumn Width="*" Header="Materiel" Binding="{Binding Materiel.Nom}"/>
+                <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Date}"/>
+                <DataGridTextColumn Width="*" Header="Commentaire" Binding="{Binding Commentaire}"/>
             </DataGrid.Columns>
         </DataGrid>
 

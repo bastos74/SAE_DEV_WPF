@@ -17,11 +17,11 @@ namespace SAE_DEV_WPF.Model
         private String refConstructeur, nom, codeBarre;
         private Categorie categorie;
 
-        private int id, fk_categorie;
+        private int id; /*, fk_categorie;*/
 
         public Materiel() { }
 
-        public Materiel(int id, String codeBarre, string refConstructeur, string nom, Categorie c) // Constructeur pour INSERT
+        public Materiel(int id, string codeBarre, string refConstructeur, string nom, Categorie c) // Constructeur pour INSERT & FindAll
         {
             this.Id = id;
             this.CodeBarre = codeBarre;
@@ -105,6 +105,7 @@ namespace SAE_DEV_WPF.Model
             }
         }
 
+        /*
         public int Fk_categorie
         {
             get
@@ -117,6 +118,7 @@ namespace SAE_DEV_WPF.Model
                 fk_categorie = value;
             }
         }
+        */
 
         public void Create()
         {
@@ -124,10 +126,11 @@ namespace SAE_DEV_WPF.Model
             DataTable datas;
             String requeteSelect, requeteInsert;
 
-            // On définit l'id de la categorie à partir de son nom
+            /* On définit l'id de la categorie à partir de son nom
             requeteSelect = $"select idcategorie from categorie_materiel where nomcategorie = '{Categorie.Nom}';";
             datas = accesBD.GetData(requeteSelect);
             Fk_categorie = int.Parse(datas.Rows[0]["idcategorie"].ToString());
+            */
 
             // On définit l'ID du materiel
             requeteSelect = "SELECT nextval('materiel_idmateriel_seq'::regclass);";
@@ -135,7 +138,7 @@ namespace SAE_DEV_WPF.Model
             Id = int.Parse(datas.Rows[0][0].ToString());
 
             // INSERT -- Faire refactor sans insérer l'id
-            requeteInsert = $"INSERT INTO materiel (idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire) VALUES({Fk_categorie}, '{Nom}', '{RefConstructeur}', '{CodeBarre}'); ";
+            requeteInsert = $"INSERT INTO materiel (idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire) VALUES({Categorie.Id}, '{Nom}', '{RefConstructeur}', '{CodeBarre}'); ";
             accesBD.SetData(requeteInsert);
         }
 
@@ -154,7 +157,7 @@ namespace SAE_DEV_WPF.Model
         {
             ObservableCollection<Materiel> lesMateriels = new ObservableCollection<Materiel>();
             DataAccess accesBD = new DataAccess();
-            String requete = "select idmateriel, categorie_materiel.idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire, categorie_materiel.nomcategorie from materiel " +
+            String requete = "select idmateriel, categorie_materiel.idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire from materiel " +
                 "join categorie_materiel on categorie_materiel.idcategorie = materiel.idcategorie;";
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)

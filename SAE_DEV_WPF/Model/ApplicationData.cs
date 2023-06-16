@@ -17,6 +17,9 @@ namespace SAE_DEV_WPF.Model
         // Matériel
         public ObservableCollection<Materiel> LesMateriels { get; set; }
 
+        // Attribution
+        public ObservableCollection<Attribution> LesAttributions { get; set; }
+
         //Catégorie
         public ObservableCollection<Categorie> LesCategories { get; set; }
 
@@ -35,6 +38,11 @@ namespace SAE_DEV_WPF.Model
             Materiel.Ad = this;
             LesMateriels = m.FindAll();
 
+            // ATTRIBUTION
+            Attribution a = new Attribution();
+            Attribution.Ad = this;
+            LesAttributions = a.FindAll();
+
 
 
             /*
@@ -51,7 +59,7 @@ namespace SAE_DEV_WPF.Model
                 LesMateriels.ToList().FindAll(e => e.Fk_categorie == cat.Id));
             }
             */
-            
+
         }
     }
 }

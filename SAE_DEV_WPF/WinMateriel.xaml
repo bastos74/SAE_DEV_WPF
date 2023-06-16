@@ -38,7 +38,7 @@
             Grid.Row="1"
             AutoGenerateColumns="False"
             IsReadOnly="True"
-            ItemsSource="{Binding Path=LesMateriels}">
+            ItemsSource="{Binding Path=LesMateriels}" HeadersVisibility="Column">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
