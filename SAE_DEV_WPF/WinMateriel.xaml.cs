@@ -32,21 +32,7 @@ namespace SAE_DEV_WPF
 
         private void lAjouter_Click(object sender, RoutedEventArgs e)
         {
-            bool verif;
-            // On vérifie que les champs ne soient pas vides
-            if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
-            {
-                verif = true;
-                // On vérifie que chauqe champ ne dépasse pas le charcter varying de la base
-                if(!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
-                {
-                    verif = false;
-                }
-            }
-            else verif = false;
-
-
-            if (verif)
+            if (AreChampCorrect())
             {
                 // On crée le nouvel objet matériel
                 Materiel m = new Materiel(Util.ConvertToOneUpperCase(tbCategorieM.Text), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
@@ -57,10 +43,7 @@ namespace SAE_DEV_WPF
                 applicationData.LesMateriels.Last().FindAll(); // tentative d'actualisation
 
                 // On reset les champs
-                tbCategorieM.Text = "";
-                tbCodeBarreM.Text = "";
-                tbNomM.Text = "";
-                tbRefConstM.Text = "";
+                ResetChamp();
 
                 ((Button)sender).Background = Util.GetBaseColor();
             }else ((Button)sender).Background = Brushes.LightPink;
@@ -69,16 +52,25 @@ namespace SAE_DEV_WPF
 
         private void lModifer_Click(object sender, RoutedEventArgs e)
         {
-            Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];           
-            applicationData.LesMateriels[dgMateriel.SelectedIndex].Nom = tbNomM.Text;
-            applicationData.LesMateriels[dgMateriel.SelectedIndex].RefConstructeur = tbRefConstM.Text;
-            applicationData.LesMateriels[dgMateriel.SelectedIndex].CodeBarre = tbCodeBarreM.Text;
-            
-            //applicationData.LesMateriels[dgMateriel.SelectedIndex].Categorie.Nom = tbCategorieM.Text;
-            
+            if (!TailleChampCorrect())
+            {
+                ((Button)sender).Background = Brushes.LightPink;
+                return;
+            }
+
+            Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
+
+            // Si le champ est nul, on ne le modifie pas
+            m.Nom = tbNomM.Text == "" ? m.Nom : tbNomM.Text;
+            m.RefConstructeur = tbRefConstM.Text == "" ? m.RefConstructeur : tbRefConstM.Text;
+            m.CodeBarre = tbCodeBarreM.Text == "" ? m.CodeBarre : tbCodeBarreM.Text;
+            m.Categorie = tbCategorieM.Text == "" ? m.Categorie : applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.Text);
+
             dgMateriel.Items.Refresh();
             m.Update();
             applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+
+            ((Button)sender).Background = Util.GetBaseColor();
 
         }
 
@@ -91,6 +83,39 @@ namespace SAE_DEV_WPF
                 dgMateriel.Items.Refresh();
                 m.Delete();
             }     
+        }
+
+        // On reset les champs
+        private void ResetChamp()
+        {
+            tbCategorieM.Text = "";
+            tbCodeBarreM.Text = "";
+            tbNomM.Text = "";
+            tbRefConstM.Text = "";
+        }
+
+        private bool AreChampCorrect()
+        {
+            bool verif;
+
+            // On vérifie que les champs ne soient pas vides
+            if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
+            {
+                // On vérifie que chaque champ ne dépasse pas le charcter varying de la base
+                verif = TailleChampCorrect();
+            }
+            else verif = false;
+
+            return verif;
+        }
+
+        private bool TailleChampCorrect()
+        {
+            if (!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
+            {
+                return false;
+            }
+            else return true;
         }
     }
 }
