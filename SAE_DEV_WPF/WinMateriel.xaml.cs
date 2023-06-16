@@ -37,22 +37,7 @@ namespace SAE_DEV_WPF
             tbRefConstM.BorderBrush = Util.GetBaseColor();
             tbCodeBarreM.BorderBrush = Util.GetBaseColor();
 
-            if (String.IsNullOrEmpty(tbCategorieM.Text))
-            {
-                tbCategorieM.BorderBrush = Brushes.Red;
-            }
-            if (String.IsNullOrEmpty(tbNomM.Text))
-            {
-                tbNomM.BorderBrush = Brushes.Red;
-            }
-            if (String.IsNullOrEmpty(tbRefConstM.Text))
-            {
-                tbRefConstM.BorderBrush = Brushes.Red;
-            }
-            if (String.IsNullOrEmpty(tbCodeBarreM.Text))
-            {
-                tbCodeBarreM.BorderBrush = Brushes.Red;
-            }
+            ChangeColorChampVide();
 
             if (AreChampCorrectEtNonVide())
             {
@@ -137,6 +122,23 @@ namespace SAE_DEV_WPF
                 return false;
             }
             else return true;
+        }
+
+        private void ChangeColorChampVide()
+        {
+            List<TextBox> lesTextBox = new List<TextBox>();
+            lesTextBox.Add(tbCategorieM);
+            lesTextBox.Add(tbNomM);
+            lesTextBox.Add(tbRefConstM);
+            lesTextBox.Add(tbCodeBarreM);
+
+            foreach(TextBox tb in lesTextBox)
+            {
+                if (String.IsNullOrEmpty(tb.Text))
+                {
+                    tb.BorderBrush = Brushes.Red;
+                }
+            }
         }
     }
 }
