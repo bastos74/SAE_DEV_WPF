@@ -97,12 +97,23 @@ namespace SAE_DEV_WPF.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requeteUpdate ;
+
+            // requete 
+            requeteUpdate = $"UPDATE categorie_materiel SET nomcategorie = '{Nom}' WHERE idcategorie = {Id};";
+            accesBD.SetData(requeteUpdate);
+
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            string requeteDelete;
+
+            // DELETE
+            requeteDelete = $"DELETE FROM categorie_materiel WHERE idcategorie = {Id};";
+            accesBD.SetData(requeteDelete);
         }
 
         public ObservableCollection<Categorie> FindAll()

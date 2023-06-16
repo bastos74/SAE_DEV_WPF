@@ -131,21 +131,21 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <Button
+            <Button x:Name="btAjouter"
                 Grid.Column="0"
                 Margin="10,10,10,10"
                 Content="Ajouter"
-                FontWeight="Bold" Click="Button_Click_Ajouter" />
-            <Button
+                FontWeight="Bold" Click="btAjouter_Click" />
+            <Button x:Name="btModifier"
                 Grid.Column="1"
                 Margin="10,10,10,10"
                 Content="Modifier"
-                FontWeight="Bold" />
-            <Button
+                FontWeight="Bold" Click="btModifier_Click" />
+            <Button x:Name="btSupprimer"
                 Grid.Column="2"
                 Margin="10,10,10,10"
                 Content="Supprimer"
-                FontWeight="Bold" />
+                FontWeight="Bold" Click="btSupprimer_Click" />
 
         </Grid>
     </Grid>

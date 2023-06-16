@@ -60,10 +60,16 @@ namespace SAE_DEV_WPF
 
         private void lSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
-            applicationData.LesMateriels.Remove(m);
-            dgMateriel.Items.Refresh();
-            m.Delete();
+
+            MessageBoxResult mes = MessageBox.Show("voulez vous vraiment supprimer ", " suppression ", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (mes == MessageBoxResult.Yes)
+            {
+                Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
+                applicationData.LesMateriels.Remove(m);
+                dgMateriel.Items.Refresh();
+                m.Delete();
+            }
+               
         }
     }
 }
