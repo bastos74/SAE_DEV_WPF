@@ -44,7 +44,9 @@ namespace SAE_DEV_WPF
 
                 // On reset les champs
                 tbNomC.Text = "";
-                
+
+                ((Button)sender).Background = Util.GetBaseColor();
+
             }
             else ((Button)sender).Background = Brushes.LightPink;
         }

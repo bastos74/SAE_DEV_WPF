@@ -34,8 +34,14 @@ namespace SAE_DEV_WPF
 
             if (!String.IsNullOrEmpty(tbEmailP.Text) && !String.IsNullOrEmpty(tbNomP.Text) && !String.IsNullOrEmpty(tbPrenomP.Text))
             {
+                if (!Util.IsEmailFormat(tbEmailP.Text))
+                {
+                    ((Button)sender).Background = Brushes.LightPink;
+                    return;
+                }
+
                 // On crée le nouvel objet Personnel 
-                Personnel p = new Personnel(Util.ConvertToOneUpperCase(tbEmailP.Text), tbNomP.Text, tbPrenomP.Text);
+                Personnel p = new Personnel(tbEmailP.Text, tbNomP.Text, tbPrenomP.Text);
 
                 // On ajoute le nouveau matériel dans la BDD
                 p.Create();
@@ -46,7 +52,9 @@ namespace SAE_DEV_WPF
                 tbEmailP.Text = "";
                 tbNomP.Text = "";
                 tbPrenomP.Text = "";
-                
+
+                ((Button)sender).Background = Util.GetBaseColor();
+
             }
             else ((Button)sender).Background = Brushes.LightPink;
 

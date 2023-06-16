@@ -47,6 +47,8 @@ namespace SAE_DEV_WPF
                 tbCodeBarreM.Text = "";
                 tbNomM.Text = "";
                 tbRefConstM.Text = "";
+
+                ((Button)sender).Background = Util.GetBaseColor();
             }
             else ((Button)sender).Background = Brushes.LightPink;
         }
@@ -58,7 +60,10 @@ namespace SAE_DEV_WPF
 
         private void lSupprimer_Click(object sender, RoutedEventArgs e)
         {
-
+            Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
+            applicationData.LesMateriels.Remove(m);
+            dgMateriel.Items.Refresh();
+            m.Delete();
         }
     }
 }

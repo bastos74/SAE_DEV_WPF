@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace SAE_DEV_WPF.Model
 {
@@ -13,25 +14,27 @@ namespace SAE_DEV_WPF.Model
             return txt.Substring(0, 1).ToUpper() + txt.Substring(1).ToLower();
         }
 
-        public bool IsEmailFormat(string input)
+        public static bool IsEmailFormat(string texte)
         {
             // Vérification basique de la structure de l'adresse e-mail en utilisant des opérations sur les chaînes de caractères
 
-            if (string.IsNullOrEmpty(input))
-                return false;
-
-            int atIndex = input.IndexOf('@');
-            int dotIndex = input.LastIndexOf('.');
+            int pArobase = texte.IndexOf('@');
+            int pPoint = texte.LastIndexOf('.');
 
             // Vérifier qu'il y a un seul caractère @ et au moins un caractère après
-            if (atIndex <= 0 || atIndex != input.LastIndexOf('@') || atIndex >= input.Length - 1)
+            if (pArobase <= 0 || pArobase != texte.LastIndexOf('@') || pArobase >= texte.Length - 1)
                 return false;
 
             // Vérifier qu'il y a un . après le caractère @ et qu'il y a au moins un caractère entre les deux
-            if (dotIndex <= atIndex || dotIndex >= input.Length - 1)
+            if (pPoint <= pArobase || pPoint >= texte.Length - 1)
                 return false;
 
             return true;
+        }
+
+        public static Brush GetBaseColor()
+        {
+            return new SolidColorBrush(Color.FromRgb(221, 221, 221));
         }
 
     }
