@@ -25,6 +25,31 @@ namespace SAE_DEV_WPF
             InitializeComponent();
             this.Owner = owner;
 
+
+            dgPersonnel.Items.Refresh();
+        }
+
+        private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
+        {
+
+            if (!String.IsNullOrEmpty(tbEmailP.Text) && !String.IsNullOrEmpty(tbNomP.Text) && !String.IsNullOrEmpty(tbPrenomP.Text))
+            {
+                // On crée le nouvel objet Personnel 
+                Personnel p = new Personnel(Util.ConvertToOneUpperCase(tbEmailP.Text), tbNomP.Text, tbPrenomP.Text);
+
+                // On ajoute le nouveau matériel dans la BDD
+                p.Create();
+                applicationData.LesPersonnels.Add(p);
+                applicationData.LesPersonnels.Last().FindAll(); // tentative d'actualisation
+
+                // On reset les champs
+                tbEmailP.Text = "";
+                tbNomP.Text = "";
+                tbPrenomP.Text = "";
+                
+            }
+            else ((Button)sender).Background = Brushes.LightPink;
+
         }
     }
 }
