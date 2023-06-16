@@ -25,6 +25,11 @@ namespace SAE_DEV_WPF.Model
             this.Nom = nom;
         }
 
+        public Categorie(string nom) //Constructeur pour insert
+        {
+            this.Nom = nom;
+        }
+
         //public Categorie(int id, string nom) : this(id, nom, new ObservableCollection<Materiel>()){}
 
         public string Nom
@@ -68,7 +73,21 @@ namespace SAE_DEV_WPF.Model
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            DataTable datas;
+            String requeteSelect, requeteInsert;
+
+            
+            // On définit l'ID de la categorie
+            requeteSelect = "SELECT nextval('categorie_materiel_idcategorie_seq'::regclass);";
+            datas = accesBD.GetData(requeteSelect);
+            Id = int.Parse(datas.Rows[0][0].ToString());
+
+            // INSERT -- Faire refactor sans insérer l'id
+            requeteInsert = $"INSERT INTO categorie_materiel (nomcategorie) VALUES('{Nom}'); ";
+            accesBD.SetData(requeteInsert);
+
+            
         }
 
         public void Read()
@@ -102,7 +121,7 @@ namespace SAE_DEV_WPF.Model
             }
             return lesCategories;
 
-            throw new NotImplementedException();
+           
         }
 
         public ObservableCollection<Categorie> FindBySelection(string criteres)
