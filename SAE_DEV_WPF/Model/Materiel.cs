@@ -105,21 +105,6 @@ namespace SAE_DEV_WPF.Model
             }
         }
 
-        /*
-        public int Fk_categorie
-        {
-            get
-            {
-                return fk_categorie;
-            }
-
-            set
-            {
-                fk_categorie = value;
-            }
-        }
-        */
-
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
