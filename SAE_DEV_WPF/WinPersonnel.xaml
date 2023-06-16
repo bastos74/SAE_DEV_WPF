@@ -48,15 +48,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Nom}"
+                    Binding="{Binding Email}"
                     Header="Email" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Prenom}"
+                    Binding="{Binding Nom}"
                     Header="Nom" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Email}"
+                    Binding="{Binding Prenom}"
                     Header="Prenom" />
             </DataGrid.Columns>
         </DataGrid>

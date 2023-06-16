@@ -32,7 +32,7 @@
             ItemsSource="{Binding Path=LesCategories}"
             AutoGenerateColumns="False" HeadersVisibility="Column">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Nom catégorie" Binding="{Binding Nom}" />
+                <DataGridTextColumn Width="*" Header="Nom Catégorie" Binding="{Binding Nom}" />
                 
             </DataGrid.Columns>
         </DataGrid>

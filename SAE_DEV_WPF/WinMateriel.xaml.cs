@@ -54,7 +54,21 @@ namespace SAE_DEV_WPF
                 tbCodeBarreM.BorderBrush = Brushes.Red;
             }
 
+            bool verif;
+            // On vérifie que les champs ne soient pas vides
             if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
+            {
+                verif = true;
+                // On vérifie que chauqe champ ne dépasse pas le charcter varying de la base
+                if(!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
+                {
+                    verif = false;
+                }
+            }
+            else verif = false;
+
+
+            if (verif)
             {
                 // On crée le nouvel objet matériel
                 Materiel m = new Materiel(Util.ConvertToOneUpperCase(tbCategorieM.Text), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
@@ -77,21 +91,28 @@ namespace SAE_DEV_WPF
 
         private void lModifer_Click(object sender, RoutedEventArgs e)
         {
+            Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];           
+            applicationData.LesMateriels[dgMateriel.SelectedIndex].Nom = tbNomM.Text;
+            applicationData.LesMateriels[dgMateriel.SelectedIndex].RefConstructeur = tbRefConstM.Text;
+            applicationData.LesMateriels[dgMateriel.SelectedIndex].CodeBarre = tbCodeBarreM.Text;
+            
+            //applicationData.LesMateriels[dgMateriel.SelectedIndex].Categorie.Nom = tbCategorieM.Text;
+            
+            dgMateriel.Items.Refresh();
+            m.Update();
+            applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
 
         }
 
         private void lSupprimer_Click(object sender, RoutedEventArgs e)
         {
-
-            MessageBoxResult mes = MessageBox.Show("voulez vous vraiment supprimer ", " suppression ", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (mes == MessageBoxResult.Yes)
+            if (Util.ShowMessageBoxSupp(applicationData, dgMateriel))
             {
                 Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
                 applicationData.LesMateriels.Remove(m);
                 dgMateriel.Items.Refresh();
                 m.Delete();
-            }
-               
+            }     
         }
     }
 }

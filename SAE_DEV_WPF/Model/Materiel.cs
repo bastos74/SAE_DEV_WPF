@@ -105,21 +105,6 @@ namespace SAE_DEV_WPF.Model
             }
         }
 
-        /*
-        public int Fk_categorie
-        {
-            get
-            {
-                return fk_categorie;
-            }
-
-            set
-            {
-                fk_categorie = value;
-            }
-        }
-        */
-
         public void Create()
         {
             DataAccess accesBD = new DataAccess();
@@ -137,7 +122,7 @@ namespace SAE_DEV_WPF.Model
             datas = accesBD.GetData(requeteSelect);
             Id = int.Parse(datas.Rows[0][0].ToString());
 
-            // INSERT -- Faire refactor sans insérer l'id
+            // INSERT 
             requeteInsert = $"INSERT INTO materiel (idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire) VALUES({Categorie.Id}, '{Nom}', '{RefConstructeur}', '{CodeBarre}'); ";
             accesBD.SetData(requeteInsert);
         }
@@ -186,7 +171,12 @@ namespace SAE_DEV_WPF.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requeteUpdate;
+
+            // requete UPDATE 
+            requeteUpdate = $"UPDATE materiel SET nommateriel = '{Nom}' , referenceconstructeurmateriel = '{RefConstructeur}' , codebarinventaire = '{CodeBarre}' , idcategorie {Categorie.Id} WHERE idmateriel = {Id};";
+            accesBD.SetData(requeteUpdate);
         }
     }
 }

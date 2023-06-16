@@ -59,8 +59,7 @@ namespace SAE_DEV_WPF
         }
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {    
             Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
             applicationData.LesCategories[dgCategorie.SelectedIndex].Nom = tbNomC.Text;
             dgCategorie.Items.Refresh();
@@ -72,10 +71,13 @@ namespace SAE_DEV_WPF
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
-            applicationData.LesCategories.Remove(c);
-            dgCategorie.Items.Refresh();
-            c.Delete();
+            if(Util.ShowMessageBoxSupp(applicationData, dgCategorie))
+            {
+                Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
+                applicationData.LesCategories.Remove(c);
+                dgCategorie.Items.Refresh();
+                c.Delete();
+            }
         }
     }
 }

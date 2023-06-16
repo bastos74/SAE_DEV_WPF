@@ -127,7 +127,7 @@ namespace SAE_DEV_WPF.Model
             {
                 foreach (DataRow row in datas.Rows)
                 {
-                    Personnel p = new Personnel(int.Parse(row["idpersonnel"].ToString()), (String)row["emailpersonnel"], (String)row["nompersonnel"],(String)row["prenompersonnel"]);
+                    Personnel p = new Personnel(int.Parse(row["idpersonnel"].ToString()), (String)row["nompersonnel"], (String)row["prenompersonnel"],(String)row["emailpersonnel"]);
                     lepersonnel.Add(p);
                 }
             }
@@ -146,7 +146,12 @@ namespace SAE_DEV_WPF.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requeteUpdate;
+
+            // requete UPDATE 
+            requeteUpdate = $"UPDATE personnel SET emailpersonnel = '{Email}' , nompersonnel = '{Nom}' , prenompersonnel = '{Prenom}'  WHERE idpersonnel = {Id};";
+            accesBD.SetData(requeteUpdate);
         }
     }
 }

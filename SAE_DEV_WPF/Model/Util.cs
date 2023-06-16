@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace SAE_DEV_WPF.Model
@@ -35,6 +37,21 @@ namespace SAE_DEV_WPF.Model
         public static Brush GetBaseColor()
         {
             return new SolidColorBrush(Color.FromRgb(221, 221, 221));
+        }
+
+        public static bool HasTheGoodLength(string text, int length)
+        {
+            return text.Length < length ? true : false;
+        }
+
+        public static bool ShowMessageBoxSupp(ApplicationData applicationData, DataGrid dg)
+        {
+            MessageBoxResult mes = MessageBox.Show("Voulez-vous vraiment supprimer", "Suppression", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (mes == MessageBoxResult.Yes)
+            {
+                return true;
+            }
+            else return false;
         }
 
     }
