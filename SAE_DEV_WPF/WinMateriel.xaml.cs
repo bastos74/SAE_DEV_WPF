@@ -32,6 +32,28 @@ namespace SAE_DEV_WPF
 
         private void lAjouter_Click(object sender, RoutedEventArgs e)
         {
+            tbCategorieM.BorderBrush = Util.GetBaseColor();
+            tbNomM.BorderBrush = Util.GetBaseColor();
+            tbRefConstM.BorderBrush = Util.GetBaseColor();
+            tbCodeBarreM.BorderBrush = Util.GetBaseColor();
+
+            if (String.IsNullOrEmpty(tbCategorieM.Text))
+            {
+                tbCategorieM.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbNomM.Text))
+            {
+                tbNomM.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbRefConstM.Text))
+            {
+                tbRefConstM.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbCodeBarreM.Text))
+            {
+                tbCodeBarreM.BorderBrush = Brushes.Red;
+            }
+
             if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
             {
                 // On crée le nouvel objet matériel
@@ -48,9 +70,9 @@ namespace SAE_DEV_WPF
                 tbNomM.Text = "";
                 tbRefConstM.Text = "";
 
-                ((Button)sender).Background = Util.GetBaseColor();
+                
             }
-            else ((Button)sender).Background = Brushes.LightPink;
+           
         }
 
         private void lModifer_Click(object sender, RoutedEventArgs e)

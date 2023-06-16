@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_DEV_WPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,17 +38,21 @@ namespace SAE_DEV_WPF
             }
             else
             {
-                                
-                if (!(tbIdentifiant.Text == "admin"))
+                tbIdentifiant.BorderBrush = Util.GetBaseColor();
+                tbPassword.BorderBrush = Util.GetBaseColor();              
+
+                
+                if (String.IsNullOrEmpty(tbIdentifiant.Text))
                 {
                     tbIdentifiant.BorderBrush = Brushes.Red;
                 }
-                if (!(tbPassword.Password == "passwordadmin"))
+                if (String.IsNullOrEmpty(tbPassword.Password))
                 {
                     tbPassword.BorderBrush = Brushes.Red;
-                }
-                tbIdentifiant.Text = "";
-                tbPassword.Password = "";
+                }               
+                
+                    tbPassword.Password = "";
+                
             }          
             
         }

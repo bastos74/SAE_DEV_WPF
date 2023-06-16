@@ -32,6 +32,14 @@ namespace SAE_DEV_WPF
 
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
+            tbNomC.BorderBrush = Util.GetBaseColor();
+            
+
+            if (String.IsNullOrEmpty(tbNomC.Text))
+            {
+                tbNomC.BorderBrush = Brushes.Red;
+            }
+            
             if (!String.IsNullOrEmpty(tbNomC.Text))
             {
                 // On crée le nouvel objet matériel
@@ -46,7 +54,7 @@ namespace SAE_DEV_WPF
                 tbNomC.Text = "";
 
             }
-            else tbNomC.BorderBrush = Brushes.Red;
+            
                 
         }
 

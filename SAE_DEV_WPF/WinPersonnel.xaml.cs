@@ -32,11 +32,32 @@ namespace SAE_DEV_WPF
         private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
 
+            tbEmailP.BorderBrush = Util.GetBaseColor();
+            tbNomP.BorderBrush = Util.GetBaseColor();
+            tbPrenomP.BorderBrush = Util.GetBaseColor();
+
+            if (String.IsNullOrEmpty(tbEmailP.Text) || !Util.IsEmailFormat(tbEmailP.Text))
+            {
+                tbEmailP.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbNomP.Text))
+            {
+                tbNomP.BorderBrush = Brushes.Red;
+            }
+            if (String.IsNullOrEmpty(tbPrenomP.Text))
+            {
+                tbPrenomP.BorderBrush = Brushes.Red;
+            }
+            
             if (!String.IsNullOrEmpty(tbEmailP.Text) && !String.IsNullOrEmpty(tbNomP.Text) && !String.IsNullOrEmpty(tbPrenomP.Text))
             {
+                tbEmailP.BorderBrush = Util.GetBaseColor();
+                tbNomP.BorderBrush = Util.GetBaseColor();
+                tbPrenomP.BorderBrush = Util.GetBaseColor();
+
                 if (!Util.IsEmailFormat(tbEmailP.Text))
                 {
-                    ((Button)sender).Background = Brushes.LightPink;
+                    tbEmailP.BorderBrush = Brushes.Red;
                     return;
                 }
 
@@ -56,7 +77,7 @@ namespace SAE_DEV_WPF
                 ((Button)sender).Background = Util.GetBaseColor();
 
             }
-            else ((Button)sender).Background = Brushes.LightPink;
+            
 
         }      
 
