@@ -51,23 +51,25 @@ namespace SAE_DEV_WPF
         }
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {    
             Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
             applicationData.LesCategories[dgCategorie.SelectedIndex].Nom = tbNomC.Text;
             dgCategorie.Items.Refresh();
             c.Update();
             applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
-
-
         }
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
-            applicationData.LesCategories.Remove(c);
-            dgCategorie.Items.Refresh();
-            c.Delete();
+            MessageBoxResult mes = MessageBox.Show("voulez vous vraiment supprimer ", " suppression ", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (mes == MessageBoxResult.Yes)
+            {
+                Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
+                applicationData.LesCategories.Remove(c);
+                dgCategorie.Items.Refresh();
+                c.Delete();
+            }
+                
         }
     }
 }

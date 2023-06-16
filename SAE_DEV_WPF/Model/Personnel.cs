@@ -146,7 +146,12 @@ namespace SAE_DEV_WPF.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requeteUpdate;
+
+            // requete UPDATE 
+            requeteUpdate = $"UPDATE personnel SET emailpersonnel = '{Email}' , nompersonnel = '{Nom}' , prenompersonnel = '{Prenom}'  WHERE idpersonnel = {Id};";
+            accesBD.SetData(requeteUpdate);
         }
     }
 }

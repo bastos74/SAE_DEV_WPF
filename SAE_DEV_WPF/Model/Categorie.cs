@@ -100,7 +100,7 @@ namespace SAE_DEV_WPF.Model
             DataAccess accesBD = new DataAccess();
             String requeteUpdate ;
 
-            // requete 
+            // requete UPDATE 
             requeteUpdate = $"UPDATE categorie_materiel SET nomcategorie = '{Nom}' WHERE idcategorie = {Id};";
             accesBD.SetData(requeteUpdate);
 
