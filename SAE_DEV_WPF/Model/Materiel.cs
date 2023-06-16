@@ -137,7 +137,7 @@ namespace SAE_DEV_WPF.Model
             datas = accesBD.GetData(requeteSelect);
             Id = int.Parse(datas.Rows[0][0].ToString());
 
-            // INSERT -- Faire refactor sans insérer l'id
+            // INSERT 
             requeteInsert = $"INSERT INTO materiel (idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire) VALUES({Categorie.Id}, '{Nom}', '{RefConstructeur}', '{CodeBarre}'); ";
             accesBD.SetData(requeteInsert);
         }

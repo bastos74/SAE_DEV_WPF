@@ -37,5 +37,10 @@ namespace SAE_DEV_WPF.Model
             return new SolidColorBrush(Color.FromRgb(221, 221, 221));
         }
 
+        public static bool HasTheGoodLength(string text, int length)
+        {
+            return text.Length < length ? true : false;
+        }
+
     }
 }

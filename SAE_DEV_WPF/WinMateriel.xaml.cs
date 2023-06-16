@@ -32,7 +32,21 @@ namespace SAE_DEV_WPF
 
         private void lAjouter_Click(object sender, RoutedEventArgs e)
         {
+            bool verif;
+            // On vérifie que les champs ne soient pas vides
             if (!String.IsNullOrEmpty(tbCategorieM.Text) && !String.IsNullOrEmpty(tbNomM.Text) && !String.IsNullOrEmpty(tbRefConstM.Text) && !String.IsNullOrEmpty(tbCodeBarreM.Text))
+            {
+                verif = true;
+                // On vérifie que chauqe champ ne dépasse pas le charcter varying de la base
+                if(!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
+                {
+                    verif = false;
+                }
+            }
+            else verif = false;
+
+
+            if (verif)
             {
                 // On crée le nouvel objet matériel
                 Materiel m = new Materiel(Util.ConvertToOneUpperCase(tbCategorieM.Text), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
@@ -49,8 +63,8 @@ namespace SAE_DEV_WPF
                 tbRefConstM.Text = "";
 
                 ((Button)sender).Background = Util.GetBaseColor();
-            }
-            else ((Button)sender).Background = Brushes.LightPink;
+            }else ((Button)sender).Background = Brushes.LightPink;
+
         }
 
         private void lModifer_Click(object sender, RoutedEventArgs e)
@@ -61,7 +75,7 @@ namespace SAE_DEV_WPF
         private void lSupprimer_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBoxResult mes = MessageBox.Show("voulez vous vraiment supprimer ", " suppression ", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult mes = MessageBox.Show("Voulez-vous vraiment supprimer", "Suppression", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (mes == MessageBoxResult.Yes)
             {
                 Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];

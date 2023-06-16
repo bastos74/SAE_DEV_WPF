@@ -34,11 +34,13 @@
             FontWeight="Bold" />
         <!--  Partie 2  -->
 
-        <DataGrid x:Name="dgMateriel"
+        <DataGrid
+            x:Name="dgMateriel"
             Grid.Row="1"
             AutoGenerateColumns="False"
+            HeadersVisibility="Column"
             IsReadOnly="True"
-            ItemsSource="{Binding Path=LesMateriels}" HeadersVisibility="Column">
+            ItemsSource="{Binding Path=LesMateriels}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
@@ -47,7 +49,7 @@
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding RefConstructeur}"
-                    Header="Reference Constructeur"/>
+                    Header="Reference Constructeur" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Nom}"
@@ -93,7 +95,8 @@
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Content="Référence Constructeur"
-                    FontWeight="Bold" FontSize="12" />
+                    FontSize="12"
+                    FontWeight="Bold" />
                 <TextBox
                     x:Name="tbRefConstM"
                     Text=""
@@ -127,8 +130,8 @@
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
-
         </Grid>
+
 
         <Grid
             Grid.Row="2"
@@ -140,21 +143,27 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="lAjouter"
+            <Button
+                x:Name="lAjouter"
                 Grid.Column="0"
                 Margin="10,10,10,10"
+                Click="lAjouter_Click"
                 Content="Ajouter"
-                FontWeight="Bold" Click="lAjouter_Click" />
-            <Button x:Name="lModifer"
+                FontWeight="Bold" />
+            <Button
+                x:Name="lModifer"
                 Grid.Column="1"
                 Margin="10,10,10,10"
+                Click="lModifer_Click"
                 Content="Modifier"
-                FontWeight="Bold" Click="lModifer_Click" />
-            <Button x:Name="lSupprimer"
+                FontWeight="Bold" />
+            <Button
+                x:Name="lSupprimer"
                 Grid.Column="2"
                 Margin="10,10,10,10"
+                Click="lSupprimer_Click"
                 Content="Supprimer"
-                FontWeight="Bold" Click="lSupprimer_Click" />
+                FontWeight="Bold" />
         </Grid>
 
     </Grid>
