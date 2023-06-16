@@ -85,9 +85,11 @@ namespace SAE_DEV_WPF
         {
             Personnel p = applicationData.LesPersonnels[dgPersonnel.SelectedIndex];
            
+            // On modifie uniquement les champs ayant un texte
             p.Email = tbEmailP.Text == "" ? p.Email : tbEmailP.Text;
             p.Nom = tbNomP.Text == "" ? p.Nom : tbNomP.Text;
             p.Prenom = tbPrenomP.Text == "" ? p.Prenom : tbPrenomP.Text;
+
             dgPersonnel.Items.Refresh();
             p.Update();
             applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
