@@ -29,7 +29,7 @@ namespace SAE_DEV_WPF
             dgPersonnel.Items.Refresh();
         }
 
-        private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
+        private void btAjouter_Click(object sender, RoutedEventArgs e)
         {
 
             if (!String.IsNullOrEmpty(tbEmailP.Text) && !String.IsNullOrEmpty(tbNomP.Text) && !String.IsNullOrEmpty(tbPrenomP.Text))
@@ -58,6 +58,19 @@ namespace SAE_DEV_WPF
             }
             else ((Button)sender).Background = Brushes.LightPink;
 
+        }      
+
+        private void btModifier_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            Personnel p = applicationData.LesPersonnels[dgPersonnel.SelectedIndex];
+            applicationData.LesPersonnels.Remove(p);
+            dgPersonnel.Items.Refresh();
+            p.Delete();
         }
     }
 }
