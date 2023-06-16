@@ -62,7 +62,7 @@ namespace SAE_DEV_WPF
                 }
 
                 // On crée le nouvel objet Personnel 
-                Personnel p = new Personnel(tbEmailP.Text, tbNomP.Text, tbPrenomP.Text);
+                Personnel p = new Personnel(tbNomP.Text, tbPrenomP.Text, tbEmailP.Text);
 
                 // On ajoute le nouveau matériel dans la BDD
                 p.Create();

@@ -7,6 +7,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Windows;
 
 namespace SAE_DEV_WPF.Model
 {
@@ -101,6 +102,8 @@ namespace SAE_DEV_WPF.Model
             requeteSelect = "select nextval('personnel_idpersonnel_seq'::regclass);";
             datas = accesBD.GetData(requeteSelect);
             Id = int.Parse(datas.Rows[0][0].ToString());
+
+            MessageBox.Show(Email);
 
             // INSERT -- Faire refactor sans insérer l'id
             requeteInsert = $"INSERT INTO personnel (emailpersonnel , nompersonnel, prenompersonnel) VALUES('{Email}', '{Nom}', '{Prenom}'); ";
