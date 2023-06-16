@@ -70,9 +70,12 @@ namespace SAE_DEV_WPF
         private void btModifier_Click(object sender, RoutedEventArgs e)
         {
             Personnel p = applicationData.LesPersonnels[dgPersonnel.SelectedIndex];
-            applicationData.LesPersonnels[dgPersonnel.SelectedIndex].Email = tbEmailP.Text;
-            applicationData.LesPersonnels[dgPersonnel.SelectedIndex].Nom = tbNomP.Text;
-            applicationData.LesPersonnels[dgPersonnel.SelectedIndex].Prenom = tbPrenomP.Text;
+           
+            // On modifie uniquement les champs ayant un texte
+            p.Email = tbEmailP.Text == "" ? p.Email : tbEmailP.Text;
+            p.Nom = tbNomP.Text == "" ? p.Nom : tbNomP.Text;
+            p.Prenom = tbPrenomP.Text == "" ? p.Prenom : tbPrenomP.Text;
+
             dgPersonnel.Items.Refresh();
             p.Update();
             applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation

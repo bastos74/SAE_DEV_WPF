@@ -57,7 +57,10 @@ namespace SAE_DEV_WPF
         private void btModifier_Click(object sender, RoutedEventArgs e)
         {    
             Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
-            applicationData.LesCategories[dgCategorie.SelectedIndex].Nom = tbNomC.Text;
+            
+            // Si le champ est nul, on ne le modifie pas
+            c.Nom = tbNomC.Text == "" ? c.Nom : tbNomC.Text;
+            
             dgCategorie.Items.Refresh();
             c.Update();
             applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
