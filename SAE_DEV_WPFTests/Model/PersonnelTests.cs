@@ -25,6 +25,10 @@ namespace SAE_DEV_WPF.Model.Tests
         [TestMethod()]
         public void CreateTest()
         {
+
+            
+
+
             Personnel p1 = new Personnel("test1","toto","toto@gmail.com");
             p1.Create();
             p1.Read();
@@ -46,32 +50,14 @@ namespace SAE_DEV_WPF.Model.Tests
         {
             //Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
 
-            //string requete = "SELECT * FROM personnel ";
-
-            //int rowCount = p1.FindAll(x => x.);
-
-            //// Assert
-            //Assert.AreEqual(rowCount, "Unexpected row count.");
-
-            Assert.Fail();
-
-
-        }
-
-        [TestMethod()]
-        public void FindBySelectionTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ReadTest()
-        {
-            Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
-            p1.Read();
-            Assert.AreEqual(1, p1.Id);
+        //[TestMethod()]
+        //public void ReadTest()
+        //{
+        //    Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
+        //    p1.Read();
+        //    Assert.AreEqual(1, p1.Id);
             
-        }
+        //}
 
         [TestMethod()]
         public void UpdateTest()

@@ -133,8 +133,12 @@ namespace SAE_DEV_WPF.Model
             return lepersonnel;
         }
 
-        public ObservableCollection<Personnel> FindBySelection(string criteres)
+        public ObservableCollection<Personnel> FindBySelection(string criteres )
         {
+            //ObservableCollection<Personnel> lepersonnel = new ObservableCollection<Personnel>();
+            //DataAccess accesBD = new DataAccess(); 
+            //String requete = $"select idpersonnel ,  emailpersonnel , nompersonnel , prenompersonnel from personnel where idpersonnel = '{criteres}';";
+
             throw new NotImplementedException();
         }
 
@@ -146,9 +150,7 @@ namespace SAE_DEV_WPF.Model
             String requete = $"select idpersonnel ,  emailpersonnel , nompersonnel , prenompersonnel from personnel where idpersonnel = {id};";
             DataTable datas = accesBD.GetData(requete);
 
-
-        }
-    
+        }  
 
         public void Update()
         {
