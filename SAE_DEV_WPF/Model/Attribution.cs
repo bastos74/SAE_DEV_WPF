@@ -101,7 +101,7 @@ namespace SAE_DEV_WPF.Model
             String requeteSelect, requeteInsert;
 
             // INSERT 
-            requeteInsert = $"INSERT INTO est_attribue (idpersonnel, idmateriel, dateattribution, commentaireattribution) VALUES({Personnel.Id}, {Materiel.Id}, '{Util.ToSQLDateFormat(Date)}', '{Commentaire}'); ";
+            requeteInsert = $"INSERT INTO est_attribue (idpersonnel, idmateriel, dateattribution, commentaireattribution) VALUES({Personnel.Id}, {Materiel.Id}, '{this.Date}', '{Commentaire}'); ";
             accesBD.SetData(requeteInsert);
         }
 
@@ -111,7 +111,7 @@ namespace SAE_DEV_WPF.Model
             string requeteDelete;
 
             // DELETE
-            requeteDelete = $"DELETE FROM est_attribue WHERE dateattribution = '{Util.ToSQLDateFormat(Date)}';";
+            requeteDelete = $"DELETE FROM est_attribue WHERE dateattribution = '{this.Date}' and idmateriel = {Materiel.Id} and idpersonnel = {Personnel.Id};";
             accesBD.SetData(requeteDelete);
         }
 
@@ -152,8 +152,9 @@ namespace SAE_DEV_WPF.Model
             String requeteUpdate;
 
             // requete UPDATE 
-            requeteUpdate = $"UPDATE est_attribue SET commentaireattribution = '{Commentaire}' , idmateriel = {Materiel.Id} , idpersonnel = {Personnel.Id} WHERE dateattribution = '{Util.ToSQLDateFormat(Date)}';"; // SET dateattribution = '{Util.ToSQLDateFormat(Date)}'
-            //MessageBox.Show(requeteUpdate);
+            requeteUpdate = $"UPDATE est_attribue SET commentaireattribution = '{Commentaire}' , idmateriel = {Materiel.Id} , idpersonnel = {Personnel.Id}, dateattribution = '{this.Date}'" +
+                $" WHERE dateattribution = '{Date}' and idmateriel = {Materiel.Id} and idpersonnel = {Personnel.Id};"; // SET 
+            //MessageBox.Show(Util.ToSQLDateFormat(this.Date));
             accesBD.SetData(requeteUpdate);
         }
     }

@@ -70,7 +70,7 @@
         <Rectangle Margin="10,28,10,10" Stroke="Black" Width="250"/>
 
         <ListView Margin="25,58,25,420" x:Name="lvFiltreMat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
-                  ItemsSource="{Binding LesMateriels}" SelectionChanged="lvFiltreMat_SelectionChanged">
+                  ItemsSource="{Binding LesMateriels}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="215" Header="Matériel" />
@@ -172,8 +172,7 @@
                     FontWeight="Bold" />
                 <ComboBox
                     x:Name="tbPersonnelA"
-                    ItemsSource="{Binding LesPersonnels}"
-                    Text="" />
+                    ItemsSource="{Binding LesPersonnels}"/>
             </StackPanel>
 
             <!--  REFERENCE CONSTRUCTEUR  -->
@@ -188,8 +187,7 @@
                     FontWeight="Bold" />
                 <ComboBox
                     x:Name="tbMaterielA"
-                    ItemsSource="{Binding LesMateriels}"
-                    Text="" />
+                    ItemsSource="{Binding LesMateriels}"/>
             </StackPanel>
             <!--  NOM  -->
             <StackPanel Grid.Column="2">

@@ -81,14 +81,15 @@ namespace SAE_DEV_WPF
 
             if (AreChampCorrectEtNonVide())
             {
+                MessageBox.Show(tbMaterielA.SelectedItem.ToString() +" "+ tbPersonnelA.SelectedItem.ToString());
                 // On crée le nouvel objet matériel
-                Attribution a = new Attribution(DateTime.Parse(tbDateA.Text), tbCommentaireA.Text, tbMaterielA.Text, tbPersonnelA.Text);
+                Attribution a = new Attribution(DateTime.Parse(tbDateA.Text), tbCommentaireA.Text, tbMaterielA.SelectedItem.ToString(), tbPersonnelA.SelectedItem.ToString());
 
                 // On ajoute le nouveau matériel dans la BDD
                 a.Create();
                 applicationData.LesAttributions.Add(a);
                 applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
-                dgAttribution.Items.Refresh();
+                //dgAttribution.Items.Refresh();
 
                 // On reset les champs
                 ResetChamp();
@@ -142,8 +143,8 @@ namespace SAE_DEV_WPF
             tbPersonnelA.BorderBrush = Util.GetBaseColorTextBox();
             tbCommentaireA.Text = "";
             tbDateA.Text = "";
-            tbMaterielA.Text = "";
-            tbPersonnelA.Text = "";
+            tbMaterielA.SelectedIndex = -1;
+            tbPersonnelA.SelectedIndex = -1;
         }
 
         private bool AreChampCorrectEtNonVide()
@@ -183,22 +184,27 @@ namespace SAE_DEV_WPF
                     tb.BorderBrush = Brushes.Red;
                 }
             }
-           
+         
             tbMaterielA.BorderBrush = Brushes.Red;
             tbPersonnelA.BorderBrush = Brushes.Red;
-
-
-
         }
 
+        /*
         private void lvFiltreMat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //MessageBox.Show(((Materiel)lvFiltreMat.SelectedItem).Nom);
             lvFiltreCat.SelectedIndex = -1;
             lvFiltrePer.SelectedIndex = -1;
-            List<Attribution> lesAttribesFiltres = applicationData.LesAttributions.ToList().FindAll(x => x.Materiel == lvFiltreCat.SelectedItem);
-            applicationData.LesAttributions = new ObservableCollection<Attribution>(lesAttribesFiltres);
+            List<Attribution> lesAttribesFiltres = applicationData.LesAttributions.ToList().FindAll(x => x.Materiel.Nom == ((Materiel)lvFiltreMat.SelectedItem).Nom);
+            foreach (Attribution item in lesAttribesFiltres)
+            {
+                MessageBox.Show(item.Date.ToString());
+            }
+
+            //applicationData.LesAttributions = new ObservableCollection<Attribution>(lesAttribesFiltres);
             dgAttribution.Items.Refresh();
         }
+        */
 
         /*
         private void Window_ContextMenuClosing(object sender, ContextMenuEventArgs e)

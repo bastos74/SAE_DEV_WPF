@@ -59,11 +59,13 @@ namespace SAE_DEV_WPF.Model
             else return false;
         }
 
+        /*
         public static string ToSQLDateFormat(DateTime date)
         {
             date = DateTime.ParseExact("12/06/2023", "dd/MM/yyyy", CultureInfo.InvariantCulture);
             return date.ToString("yyyy-MM-dd");
         }
+        */
 
     }
 }
