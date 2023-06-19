@@ -25,6 +25,9 @@ namespace SAE_DEV_WPF.Model.Tests
             ObservableCollection<Personnel> personnels = p1.FindAll();
             Assert.AreEqual("toto@gmail.com", personnels.ToList().Find(x => x.Email == p1.Email).Email);
 
+
+
+
         }
 
         [TestMethod()]
@@ -43,8 +46,22 @@ namespace SAE_DEV_WPF.Model.Tests
             Assert.AreEqual("test4", p4.Nom);
             p4.Nom = "testUpdate";
             p4.Update();
-            Assert.AreEqual("testUpdate", p4.Nom);
-        }
+        [TestMethod()]
+        public void FindAllTest()
+        {
+            //Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
+
+        //[TestMethod()]
+        //public void ReadTest()
+        //{
+        //    Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
+        //    p1.Read();
+        //    Assert.AreEqual(1, p1.Id);
+            
+        //}
+
+            
+        //}
 
         [TestMethod()]
         //[ExpectedException(typeof(Exception))]
@@ -53,11 +70,12 @@ namespace SAE_DEV_WPF.Model.Tests
             Personnel p3 = new Personnel(3, "test3", "toto3", "toto3@gmail.com");
             p3.Read();
 
+            Assert.Fail();
         }
-
-
-
-
-
+    
+    
+    
+    
+    
     }
 }
