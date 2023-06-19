@@ -151,7 +151,6 @@ namespace SAE_DEV_WPF.Model
             DataAccess accesBD = new DataAccess();
             string requete = $"UPDATE est_attribue SET dateattribution = '{this.Date}', commentaireattribution = '{this.Commentaire}' WHERE idpersonnel = {this.Personnel.Id} and idmateriel = {this.Materiel.Id};";
             accesBD.SetData(requete);
-            accesBD.SetData(requeteUpdate);
         }
     }
 }
