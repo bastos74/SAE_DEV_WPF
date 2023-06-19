@@ -25,10 +25,6 @@ namespace SAE_DEV_WPF.Model.Tests
         [TestMethod()]
         public void CreateTest()
         {
-
-            
-
-
             Personnel p1 = new Personnel("test1","toto","toto@gmail.com");
             p1.Create();
             p1.Read();
@@ -66,11 +62,6 @@ namespace SAE_DEV_WPF.Model.Tests
             p1.Update();
 
             Assert.Fail();
-        }
-    
-    
-    
-    
-    
+        }  
     }
 }
