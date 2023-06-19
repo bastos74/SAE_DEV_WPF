@@ -81,13 +81,13 @@ namespace SAE_DEV_WPF
 
             if (AreChampCorrectEtNonVide())
             {
-                MessageBox.Show(tbMaterielA.SelectedItem.ToString() +" "+ tbPersonnelA.SelectedItem.ToString());
+                MessageBox.Show(tbMaterielA.SelectedItem.ToString() + " " + tbPersonnelA.SelectedItem.ToString());
                 // On crée le nouvel objet matériel
                 Attribution a = new Attribution(DateTime.Parse(tbDateA.Text), tbCommentaireA.Text, tbMaterielA.SelectedItem.ToString(), tbPersonnelA.SelectedItem.ToString());
 
                 // On ajoute le nouveau matériel dans la BDD
                 a.Create();
-                applicationData.LesAttributions.Add(a);
+                applicationData.LesAttributions.Insert(1, a);
                 applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
                 //dgAttribution.Items.Refresh();
 
