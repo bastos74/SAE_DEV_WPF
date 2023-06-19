@@ -85,7 +85,7 @@
                 <TextBox
                     x:Name="tbCodeBarreM"
                     Text=""
-                    TextWrapping="Wrap" />
+                    TextWrapping="Wrap" Height="24" />
             </StackPanel>
             <!--  REFERENCE CONSTRUCTEUR  -->
             <StackPanel Grid.Column="1">
@@ -100,6 +100,7 @@
                 <TextBox
                     x:Name="tbRefConstM"
                     Text=""
+                    Height="24"
                     TextWrapping="Wrap" />
             </StackPanel>
             <!--  NOM  -->
@@ -114,6 +115,7 @@
                 <TextBox
                     x:Name="tbNomM"
                     Text=""
+                    Height="24"
                     TextWrapping="Wrap" />
             </StackPanel>
             <!--  CATEGORIE  -->
@@ -128,6 +130,7 @@
                 <ComboBox
                     x:Name="tbCategorieM"
                     Text=""
+                    Height="24"
                     ItemsSource="{Binding LesCategories}"/>
             </StackPanel>
         </Grid>

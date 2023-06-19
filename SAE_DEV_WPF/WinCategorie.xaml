@@ -57,6 +57,7 @@
                 <TextBox
                     x:Name="tbNomC"
                     Text=""
+                    Height="24"
                     TextWrapping="Wrap" 
                     Width="200"/>
             </StackPanel>

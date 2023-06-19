@@ -23,6 +23,15 @@ namespace SAE_DEV_WPF.Model
         // Catégorie
         public ObservableCollection<Categorie> LesCategories { get; set; }
 
+        // List pour les filtres
+        public List<Attribution> LesPersonnelsFiltres { get; set; }
+
+        public List<Attribution> LesMaterielsFiltres { get; set; }
+
+        public List<Attribution> LesAttributionsFiltres { get; set; }
+
+        public List<Attribution> LesCategoriesFiltres { get; set; }
+
         public ApplicationData()
         {
             // CATEGORIE -- à faire en 1er
