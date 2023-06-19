@@ -170,7 +170,10 @@ namespace SAE_DEV_WPF.Model
 
         public void Read()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Materiel> leMateriel = new ObservableCollection<Materiel>();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"select idmateriel , categorie_materiel.idcategorie, nommateriel, referenceconstructeurmateriel, codebarreinventaire from materiel where idmateriel = {id};";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Update()
