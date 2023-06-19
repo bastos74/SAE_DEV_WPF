@@ -52,7 +52,7 @@ namespace SAE_DEV_WPF
                 // On ajoute le nouveau matériel dans la BDD
                 c.Create();
                 applicationData.LesCategories.Add(c);
-                applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+                //applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
 
                 // On reset les champs
                 ResetChamp();
@@ -153,6 +153,11 @@ namespace SAE_DEV_WPF
             {
                 tbNomC.BorderBrush = Brushes.Red;
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //this.Owner.Data
         }
     }
 }

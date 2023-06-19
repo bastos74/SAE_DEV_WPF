@@ -83,7 +83,7 @@ namespace SAE_DEV_WPF
 
             if (AreChampCorrectEtNonVide())
             {
-                MessageBox.Show(tbMaterielA.SelectedItem.ToString() + " " + tbPersonnelA.SelectedItem.ToString());
+                //MessageBox.Show(tbMaterielA.SelectedItem.ToString() + " " + tbPersonnelA.SelectedItem.ToString());
                 // On crée le nouvel objet matériel
                 Attribution a = new Attribution(DateTime.Parse(tbDateA.Text), tbCommentaireA.Text, tbMaterielA.SelectedItem.ToString(), tbPersonnelA.SelectedItem.ToString());
 
@@ -97,6 +97,7 @@ namespace SAE_DEV_WPF
                 ResetChamp();
 
             }
+            dgAttribution.Items.Refresh();
         }
 
         private void btModiferA_Click(object sender, RoutedEventArgs e)
@@ -115,13 +116,14 @@ namespace SAE_DEV_WPF
             // Si le champ est nul, on ne le modifie pas
             if (tbCommentaireA.Text != "") a.Commentaire = tbCommentaireA.Text;
             if (tbDateA.Text != "") a.Date = DateTime.Parse(tbDateA.Text);
-            if (tbMaterielA.SelectedItem.ToString() != "") a.Materiel = applicationData.LesMateriels.ToList().Find(x => x.Nom == tbMaterielA.SelectedItem.ToString());
-            if (tbPersonnelA.SelectedItem.ToString() != "") a.Personnel = applicationData.LesPersonnels.ToList().Find(x => x.Nom == tbPersonnelA.SelectedItem.ToString());
+            if (tbMaterielA.SelectedItem != null) a.Materiel = applicationData.LesMateriels.ToList().Find(x => x.Nom == tbMaterielA.SelectedItem.ToString());
+            if (tbPersonnelA.SelectedItem != null) a.Personnel = applicationData.LesPersonnels.ToList().Find(x => x.Nom == tbPersonnelA.SelectedItem.ToString());
 
             a.Update();
             applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
             dgAttribution.Items.Refresh();
 
+            dgAttribution.Items.Refresh();
             ((Button)sender).Background = Util.GetBaseColor();
         }
 

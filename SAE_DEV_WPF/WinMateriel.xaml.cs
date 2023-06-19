@@ -66,21 +66,21 @@ namespace SAE_DEV_WPF
 
             if (materielEstSelectionne())
             {
-                Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
+                Materiel m = (Materiel)dgMateriel.SelectedItem;
 
                 // Si le champ est nul, on ne le modifie pas
-                m.Nom = tbNomM.Text == "" ? m.Nom : tbNomM.Text;
-                m.RefConstructeur = tbRefConstM.Text == "" ? m.RefConstructeur : tbRefConstM.Text;
-                m.CodeBarre = tbCodeBarreM.Text == "" ? m.CodeBarre : tbCodeBarreM.Text;
-                m.Categorie = tbCategorieM.SelectedItem.ToString() == "" ? m.Categorie : applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.SelectedItem.ToString());
+                if (tbNomM.Text != "") m.Nom = tbNomM.Text;
+                if (tbRefConstM.Text != "") m.RefConstructeur = tbRefConstM.Text;
+                if (tbCodeBarreM.Text != "") m.CodeBarre = tbCodeBarreM.Text;
+                if (tbCategorieM.SelectedItem != null) m.Categorie = applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.SelectedItem.ToString());
 
-                dgMateriel.Items.Refresh();
                 m.Update();
-                applicationData.LesMateriels.Last().FindAll(); // tentative d'actualisation
+                //applicationData.LesMateriels.Last().FindAll(); // tentative d'actualisation
 
                 ((Button)sender).Background = Util.GetBaseColor();
             }
-            
+            dgMateriel.Items.Refresh();
+
 
         }
 
