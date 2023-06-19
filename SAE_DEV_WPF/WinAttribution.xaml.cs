@@ -89,7 +89,7 @@ namespace SAE_DEV_WPF
                 a.Create();
                 applicationData.LesAttributions.Insert(1, a);
                 applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
-                //dgAttribution.Items.Refresh();
+                dgAttribution.Items.Refresh();
 
                 // On reset les champs
                 ResetChamp();
