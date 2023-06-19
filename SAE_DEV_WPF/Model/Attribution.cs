@@ -108,11 +108,8 @@ namespace SAE_DEV_WPF.Model
         public void Delete()
         {
             DataAccess accesBD = new DataAccess();
-            string requeteDelete;
-
-            // DELETE
-            requeteDelete = $"DELETE FROM est_attribue WHERE dateattribution = '{this.Date}' and idmateriel = {Materiel.Id} and idpersonnel = {Personnel.Id};";
-            accesBD.SetData(requeteDelete);
+            string requete = $"DELETE FROM est_attribue WHERE idpersonnel = {this.Personnel.Id} and idmateriel = {this.Materiel.Id};";
+            accesBD.SetData(requete);
         }
 
         public ObservableCollection<Attribution> FindAll()
@@ -152,13 +149,8 @@ namespace SAE_DEV_WPF.Model
         public void Update()
         {
             DataAccess accesBD = new DataAccess();
-            String requeteUpdate;
-
-            // requete UPDATE 
-            requeteUpdate = $"UPDATE est_attribue SET commentaireattribution = '{Commentaire}' , idmateriel = {Materiel.Id} , idpersonnel = {Personnel.Id}, dateattribution = '{this.Date}'" +
-                $" WHERE dateattribution = '{Date}' and idmateriel = {Materiel.Id} and idpersonnel = {Personnel.Id};"; // SET 
-            //MessageBox.Show(Util.ToSQLDateFormat(this.Date));
-            accesBD.SetData(requeteUpdate);
+            string requete = $"UPDATE est_attribue SET dateattribution = '{this.Date}', commentaireattribution = '{this.Commentaire}' WHERE idpersonnel = {this.Personnel.Id} and idmateriel = {this.Materiel.Id};";
+            accesBD.SetData(requete);
         }
     }
 }
