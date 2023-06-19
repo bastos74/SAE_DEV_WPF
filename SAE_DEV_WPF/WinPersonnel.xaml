@@ -34,7 +34,7 @@
             VerticalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Personnel"
-            FontWeight="Bold" Background="#FFE81123" />
+            FontWeight="Bold" Background="#FF179E1F" />
 
 
         <!--  Partie 2  -->
