@@ -56,15 +56,31 @@
         <!--  Partie  filtre  -->
         <Rectangle Margin="0,38,0,10" Stroke="Black" Width="250"/>
 
-        <ListView Margin="25,43,25,435" x:Name="lvFiltre" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedIndex="0" Foreground="Black" SelectionChanged="lvfiltre_SelectionChanged" >
+        <ListView Margin="25,58,25,420" x:Name="lvFiltreMat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedIndex="0" Foreground="Black"
+                  ItemsSource="{Binding LesMateriels}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  Header="Filtre" Width="215" />
+                    <GridViewColumn Header="Matériel" Width="215" />
                 </GridView>
             </ListView.View>
-            <ListViewItem Content="Pas de tri" Background="#FF10BB32"/>
-            <ListViewItem Content="Tri par Personnel" Background="#FF10BB32"/>
-            <ListViewItem Content="Tri par Matériel" Background="#FF10BB32"/>
+        </ListView>
+        
+        <ListView Margin="25,217,25,261" x:Name="lvFiltrePer" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedIndex="0" Foreground="Black"
+                  ItemsSource="{Binding LesPersonnels}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Personnnel" Width="215" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView Margin="25,376,25,102" x:Name="lvFiltreCat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedIndex="0" Foreground="Black"
+                  ItemsSource="{Binding LesCategories}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Catégorie" Width="215" />
+                </GridView>
+            </ListView.View>
         </ListView>
 
 
@@ -209,12 +225,7 @@
                 Content="Supprimer"
                 FontWeight="Bold" Click="btSupprimerA_Click" />
         </Grid>
-
-
-
-
-
-
+        
     </Grid>
 
 
