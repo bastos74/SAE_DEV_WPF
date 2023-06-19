@@ -114,14 +114,13 @@ namespace SAE_DEV_WPF
             Attribution a = (Attribution)dgAttribution.SelectedItem;
 
             // Si le champ est nul, on ne le modifie pas
-            MessageBox.Show(a.Materiel.ToString());
+           
             if (tbCommentaireA.Text != "") a.Commentaire = tbCommentaireA.Text;
             if (tbDateA.Text != "") a.Date = DateTime.Parse(tbDateA.Text);
             //if (tbMaterielA.SelectedItem != null) a.Materiel = applicationData.LesMateriels.ToList().Find(x => x.Nom == tbMaterielA.SelectedItem.ToString());
             //if (tbPersonnelA.SelectedItem != null) a.Personnel = applicationData.LesPersonnels.ToList().Find(x => x.Nom == tbPersonnelA.SelectedItem.ToString());
 
             a.Update();
-            MessageBox.Show(((Attribution)dgAttribution.SelectedItem).Materiel.ToString());
             applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
             dgAttribution.Items.Refresh();
 
