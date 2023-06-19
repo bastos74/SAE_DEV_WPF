@@ -29,6 +29,13 @@ namespace SAE_DEV_WPF
         public WinAttribution()
         {
             InitializeComponent();
+            WinConnect fenetre = new WinConnect();
+            fenetre.ShowDialog();
+
+            if(fenetre.isClosed == true)
+            {
+                this.Close();
+            }
             this.Show();
 
             // Initialisation des fenêtres
@@ -42,13 +49,6 @@ namespace SAE_DEV_WPF
             MessageBox.Show("Résultat de la connexion : " + res);*/
 
 
-            WinConnect fenetre = new WinConnect();
-            fenetre.ShowDialog();
-
-            if(fenetre.isClosed == true)
-            {
-                this.Close();
-            }
 
             dgAttribution.Items.Refresh();
         }

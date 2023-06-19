@@ -142,7 +142,7 @@ namespace SAE_DEV_WPF.Model
         {
             ObservableCollection<Attribution> lAttribution = new ObservableCollection<Attribution>();
             DataAccess accesBD = new DataAccess();
-            String requete = $"select personnel.idpersonnel, materiel.idmateriel, dateattribution, commentaireattribution from est_attribue where personnel.idpersonnel = {Personnel} and materiel.idmateriel = {Materiel} and dateattribution = {Date};";
+            String requete = $"select personnel.idpersonnel, materiel.idmateriel, dateattribution, commentaireattribution from est_attribue where personnel.idpersonnel = {Personnel.Id} and materiel.idmateriel = {Materiel.Id} and dateattribution = {Date};";
             DataTable datas = accesBD.GetData(requete);
         }
 

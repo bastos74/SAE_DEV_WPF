@@ -144,11 +144,11 @@ namespace SAE_DEV_WPF.Model
 
         public void Read()
         {
-            
-            ObservableCollection<Personnel> lepersonnel = new ObservableCollection<Personnel>();
             DataAccess accesBD = new DataAccess();
-            String requete = $"select idpersonnel ,  emailpersonnel , nompersonnel , prenompersonnel from personnel where idpersonnel = {id};";
+            String requete = $"select idpersonnel, emailpersonnel, nompersonnel, prenompersonnel from personnel where idpersonnel = {Id};";
             DataTable datas = accesBD.GetData(requete);
+            // Si la requete renvoie des résultats
+            // if (String.IsNullOrEmpty(datas.Rows[0][0].ToString())) throw new Exception("");
 
         }  
 
