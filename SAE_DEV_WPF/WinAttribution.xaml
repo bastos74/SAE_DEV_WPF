@@ -42,21 +42,18 @@
         <!--  Menu Gerer et A propos  -->
         <Menu Grid.RowSpan="2" Grid.ColumnSpan="2">
             <MenuItem Header="_Gérer" FontWeight="Bold">
-
-                <MenuItem x:Name="Modifier" Header="_Modifier">
-                    <MenuItem
+                <MenuItem
                         x:Name="miCategorie"
                         Click="miCategorie_Click"
                         Header="_Catégorie" />
-                    <MenuItem
+                <MenuItem
                         x:Name="miMateriel"
                         Click="miMateriel_Click"
                         Header="_Matériel" />
-                    <MenuItem
+                <MenuItem
                         x:Name="miPersonnel"
                         Click="miPersonnel_Click"
                         Header="_Personnel" />
-                </MenuItem>
 
             </MenuItem>
             <MenuItem

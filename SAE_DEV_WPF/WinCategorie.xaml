@@ -6,7 +6,7 @@
         xmlns:model="clr-namespace:SAE_DEV_WPF.Model"
         xmlns:local="clr-namespace:SAE_DEV_WPF"
         mc:Ignorable="d"
-        Title="Modifier la catégorie" Width="600" Height="470" MinWidth="600" MinHeight="470" WindowStartupLocation="CenterScreen">
+        Title="Modifier la catégorie" Width="600" Height="470" MinWidth="600" MinHeight="470" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData"/>
     </Window.DataContext>
@@ -27,7 +27,7 @@
             FontWeight="Bold" Height="42" Background="#FFE81123" />
         <!--  Partie 2  -->
 
-        <DataGrid x:Name="dgCategorie"
+        <DataGrid x:Name="dgCategorie" 
             Grid.Row="1"
             ItemsSource="{Binding Path=LesCategories}"
             AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True">
