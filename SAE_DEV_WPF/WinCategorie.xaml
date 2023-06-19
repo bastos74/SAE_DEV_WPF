@@ -27,7 +27,7 @@
             FontWeight="Bold" Height="42" Background="#FFE81123" />
         <!--  Partie 2  -->
 
-        <DataGrid x:Name="dgCategorie"
+        <DataGrid x:Name="dgCategorie" 
             Grid.Row="1"
             ItemsSource="{Binding Path=LesCategories}"
             AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True">
