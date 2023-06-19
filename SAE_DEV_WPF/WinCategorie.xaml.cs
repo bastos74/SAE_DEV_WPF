@@ -155,9 +155,10 @@ namespace SAE_DEV_WPF
             }
         }
 
+        /*
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //this.Owner.Data
-        }
+            this.Owner.DataContext.a
+        */
     }
 }
