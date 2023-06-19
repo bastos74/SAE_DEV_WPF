@@ -184,5 +184,10 @@ namespace SAE_DEV_WPF
                 }
             }
         }
+
+        private void lvfiltre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
