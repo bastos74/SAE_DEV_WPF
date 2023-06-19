@@ -12,8 +12,8 @@ namespace SAE_DEV_WPF.Model.Tests
     [TestClass()]
     public class PersonnelTests
     {
-
-       private string connectionString = "Server=iutannecy-deptinfo.fr;port=5432;Database=sae201;Search Path=matinfoauto;uid=clehug;password=LMwggD;";
+        
+        private string connectionString = "Server=iutannecy-deptinfo.fr;port=5432;Database=sae201;Search Path=matinfoauto;uid=clehug;password=LMwggD;";
 
         [TestMethod()]
         public void PersonnelTest()
@@ -25,20 +25,27 @@ namespace SAE_DEV_WPF.Model.Tests
         public void CreateTest()
         {
 
-          
-
-
-            Personnel p1 = new Personnel(1,"test1","toto","toto@gmail.com");
-            Assert.IsNotNull(p1);
-
             
+
+
+            Personnel p1 = new Personnel("test1","toto","toto@gmail.com");
+            p1.Create();
+            p1.Read();
+            Assert.AreEqual(true, p1.Id);
+            
+
+
 
         }
 
         [TestMethod()]
         public void DeleteTest()
         {
-            Assert.Fail();
+            Personnel p1 = new Personnel("test1", "toto", "toto@gmail.com");
+            p1.Delete(); 
+            p1.Read();
+            Assert.AreEqual(null, p1.Id,"Objet doit être delete");
+            
         }
 
         [TestMethod()]
@@ -53,6 +60,7 @@ namespace SAE_DEV_WPF.Model.Tests
             //// Assert
             //Assert.AreEqual(rowCount, "Unexpected row count.");
 
+            Assert.Fail();
 
 
         }
@@ -66,12 +74,18 @@ namespace SAE_DEV_WPF.Model.Tests
         [TestMethod()]
         public void ReadTest()
         {
-            Assert.Fail();
+            Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
+            p1.Read();
+            Assert.AreEqual(1, p1.Id);
+            
         }
 
         [TestMethod()]
         public void UpdateTest()
         {
+            Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
+            p1.Update();
+
             Assert.Fail();
         }
     
