@@ -32,7 +32,7 @@ namespace SAE_DEV_WPF.Model.Tests
             Personnel p1 = new Personnel("test1","toto","toto@gmail.com");
             p1.Create();
             p1.Read();
-            Assert.AreEqual(, p1.Id);
+            Assert.AreEqual(1, p1.Id);
             
 
 
