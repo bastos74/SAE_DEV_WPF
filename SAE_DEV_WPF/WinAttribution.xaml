@@ -4,16 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE_DEV_WPF"
-    xmlns:model="clr-namespace:SAE_DEV_WPF.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:SAE_DEV_WPF.Model"
     Title="MATINFO"
     Width="1000"
     Height="800"
     MinWidth="1000"
     MinHeight="800"
-    mc:Ignorable="d" WindowStartupLocation="CenterScreen">
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Window.DataContext>
-        <model:ApplicationData x:Name="applicationData"/>
+        <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
 
 
@@ -30,26 +31,38 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="11*" />
+            <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="270"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <!--  Menu Gerer et A propos   -->
-        <Menu Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <!--  Menu Gerer et A propos  -->
+        <Menu Grid.RowSpan="2" Grid.ColumnSpan="2">
             <MenuItem Header="_Gerer">
 
                 <MenuItem x:Name="Modifier" Header="_Modifier">
-                    <MenuItem x:Name="miCategorie" Header="_Catégorie" Click="miCategorie_Click"/>
-                    <MenuItem x:Name="miMateriel" Header="_Matériel" Click="miMateriel_Click"/>
-                    <MenuItem x:Name="miPersonnel" Header="_Personnel" Click="miPersonnel_Click"/>
+                    <MenuItem
+                        x:Name="miCategorie"
+                        Click="miCategorie_Click"
+                        Header="_Catégorie" />
+                    <MenuItem
+                        x:Name="miMateriel"
+                        Click="miMateriel_Click"
+                        Header="_Matériel" />
+                    <MenuItem
+                        x:Name="miPersonnel"
+                        Click="miPersonnel_Click"
+                        Header="_Personnel" />
                 </MenuItem>
 
             </MenuItem>
-            <MenuItem x:Name="apropos" Header="_A propos" Click="apropos_Click" />
+            <MenuItem
+                x:Name="apropos"
+                Click="apropos_Click"
+                Header="_A propos" />
         </Menu>
 
 
@@ -60,7 +73,7 @@
                   ItemsSource="{Binding LesMateriels}" SelectionChanged="lvFiltreMat_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Matériel" Width="215" />
+                    <GridViewColumn Width="215" Header="Matériel" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -69,7 +82,7 @@
                   ItemsSource="{Binding LesPersonnels}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Personnnel" Width="215" />
+                    <GridViewColumn Width="215" Header="Personnnel" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -78,7 +91,7 @@
                   ItemsSource="{Binding LesCategories}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Catégorie" Width="215" />
+                    <GridViewColumn Width="215" Header="Catégorie" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -90,15 +103,31 @@
 
 
         <!--  Partie data grid des donnes attribution  -->
-        <DataGrid x:Name="dgAttribution"
+        <DataGrid
+            x:Name="dgAttribution"
+            Grid.Column="1"
             Margin="23,28,41,10"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding Path=LesAttributions}" HeadersVisibility="Column" Grid.Column="1" IsReadOnly="True">
+            HeadersVisibility="Column"
+            IsReadOnly="True"
+            ItemsSource="{Binding Path=LesAttributions}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Personnel" Binding="{Binding Personnel.Nom}"/>
-                <DataGridTextColumn Width="*" Header="Materiel" Binding="{Binding Materiel.Nom}"/>
-                <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Date, StringFormat=d}"/>
-                <DataGridTextColumn Width="*" Header="Commentaire" Binding="{Binding Commentaire}"/>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Personnel.Nom}"
+                    Header="Personnel" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Materiel.Nom}"
+                    Header="Materiel" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Date, StringFormat=d}"
+                    Header="Date" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Commentaire}"
+                    Header="Commentaire" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -141,11 +170,12 @@
                     VerticalContentAlignment="Center"
                     Content="Personnel"
                     FontWeight="Bold" />
-                <TextBox
+                <ComboBox
                     x:Name="tbPersonnelA"
-                    Text=""
-                    TextWrapping="Wrap" />
+                    ItemsSource="{Binding LesPersonnels}"
+                    Text="" />
             </StackPanel>
+
             <!--  REFERENCE CONSTRUCTEUR  -->
             <StackPanel Grid.Column="1">
                 <Label
@@ -156,10 +186,10 @@
                     Content="Matériel"
                     FontSize="12"
                     FontWeight="Bold" />
-                <TextBox
+                <ComboBox
                     x:Name="tbMaterielA"
-                    Text=""
-                    TextWrapping="Wrap" />
+                    ItemsSource="{Binding LesMateriels}"
+                    Text="" />
             </StackPanel>
             <!--  NOM  -->
             <StackPanel Grid.Column="2">
@@ -207,25 +237,25 @@
                 x:Name="btAjouterA"
                 Grid.Column="0"
                 Margin="10,10,10,10"
-                
+                Click="btAjouterA_Click"
                 Content="Ajouter"
-                FontWeight="Bold" Click="btAjouterA_Click" />
+                FontWeight="Bold" />
             <Button
                 x:Name="btModiferA"
                 Grid.Column="1"
                 Margin="10,10,10,10"
-                
+                Click="btModiferA_Click"
                 Content="Modifier"
-                FontWeight="Bold" Click="btModiferA_Click" />
+                FontWeight="Bold" />
             <Button
                 x:Name="btSupprimerA"
                 Grid.Column="2"
                 Margin="10,10,10,10"
-                
+                Click="btSupprimerA_Click"
                 Content="Supprimer"
-                FontWeight="Bold" Click="btSupprimerA_Click" />
+                FontWeight="Bold" />
         </Grid>
-        
+
     </Grid>
 
 

@@ -175,8 +175,6 @@ namespace SAE_DEV_WPF
             List<TextBox> lesTextBox = new List<TextBox>();
             lesTextBox.Add(tbDateA);
             lesTextBox.Add(tbCommentaireA);
-            lesTextBox.Add(tbMaterielA);
-            lesTextBox.Add(tbPersonnelA);
 
             foreach (TextBox tb in lesTextBox)
             {
@@ -185,6 +183,12 @@ namespace SAE_DEV_WPF
                     tb.BorderBrush = Brushes.Red;
                 }
             }
+           
+            tbMaterielA.BorderBrush = Brushes.Red;
+            tbPersonnelA.BorderBrush = Brushes.Red;
+
+
+
         }
 
         private void lvFiltreMat_SelectionChanged(object sender, SelectionChangedEventArgs e)
