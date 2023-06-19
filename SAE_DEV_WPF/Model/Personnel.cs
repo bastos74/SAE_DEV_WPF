@@ -140,21 +140,15 @@ namespace SAE_DEV_WPF.Model
 
         public void Read()
         {
-           //// pas sur encore 
-           // ObservableCollection<Personnel> lepersonnel = new ObservableCollection<Personnel>();
-           // DataAccess accesBD = new DataAccess();
-           // String requete = "select idpersonnel ,  emailpersonnel , nompersonnel , prenompersonnel from personnel;";
-           // DataTable datas = accesBD.GetData(requete);
             
-           // if (datas != null)
-           // {
-           //     foreach (DataRow row in datas.Rows)
-           //     {
-           //         Personnel p = new Personnel(int.Parse(row["idpersonnel"].ToString()), (String)row["nompersonnel"], (String)row["prenompersonnel"], (String)row["emailpersonnel"]);
-           //         lepersonnel.Add(p);
-           //     }
-           // }          
+            ObservableCollection<Personnel> lepersonnel = new ObservableCollection<Personnel>();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"select idpersonnel ,  emailpersonnel , nompersonnel , prenompersonnel from personnel where idpersonnel = {id};";
+            DataTable datas = accesBD.GetData(requete);
+
+
         }
+    
 
         public void Update()
         {
