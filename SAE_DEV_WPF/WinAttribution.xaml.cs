@@ -118,9 +118,9 @@ namespace SAE_DEV_WPF
             if (tbMaterielA.SelectedItem.ToString() != "") a.Materiel = applicationData.LesMateriels.ToList().Find(x => x.Nom == tbMaterielA.SelectedItem.ToString());
             if (tbPersonnelA.SelectedItem.ToString() != "") a.Personnel = applicationData.LesPersonnels.ToList().Find(x => x.Nom == tbPersonnelA.SelectedItem.ToString());
 
-            dgAttribution.Items.Refresh();
             a.Update();
             applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
+            dgAttribution.Items.Refresh();
 
             ((Button)sender).Background = Util.GetBaseColor();
         }

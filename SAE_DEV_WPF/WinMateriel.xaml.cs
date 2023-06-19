@@ -74,9 +74,9 @@ namespace SAE_DEV_WPF
                 m.CodeBarre = tbCodeBarreM.Text == "" ? m.CodeBarre : tbCodeBarreM.Text;
                 m.Categorie = tbCategorieM.SelectedItem.ToString() == "" ? m.Categorie : applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.SelectedItem.ToString());
 
-            dgMateriel.Items.Refresh();
-            m.Update();
-            applicationData.LesMateriels.Last().FindAll(); // tentative d'actualisation
+                dgMateriel.Items.Refresh();
+                m.Update();
+                applicationData.LesMateriels.Last().FindAll(); // tentative d'actualisation
 
                 ((Button)sender).Background = Util.GetBaseColor();
             }
