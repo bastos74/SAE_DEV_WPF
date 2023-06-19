@@ -12,7 +12,7 @@
     MinWidth="1000"
     MinHeight="800"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Background="White">
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData" />
     </Window.DataContext>
@@ -41,7 +41,7 @@
 
         <!--  Menu Gerer et A propos  -->
         <Menu Grid.RowSpan="2" Grid.ColumnSpan="2">
-            <MenuItem Header="_Gerer">
+            <MenuItem Header="_Gérer" FontWeight="Bold">
 
                 <MenuItem x:Name="Modifier" Header="_Modifier">
                     <MenuItem
@@ -62,15 +62,15 @@
             <MenuItem
                 x:Name="apropos"
                 Click="apropos_Click"
-                Header="_A propos" />
+                Header="_A propos" FontWeight="Bold" />
         </Menu>
 
 
         <!--  Partie  filtre  -->
-        <Rectangle Margin="10,28,10,10" Stroke="Black" Width="250"/>
+        <Rectangle Margin="10,28,10,10" Stroke="Black"/>
 
-        <ListView Margin="0,0,0,420" x:Name="lvFiltreMat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black" SelectionChanged="lvFiltreMat_SelectionChanged"
-                  ItemsSource="{Binding LesMateriels}" GotFocus="lvFiltreMat_GotFocus" Width="220" HorizontalAlignment="Center" Height="138" VerticalAlignment="Bottom">
+        <ListView Margin="0,58,0,0" x:Name="lvFiltreMat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black" SelectionChanged="lvFiltreMat_SelectionChanged"
+                  ItemsSource="{Binding LesMateriels}" GotFocus="lvFiltreMat_GotFocus" Width="220" HorizontalAlignment="Center" Height="138" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="220" Header="Matériel" />
@@ -78,8 +78,8 @@
             </ListView.View>
         </ListView>
 
-        <ListView Margin="0,0,0,261" x:Name="lvFiltrePer" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
-                  ItemsSource="{Binding LesPersonnels}" SelectionChanged="lvFiltrePer_SelectionChanged" GotFocus="lvFiltrePer_GotFocus" Width="220" HorizontalAlignment="Center" Height="138" VerticalAlignment="Bottom">
+        <ListView Margin="0,217,0,0" x:Name="lvFiltrePer" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
+                  ItemsSource="{Binding LesPersonnels}" SelectionChanged="lvFiltrePer_SelectionChanged" GotFocus="lvFiltrePer_GotFocus" Width="220" HorizontalAlignment="Center" Height="138" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="220" Header="Personnel" />
@@ -87,8 +87,8 @@
             </ListView.View>
         </ListView>
 
-        <ListView Margin="0,0,0,102" x:Name="lvFiltreCat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
-                  ItemsSource="{Binding LesCategories}" SelectionChanged="lvFiltreCat_SelectionChanged" GotFocus="lvFiltreCat_GotFocus" Width="220" HorizontalAlignment="Center" Height="138" VerticalAlignment="Bottom">
+        <ListView Margin="0,376,0,0" x:Name="lvFiltreCat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
+                  ItemsSource="{Binding LesCategories}" SelectionChanged="lvFiltreCat_SelectionChanged" GotFocus="lvFiltreCat_GotFocus" Width="220" HorizontalAlignment="Center" Height="138" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="220" Header="Catégorie" />

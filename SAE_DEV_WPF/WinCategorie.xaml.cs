@@ -42,6 +42,13 @@ namespace SAE_DEV_WPF
                 // On crée le nouvel objet matériel
                 Categorie c = new Categorie(Util.ConvertToOneUpperCase(tbNomC.Text));
 
+                // On vérifie s'il n'existe pas déjà
+                if (applicationData.LesCategories.ToList().Find(x => x.Nom == tbNomC.Text) != null)
+                {
+                    tbNomC.BorderBrush = Brushes.Red;
+                    return;
+                } 
+
                 // On ajoute le nouveau matériel dans la BDD
                 c.Create();
                 applicationData.LesCategories.Add(c);
@@ -142,15 +149,9 @@ namespace SAE_DEV_WPF
 
         private void ChangeColorChampVide()
         {
-            List<TextBox> lesTextBox = new List<TextBox>();
-            lesTextBox.Add(tbNomC);            
-
-            foreach (TextBox tb in lesTextBox)
+            if (String.IsNullOrEmpty(tbNomC.Text))
             {
-                if (String.IsNullOrEmpty(tb.Text))
-                {
-                    tb.BorderBrush = Brushes.Red;
-                }
+                tbNomC.BorderBrush = Brushes.Red;
             }
         }
     }

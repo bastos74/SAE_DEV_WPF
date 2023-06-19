@@ -13,7 +13,6 @@ namespace SAE_DEV_WPF.Model
     public class Categorie : Crud<Categorie>
     {
         private string nom;
-        private ObservableCollection<Materiel> lesMateriels;
 
         private int id;
 
@@ -42,19 +41,6 @@ namespace SAE_DEV_WPF.Model
             set
             {
                 nom = value;
-            }
-        }
-
-        public ObservableCollection<Materiel> LesMateriels
-        {
-            get
-            {
-                return lesMateriels;
-            }
-
-            set
-            {
-                lesMateriels = value;
             }
         }
 
