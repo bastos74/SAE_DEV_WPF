@@ -49,6 +49,8 @@ namespace SAE_DEV_WPF
             {
                 this.Close();
             }
+
+            dgAttribution.Items.Refresh();
         }
 
         private void apropos_Click(object sender, RoutedEventArgs e)
@@ -87,7 +89,7 @@ namespace SAE_DEV_WPF
 
                 // On ajoute le nouveau matériel dans la BDD
                 a.Create();
-                applicationData.LesAttributions.Insert(1, a);
+                applicationData.LesAttributions.Add(a);
                 applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
                 dgAttribution.Items.Refresh();
 
@@ -113,8 +115,8 @@ namespace SAE_DEV_WPF
             // Si le champ est nul, on ne le modifie pas
             if (tbCommentaireA.Text != "") a.Commentaire = tbCommentaireA.Text;
             if (tbDateA.Text != "") a.Date = DateTime.Parse(tbDateA.Text);
-            if (tbMaterielA.Text != "") a.Materiel = applicationData.LesMateriels.ToList().Find(x => x.Nom == tbMaterielA.Text);
-            if (tbPersonnelA.Text != "") a.Personnel = applicationData.LesPersonnels.ToList().Find(x => x.Nom == tbPersonnelA.Text);
+            if (tbMaterielA.SelectedItem.ToString() != "") a.Materiel = applicationData.LesMateriels.ToList().Find(x => x.Nom == tbMaterielA.SelectedItem.ToString());
+            if (tbPersonnelA.SelectedItem.ToString() != "") a.Personnel = applicationData.LesPersonnels.ToList().Find(x => x.Nom == tbPersonnelA.SelectedItem.ToString());
 
             dgAttribution.Items.Refresh();
             a.Update();
@@ -173,20 +175,10 @@ namespace SAE_DEV_WPF
 
         private void ChangeColorChampVide()
         {
-            List<TextBox> lesTextBox = new List<TextBox>();
-            lesTextBox.Add(tbDateA);
-            lesTextBox.Add(tbCommentaireA);
-
-            foreach (TextBox tb in lesTextBox)
-            {
-                if (String.IsNullOrEmpty(tb.Text))
-                {
-                    tb.BorderBrush = Brushes.Red;
-                }
-            }
-         
+            tbDateA.BorderBrush = Brushes.Red;
             tbMaterielA.BorderBrush = Brushes.Red;
             tbPersonnelA.BorderBrush = Brushes.Red;
+            tbCommentaireA.BorderBrush = Brushes.Red;
         }
 
         /*

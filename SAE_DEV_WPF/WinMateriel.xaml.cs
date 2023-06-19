@@ -42,7 +42,7 @@ namespace SAE_DEV_WPF
             if (AreChampCorrectEtNonVide())
             {
                 // On crée le nouvel objet matériel
-                Materiel m = new Materiel(Util.ConvertToOneUpperCase(tbCategorieM.Text), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
+                Materiel m = new Materiel(tbCategorieM.SelectedItem.ToString(), tbNomM.Text, tbRefConstM.Text, tbCodeBarreM.Text);
 
                 // On ajoute le nouveau matériel dans la BDD
                 m.Create();
@@ -72,7 +72,7 @@ namespace SAE_DEV_WPF
                 m.Nom = tbNomM.Text == "" ? m.Nom : tbNomM.Text;
                 m.RefConstructeur = tbRefConstM.Text == "" ? m.RefConstructeur : tbRefConstM.Text;
                 m.CodeBarre = tbCodeBarreM.Text == "" ? m.CodeBarre : tbCodeBarreM.Text;
-                m.Categorie = tbCategorieM.Text == "" ? m.Categorie : applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.Text);
+                m.Categorie = tbCategorieM.SelectedItem.ToString() == "" ? m.Categorie : applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.SelectedItem.ToString());
 
             dgMateriel.Items.Refresh();
             m.Update();
@@ -102,7 +102,7 @@ namespace SAE_DEV_WPF
         // On reset les champs
         private void ResetChamp()
         {
-            tbCategorieM.Text = "";
+            tbCategorieM.SelectedIndex = -1;
             tbCodeBarreM.Text = "";
             tbNomM.Text = "";
             tbRefConstM.Text = "";

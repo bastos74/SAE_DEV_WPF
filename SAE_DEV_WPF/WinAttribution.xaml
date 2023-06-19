@@ -172,7 +172,7 @@
                     FontWeight="Bold" />
                 <ComboBox
                     x:Name="tbPersonnelA"
-                    ItemsSource="{Binding LesPersonnels}"/>
+                    ItemsSource="{Binding LesPersonnels}" Height="24"/>
             </StackPanel>
 
             <!--  REFERENCE CONSTRUCTEUR  -->
@@ -187,7 +187,7 @@
                     FontWeight="Bold" />
                 <ComboBox
                     x:Name="tbMaterielA"
-                    ItemsSource="{Binding LesMateriels}"/>
+                    ItemsSource="{Binding LesMateriels}" Height="24"/>
             </StackPanel>
             <!--  NOM  -->
             <StackPanel Grid.Column="2">
@@ -198,10 +198,8 @@
                     VerticalContentAlignment="Center"
                     Content="Date"
                     FontWeight="Bold" />
-                <TextBox
-                    x:Name="tbDateA"
-                    Text=""
-                    TextWrapping="Wrap" />
+                <DatePicker x:Name="tbDateA"/>
+
             </StackPanel>
             <!--  CATEGORIE  -->
             <StackPanel Grid.Column="3">
@@ -215,7 +213,7 @@
                 <TextBox
                     x:Name="tbCommentaireA"
                     Text=""
-                    TextWrapping="Wrap" />
+                    TextWrapping="Wrap" Height="24" />
             </StackPanel>
         </Grid>
 
