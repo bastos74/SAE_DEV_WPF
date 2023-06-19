@@ -154,5 +154,10 @@ namespace SAE_DEV_WPF
                 tbNomC.BorderBrush = Brushes.Red;
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //this.Owner.Data
+        }
     }
 }
