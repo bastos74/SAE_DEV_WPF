@@ -145,7 +145,7 @@ namespace SAE_DEV_WPF.Model
         {
             ObservableCollection<Attribution> lAttribution = new ObservableCollection<Attribution>();
             DataAccess accesBD = new DataAccess();
-            String requete = $"select personnel.idpersonnel, materiel.idmateriel, dateattribution, commentaireattribution from est_attribue where personnel.idpersonnel = {Personnel} and materiel.idmateriel = {Materiel} and dateattribution = {Date};";
+            String requete = $"select personnel.idpersonnel, materiel.idmateriel, dateattribution, commentaireattribution from est_attribue where personnel.idpersonnel = {Personnel.Id} and materiel.idmateriel = {Materiel.Id} and dateattribution = {Date};";
             DataTable datas = accesBD.GetData(requete);
         }
 
@@ -155,8 +155,7 @@ namespace SAE_DEV_WPF.Model
             String requeteUpdate;
 
             // requete UPDATE 
-            requeteUpdate = $"UPDATE est_attribue SET commentaireattribution = '{Commentaire}' , idmateriel = {Materiel.Id} , idpersonnel = {Personnel.Id}, dateattribution = '{this.Date}'" +
-                $" WHERE dateattribution = '{Date}' and idmateriel = {Materiel.Id} and idpersonnel = {Personnel.Id};"; // SET 
+            requeteUpdate = $"UPDATE est_attribue SET commentaireattribution = '{Commentaire}' , materiel.idmateriel = {Materiel.Id} , personnel.idpersonnel = {Personnel.Id}, dateattribution = '{this.Date}' WHERE dateattribution = '{Date}' and materiel.idmateriel = {Materiel.Id} and personnel.idpersonnel = {Personnel.Id};"; // SET 
             //MessageBox.Show(Util.ToSQLDateFormat(this.Date));
             accesBD.SetData(requeteUpdate);
         }
