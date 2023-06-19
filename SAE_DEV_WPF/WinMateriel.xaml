@@ -31,7 +31,7 @@
             VerticalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Matériel"
-            FontWeight="Bold" />
+            FontWeight="Bold" Background="#FFE81123" />
         <!--  Partie 2  -->
 
         <DataGrid

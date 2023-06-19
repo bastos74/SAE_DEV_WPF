@@ -34,7 +34,7 @@
             VerticalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Personnel"
-            FontWeight="Bold" />
+            FontWeight="Bold" Background="#FFE81123" />
 
 
         <!--  Partie 2  -->
@@ -87,7 +87,7 @@
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
-            
+
             <!--  NOM  -->
             <StackPanel Grid.Column="1">
                 <Label
@@ -102,7 +102,7 @@
                     Text=""
                     TextWrapping="Wrap" />
             </StackPanel>
-            
+
             <!--  PRENOM  -->
             <StackPanel Grid.Column="2">
                 <Label
