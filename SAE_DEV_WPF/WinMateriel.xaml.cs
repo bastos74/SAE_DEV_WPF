@@ -74,7 +74,7 @@ namespace SAE_DEV_WPF
 
             dgMateriel.Items.Refresh();
             m.Update();
-            applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+            applicationData.LesMateriels.Last().FindAll(); // tentative d'actualisation
 
             ((Button)sender).Background = Util.GetBaseColor();
 

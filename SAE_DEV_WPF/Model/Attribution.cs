@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.IO.Packaging;
 using System.Linq;
+using System.Windows;
 
 namespace SAE_DEV_WPF.Model
 {
@@ -32,6 +33,13 @@ namespace SAE_DEV_WPF.Model
             this.Personnel = p;
             //this.Nommateriel = nommateriel;
             //this.Nompersonnel = nompersonnel;
+        }
+        public Attribution(DateTime date, string commentaire, string nomMat, string nomPer) // Constructeur pour CREATE
+        {
+            this.Commentaire = commentaire;
+            this.Date = date;
+            this.Personnel = Ad.LesPersonnels.ToList().Find(x => x.Nom == nomPer);
+            this.Materiel = Ad.LesMateriels.ToList().Find(x => x.Nom == nomMat);
         }
 
         public Materiel Materiel
@@ -88,12 +96,23 @@ namespace SAE_DEV_WPF.Model
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            DataTable datas;
+            String requeteSelect, requeteInsert;
+
+            // INSERT 
+            requeteInsert = $"INSERT INTO est_attribue (idpersonnel, idmateriel, dateattribution, commentaireattribution) VALUES({Personnel.Id}, {Materiel.Id}, '{Util.ToSQLDateFormat(Date)}', '{Commentaire}'); ";
+            accesBD.SetData(requeteInsert);
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            string requeteDelete;
+
+            // DELETE
+            requeteDelete = $"DELETE FROM est_attribue WHERE dateattribution = '{Util.ToSQLDateFormat(Date)}';";
+            accesBD.SetData(requeteDelete);
         }
 
         public ObservableCollection<Attribution> FindAll()
@@ -129,7 +148,13 @@ namespace SAE_DEV_WPF.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requeteUpdate;
+
+            // requete UPDATE 
+            requeteUpdate = $"UPDATE est_attribue SET commentaireattribution = '{Commentaire}' , idmateriel = {Materiel.Id} , idpersonnel = {Personnel.Id} WHERE dateattribution = '{Util.ToSQLDateFormat(Date)}';"; // SET dateattribution = '{Util.ToSQLDateFormat(Date)}'
+            //MessageBox.Show(requeteUpdate);
+            accesBD.SetData(requeteUpdate);
         }
     }
 }

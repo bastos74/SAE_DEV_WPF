@@ -103,8 +103,6 @@ namespace SAE_DEV_WPF.Model
             datas = accesBD.GetData(requeteSelect);
             Id = int.Parse(datas.Rows[0][0].ToString());
 
-            MessageBox.Show(Email);
-
             // INSERT -- Faire refactor sans insérer l'id
             requeteInsert = $"INSERT INTO personnel (emailpersonnel , nompersonnel, prenompersonnel) VALUES('{Email}', '{Nom}', '{Prenom}'); ";
             accesBD.SetData(requeteInsert);

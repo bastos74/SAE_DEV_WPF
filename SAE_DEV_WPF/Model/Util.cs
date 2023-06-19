@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +57,12 @@ namespace SAE_DEV_WPF.Model
                 return true;
             }
             else return false;
+        }
+
+        public static string ToSQLDateFormat(DateTime date)
+        {
+            date = DateTime.ParseExact("12/06/2023", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            return date.ToString("yyyy-MM-dd");
         }
 
     }

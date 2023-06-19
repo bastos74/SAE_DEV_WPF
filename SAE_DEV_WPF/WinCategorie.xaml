@@ -30,7 +30,7 @@
         <DataGrid x:Name="dgCategorie"
             Grid.Row="1"
             ItemsSource="{Binding Path=LesCategories}"
-            AutoGenerateColumns="False" HeadersVisibility="Column">
+            AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Nom Catégorie" Binding="{Binding Nom}" />
                 

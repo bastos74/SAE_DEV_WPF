@@ -44,7 +44,7 @@
             Grid.Row="1"
             Grid.ColumnSpan="2"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding Path=LesPersonnels}" HeadersVisibility="Column">
+            ItemsSource="{Binding Path=LesPersonnels}" HeadersVisibility="Column" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"

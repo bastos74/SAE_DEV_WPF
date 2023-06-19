@@ -73,5 +73,116 @@ namespace SAE_DEV_WPF
             winCat = new WinCategorie(this);
             winCat.ShowDialog();
         }
+
+        private void btAjouterA_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeColorChampVide();
+
+            if (AreChampCorrectEtNonVide())
+            {
+                // On crée le nouvel objet matériel
+                Attribution a = new Attribution(DateTime.Parse(tbDateA.Text), tbCommentaireA.Text, tbMaterielA.Text, tbPersonnelA.Text);
+
+                // On ajoute le nouveau matériel dans la BDD
+                a.Create();
+                applicationData.LesAttributions.Add(a);
+                applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
+
+                // On reset les champs
+                ResetChamp();
+
+            }
+        }
+
+        private void btModiferA_Click(object sender, RoutedEventArgs e)
+        {
+            if (!TailleChampCorrect())
+            {
+                ((Button)sender).Background = Brushes.LightPink;
+                return;
+            }
+            if(dgAttribution.SelectedIndex == -1)
+            {
+                return;
+            }
+            Attribution a = applicationData.LesAttributions[dgAttribution.SelectedIndex];
+
+            // Si le champ est nul, on ne le modifie pas
+            if (tbCommentaireA.Text != "") a.Commentaire = tbCommentaireA.Text;
+            if (tbDateA.Text != "") a.Date = DateTime.Parse(tbDateA.Text);
+            if (tbMaterielA.Text != "") a.Materiel = applicationData.LesMateriels.ToList().Find(x => x.Nom == tbMaterielA.Text);
+            if (tbPersonnelA.Text != "") a.Personnel = applicationData.LesPersonnels.ToList().Find(x => x.Nom == tbPersonnelA.Text);
+
+            dgAttribution.Items.Refresh();
+            a.Update();
+            applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
+
+            ((Button)sender).Background = Util.GetBaseColor();
+        }
+
+        private void btSupprimerA_Click(object sender, RoutedEventArgs e)
+        {
+            if (Util.ShowMessageBoxSupp(applicationData, dgAttribution))
+            {
+                Attribution a = applicationData.LesAttributions[dgAttribution.SelectedIndex];
+                applicationData.LesAttributions.Remove(a);
+                dgAttribution.Items.Refresh();
+                a.Delete();
+            }
+        }
+
+        // On reset les champs
+        private void ResetChamp()
+        {
+            tbCommentaireA.BorderBrush = Util.GetBaseColorTextBox();
+            tbDateA.BorderBrush = Util.GetBaseColorTextBox();
+            tbMaterielA.BorderBrush = Util.GetBaseColorTextBox();
+            tbPersonnelA.BorderBrush = Util.GetBaseColorTextBox();
+            tbCommentaireA.Text = "";
+            tbDateA.Text = "";
+            tbMaterielA.Text = "";
+            tbPersonnelA.Text = "";
+        }
+
+        private bool AreChampCorrectEtNonVide()
+        {
+            bool verif;
+
+            // On vérifie que les champs ne soient pas vides
+            if (!String.IsNullOrEmpty(tbCommentaireA.Text) && !String.IsNullOrEmpty(tbDateA.Text) && !String.IsNullOrEmpty(tbMaterielA.Text) && !String.IsNullOrEmpty(tbPersonnelA.Text))
+            {
+                // On vérifie que chaque champ ne dépasse pas le charcter varying de la base
+                verif = TailleChampCorrect();
+            }
+            else verif = false;
+
+            return verif;
+        }
+
+        private bool TailleChampCorrect()
+        {
+            if (!Util.HasTheGoodLength(tbCommentaireA.Text, 1000))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        private void ChangeColorChampVide()
+        {
+            List<TextBox> lesTextBox = new List<TextBox>();
+            lesTextBox.Add(tbDateA);
+            lesTextBox.Add(tbCommentaireA);
+            lesTextBox.Add(tbMaterielA);
+            lesTextBox.Add(tbPersonnelA);
+
+            foreach (TextBox tb in lesTextBox)
+            {
+                if (String.IsNullOrEmpty(tb.Text))
+                {
+                    tb.BorderBrush = Brushes.Red;
+                }
+            }
+        }
     }
 }
