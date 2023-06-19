@@ -143,7 +143,10 @@ namespace SAE_DEV_WPF.Model
 
         public void Read()
         {
-            throw new NotImplementedException();
+            ObservableCollection<Attribution> lAttribution = new ObservableCollection<Attribution>();
+            DataAccess accesBD = new DataAccess();
+            String requete = $"select personnel.idpersonnel, materiel.idmateriel, dateattribution, commentaireattribution from est_attribue where personnel.idpersonnel = {Personnel} and materiel.idmateriel = {Materiel} and dateattribution = {Date};";
+            DataTable datas = accesBD.GetData(requete);
         }
 
         public void Update()

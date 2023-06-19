@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.TextFormatting;
 
 namespace SAE_DEV_WPF.Model.Tests
 {
@@ -31,7 +32,7 @@ namespace SAE_DEV_WPF.Model.Tests
             Personnel p1 = new Personnel("test1","toto","toto@gmail.com");
             p1.Create();
             p1.Read();
-            Assert.AreEqual(true, p1.Id);
+            Assert.AreEqual(, p1.Id);
             
 
 
