@@ -54,10 +54,10 @@
 
 
         <!--  Partie  filtre  -->
-        <Rectangle Margin="0,38,0,10" Stroke="Black" Width="250"/>
+        <Rectangle Margin="10,28,10,10" Stroke="Black" Width="250"/>
 
-        <ListView Margin="25,58,25,420" x:Name="lvFiltreMat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedIndex="0" Foreground="Black"
-                  ItemsSource="{Binding LesMateriels}">
+        <ListView Margin="25,58,25,420" x:Name="lvFiltreMat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
+                  ItemsSource="{Binding LesMateriels}" SelectionChanged="lvFiltreMat_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Matériel" Width="215" />
@@ -65,7 +65,7 @@
             </ListView.View>
         </ListView>
         
-        <ListView Margin="25,217,25,261" x:Name="lvFiltrePer" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedIndex="0" Foreground="Black"
+        <ListView Margin="25,217,25,261" x:Name="lvFiltrePer" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
                   ItemsSource="{Binding LesPersonnels}">
             <ListView.View>
                 <GridView>
@@ -74,7 +74,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView Margin="25,376,25,102" x:Name="lvFiltreCat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedIndex="0" Foreground="Black"
+        <ListView Margin="25,376,25,102" x:Name="lvFiltreCat" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Foreground="Black"
                   ItemsSource="{Binding LesCategories}">
             <ListView.View>
                 <GridView>

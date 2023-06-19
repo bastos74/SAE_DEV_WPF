@@ -1,6 +1,7 @@
 ﻿using SAE_DEV_WPF.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -87,6 +88,7 @@ namespace SAE_DEV_WPF
                 a.Create();
                 applicationData.LesAttributions.Add(a);
                 applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
+                dgAttribution.Items.Refresh();
 
                 // On reset les champs
                 ResetChamp();
@@ -185,22 +187,24 @@ namespace SAE_DEV_WPF
             }
         }
 
-        private void lvfiltre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lvFiltreMat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            switch (lvFiltreMat.SelectedIndex)
-            {
-                case 0:
-                    //applicationData.LesAttributions.ToList().FindAll(x => x.)
-                    break;
-                case 1:
-
-                    break;
-                case 2:
-
-                    break;
-            }
-            
+            lvFiltreCat.SelectedIndex = -1;
+            lvFiltrePer.SelectedIndex = -1;
+            List<Attribution> lesAttribesFiltres = applicationData.LesAttributions.ToList().FindAll(x => x.Materiel == lvFiltreCat.SelectedItem);
+            applicationData.LesAttributions = new ObservableCollection<Attribution>(lesAttribesFiltres);
+            dgAttribution.Items.Refresh();
         }
+
+        /*
+        private void Window_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+            dgAttribution.Items.Refresh();
+            applicationData.LesMateriels.Last().FindAll();
+            lvFiltreCat.Items.Refresh();
+            lvFiltrePer.Items.Refresh();
+            lvFiltreMat.Items.Refresh();
+        }
+        */
     }
 }
