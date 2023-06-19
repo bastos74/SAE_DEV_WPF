@@ -181,32 +181,63 @@ namespace SAE_DEV_WPF
             tbCommentaireA.BorderBrush = Brushes.Red;
         }
 
-        /*
         private void lvFiltreMat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MessageBox.Show(((Materiel)lvFiltreMat.SelectedItem).Nom);
+            dgAttribution.SetBinding(DataGrid.ItemsSourceProperty, new Binding("LesAttributions"));
+            if (lvFiltreMat.SelectedItem != null)
+            {
+                applicationData.LesMaterielsFiltres = applicationData.LesAttributions.ToList().FindAll(x => x.Materiel.Nom == ((Materiel)lvFiltreMat.SelectedItem).Nom);
+                dgAttribution.SetBinding(DataGrid.ItemsSourceProperty, new Binding("LesMaterielsFiltres"));
+                dgAttribution.Items.Refresh();
+            }
+        }
+
+        private void lvFiltreCat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dgAttribution.SetBinding(DataGrid.ItemsSourceProperty, new Binding("LesAttributions"));
+            if (lvFiltreCat.SelectedItem != null)
+            {
+                applicationData.LesCategoriesFiltres = applicationData.LesAttributions.ToList().FindAll(x => x.Materiel.Categorie.Nom == ((Categorie)lvFiltreCat.SelectedItem).Nom);
+                dgAttribution.SetBinding(DataGrid.ItemsSourceProperty, new Binding("LesCategoriesFiltres"));
+                dgAttribution.Items.Refresh();
+            }
+        }
+
+        private void lvFiltrePer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dgAttribution.SetBinding(DataGrid.ItemsSourceProperty, new Binding("LesAttributions"));
+            if (lvFiltrePer.SelectedItem != null)
+            {
+                applicationData.LesPersonnelsFiltres = applicationData.LesAttributions.ToList().FindAll(x => x.Personnel.Nom == ((Personnel)lvFiltrePer.SelectedItem).Nom);
+                dgAttribution.SetBinding(DataGrid.ItemsSourceProperty, new Binding("LesPersonnelsFiltres"));
+                dgAttribution.Items.Refresh();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            lvFiltreCat.SelectedIndex = -1;
+            lvFiltreMat.SelectedIndex = -1;
+            lvFiltrePer.SelectedIndex = -1;
+            dgAttribution.SetBinding(DataGrid.ItemsSourceProperty, new Binding("LesAttributions"));
+        }
+
+        private void lvFiltreCat_GotFocus(object sender, RoutedEventArgs e)
+        {
+            lvFiltreMat.SelectedIndex = -1;
+            lvFiltrePer.SelectedIndex = -1;
+        }
+
+        private void lvFiltrePer_GotFocus(object sender, RoutedEventArgs e)
+        {
+            lvFiltreCat.SelectedIndex = -1;
+            lvFiltreMat.SelectedIndex = -1;
+        }
+
+        private void lvFiltreMat_GotFocus(object sender, RoutedEventArgs e)
+        {
             lvFiltreCat.SelectedIndex = -1;
             lvFiltrePer.SelectedIndex = -1;
-            List<Attribution> lesAttribesFiltres = applicationData.LesAttributions.ToList().FindAll(x => x.Materiel.Nom == ((Materiel)lvFiltreMat.SelectedItem).Nom);
-            foreach (Attribution item in lesAttribesFiltres)
-            {
-                MessageBox.Show(item.Date.ToString());
-            }
-
-            //applicationData.LesAttributions = new ObservableCollection<Attribution>(lesAttribesFiltres);
-            dgAttribution.Items.Refresh();
         }
-        */
-
-        /*
-        private void Window_ContextMenuClosing(object sender, ContextMenuEventArgs e)
-        {
-            dgAttribution.Items.Refresh();
-            applicationData.LesMateriels.Last().FindAll();
-            lvFiltreCat.Items.Refresh();
-            lvFiltrePer.Items.Refresh();
-            lvFiltreMat.Items.Refresh();
-        }
-        */
     }
 }

@@ -5,9 +5,11 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Windows.Documents;
 
 namespace SAE_DEV_WPF.Model
 {
@@ -16,6 +18,8 @@ namespace SAE_DEV_WPF.Model
         public static ApplicationData Ad;
         private String refConstructeur, nom, codeBarre;
         private Categorie categorie;
+
+        private List<Attribution> sesAttributions;
 
         private int id; /*, fk_categorie;*/
 
