@@ -37,7 +37,8 @@
             <ColumnDefinition Width="270"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
+        
+        <!--  Menu Gerer et A propos   -->
         <Menu Grid.ColumnSpan="2" Grid.RowSpan="2">
             <MenuItem Header="_Gerer">
 
@@ -51,17 +52,21 @@
             <MenuItem x:Name="apropos" Header="_A propos" Click="apropos_Click" />
         </Menu>
 
-
-
-
+        
         <!--  Partie  filtre  -->
-        <ListView Margin="10,41,8,10">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="30" CellTemplate="{StaticResource caseACocher}" />
-                </GridView>
-            </ListView.View>
+        <Rectangle HorizontalAlignment="Center" Height="351" Margin="0,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="220"/>
+       
+        <ListView d:ItemsSource="{d:SampleData ItemCount=3}" Margin="25,65,25,200" x:Name="lvfiltre" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  Header="Filtre" Width="215" />
+                    </GridView>
+                </ListView.View>
         </ListView>
+
+         
+
+       
 
 
 
@@ -201,6 +206,8 @@
                 Content="Supprimer"
                 FontWeight="Bold" Click="btSupprimerA_Click" />
         </Grid>
+       
+
 
 
 

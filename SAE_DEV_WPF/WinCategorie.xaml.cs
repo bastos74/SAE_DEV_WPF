@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,7 +37,7 @@ namespace SAE_DEV_WPF
 
             ChangeColorChampVide();
 
-            if (!String.IsNullOrEmpty(tbNomC.Text))
+            if (AreChampCorrectEtNonVide())
             {
                 // On crée le nouvel objet matériel
                 Categorie c = new Categorie(Util.ConvertToOneUpperCase(tbNomC.Text));
@@ -47,7 +48,7 @@ namespace SAE_DEV_WPF
                 applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
 
                 // On reset les champs
-                tbNomC.Text = "";
+                ResetChamp();
 
             }
             
@@ -55,28 +56,88 @@ namespace SAE_DEV_WPF
         }
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
-        {    
-            Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
-            
-            // Si le champ est nul, on ne le modifie pas
-            c.Nom = tbNomC.Text == "" ? c.Nom : tbNomC.Text;
-            
-            dgCategorie.Items.Refresh();
-            c.Update();
-            applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+        {
+            if (!TailleChampCorrect())
+            {
+                ((Button)sender).Background = Brushes.LightPink;
+                return;
+            }
+
+
+
+            if (categorieEstSelectionne())
+            {
+                Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
+
+                // Si le champ est nul, on ne le modifie pas
+                c.Nom = tbNomC.Text == "" ? c.Nom : tbNomC.Text;
+
+                dgCategorie.Items.Refresh();
+                c.Update();
+                applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+
+                ((Button)sender).Background = Util.GetBaseColor();
+            }
+           
 
 
         }
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            if(Util.ShowMessageBoxSupp(applicationData, dgCategorie))
+            if (categorieEstSelectionne())
             {
-                Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
-                applicationData.LesCategories.Remove(c);
-                dgCategorie.Items.Refresh();
-                c.Delete();
+                if (Util.ShowMessageBoxSupp(applicationData, dgCategorie))
+                {
+                    Categorie c = applicationData.LesCategories[dgCategorie.SelectedIndex];
+                    applicationData.LesCategories.Remove(c);
+                    dgCategorie.Items.Refresh();
+                    c.Delete();
+                }
             }
+           
+        }
+
+        // On reset les champs
+        private void ResetChamp()
+        {
+            tbNomC.Text = "";
+        }
+
+        private bool AreChampCorrectEtNonVide()
+        {
+            bool verif;
+
+            // On vérifie que les champs ne soient pas vides
+            if (!String.IsNullOrEmpty(tbNomC.Text))
+            {
+                // On vérifie que chaque champ ne dépasse pas le charcter varying de la base
+                verif = TailleChampCorrect();
+            }
+            else verif = false;
+
+            return verif;
+        }
+
+        //On vérifie la taille des champs
+        private bool TailleChampCorrect()
+        {
+            if (!Util.HasTheGoodLength(tbNomC.Text, 50))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        //On vérifie si une catégorie est sélectionné
+        private bool categorieEstSelectionne()
+        {
+            if (dgCategorie.SelectedIndex == -1)
+            {
+                MessageBoxResult mes = MessageBox.Show("Vous devez sélectionner une catégorie.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else return true;
         }
 
         private void ChangeColorChampVide()

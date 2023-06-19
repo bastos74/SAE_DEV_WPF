@@ -24,7 +24,7 @@
             VerticalContentAlignment="Center"
             AutomationProperties.IsRowHeader="True"
             Content="Catégorie"
-            FontWeight="Bold" Height="42" />
+            FontWeight="Bold" Height="42" Background="#FFE81123" />
         <!--  Partie 2  -->
 
         <DataGrid x:Name="dgCategorie"

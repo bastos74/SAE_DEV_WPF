@@ -37,16 +37,14 @@ namespace SAE_DEV_WPF
             tbPrenomP.BorderBrush = Util.GetBaseColorTextBox();
 
             ChangeColorChampVide();
+
             if (!Util.IsEmailFormat(tbEmailP.Text))
             {
                 tbEmailP.BorderBrush = Brushes.Red;
             }
 
-            if (!String.IsNullOrEmpty(tbEmailP.Text) && !String.IsNullOrEmpty(tbNomP.Text) && !String.IsNullOrEmpty(tbPrenomP.Text))
+            if (AreChampCorrectEtNonVide())
             {
-               
-                
-
                 // On crée le nouvel objet Personnel 
                 Personnel p = new Personnel(tbNomP.Text, tbPrenomP.Text, tbEmailP.Text);
 
@@ -56,41 +54,96 @@ namespace SAE_DEV_WPF
                 applicationData.LesPersonnels.Last().FindAll(); // tentative d'actualisation
 
                 // On reset les champs
-                tbEmailP.Text = "";
-                tbNomP.Text = "";
-                tbPrenomP.Text = "";
+                ResetChamp();
 
                 ((Button)sender).Background = Util.GetBaseColor();
 
-            }
-            
+            }           
 
         }      
 
         private void btModifier_Click(object sender, RoutedEventArgs e)
         {
-            Personnel p = applicationData.LesPersonnels[dgPersonnel.SelectedIndex];
-           
-            // On modifie uniquement les champs ayant un texte
-            p.Email = tbEmailP.Text == "" ? p.Email : tbEmailP.Text;
-            p.Nom = tbNomP.Text == "" ? p.Nom : tbNomP.Text;
-            p.Prenom = tbPrenomP.Text == "" ? p.Prenom : tbPrenomP.Text;
+            
+            if (!TailleChampCorrect())
+            {
+                ((Button)sender).Background = Brushes.LightPink;
+                return;
+            }
 
-            dgPersonnel.Items.Refresh();
-            p.Update();
-            applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+            if (personnelEstSelectionne())
+            {
+                Personnel p = applicationData.LesPersonnels[dgPersonnel.SelectedIndex];
+
+                // On modifie uniquement les champs ayant un texte
+                p.Email = tbEmailP.Text == "" ? p.Email : tbEmailP.Text;
+                p.Nom = tbNomP.Text == "" ? p.Nom : tbNomP.Text;
+                p.Prenom = tbPrenomP.Text == "" ? p.Prenom : tbPrenomP.Text;
+
+                dgPersonnel.Items.Refresh();
+                p.Update();
+                applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+            }
+            
         }
 
         private void btSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            if (Util.ShowMessageBoxSupp(applicationData, dgPersonnel))
+            if (personnelEstSelectionne())
             {
-                Personnel p = applicationData.LesPersonnels[dgPersonnel.SelectedIndex];
-                applicationData.LesPersonnels.Remove(p);
-                dgPersonnel.Items.Refresh();
-                p.Delete();
-            }
+                if (Util.ShowMessageBoxSupp(applicationData, dgPersonnel))
+                {
+                    Personnel p = applicationData.LesPersonnels[dgPersonnel.SelectedIndex];
+                    applicationData.LesPersonnels.Remove(p);
+                    dgPersonnel.Items.Refresh();
+                    p.Delete();
+                }
+            }         
 
+        }
+
+        // On reset les champs
+        private void ResetChamp()
+        {
+            tbEmailP.Text = "";
+            tbNomP.Text = "";
+            tbPrenomP.Text = "";
+        }
+
+        private bool AreChampCorrectEtNonVide()
+        {
+            bool verif;
+
+            // On vérifie que les champs ne soient pas vides
+            if (!String.IsNullOrEmpty(tbEmailP.Text) && !String.IsNullOrEmpty(tbNomP.Text) && !String.IsNullOrEmpty(tbPrenomP.Text))
+            {
+                // On vérifie que chaque champ ne dépasse pas le charcter varying de la base
+                verif = TailleChampCorrect();
+            }
+            else verif = false;
+
+            return verif;
+        }
+
+        //On vérifie la taille des champs
+        private bool TailleChampCorrect()
+        {
+            if (!Util.HasTheGoodLength(tbEmailP.Text, 30) || !Util.HasTheGoodLength(tbNomP.Text, 20) || !Util.HasTheGoodLength(tbPrenomP.Text, 20))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        //On vérifie si un personnel est sélectionné
+        private bool personnelEstSelectionne()
+        {
+            if (dgPersonnel.SelectedIndex == -1)
+            {
+                MessageBoxResult mes = MessageBox.Show("Vous devez sélectionner un personnel.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else return true;
         }
 
         private void ChangeColorChampVide()

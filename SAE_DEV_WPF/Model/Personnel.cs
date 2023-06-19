@@ -37,8 +37,6 @@ namespace SAE_DEV_WPF.Model
         }
 
 
-
-
         public string Email
         {
             get
