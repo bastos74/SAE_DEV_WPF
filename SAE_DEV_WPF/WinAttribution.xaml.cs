@@ -123,7 +123,7 @@ namespace SAE_DEV_WPF
             applicationData.LesAttributions.Last().FindAll(); // tentative d'actualisation
             dgAttribution.Items.Refresh();
 
-            
+            dgAttribution.Items.Refresh();
             ((Button)sender).Background = Util.GetBaseColor();
         }
 
