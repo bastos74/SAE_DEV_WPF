@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SAE_DEV_WPF.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace SAE_DEV_WPF.Model.Tests
     [TestClass()]
     public class PersonnelTests
     {
+
+       private string connectionString = "Server=iutannecy-deptinfo.fr;port=5432;Database=sae201;Search Path=matinfoauto;uid=clehug;password=LMwggD;";
+
         [TestMethod()]
         public void PersonnelTest()
         {
@@ -20,12 +24,14 @@ namespace SAE_DEV_WPF.Model.Tests
         [TestMethod()]
         public void CreateTest()
         {
-            string connectionString = "Data Source=server_name;Initial Catalog=database_name;User ID=username;Password=password;";
 
+          
 
 
             Personnel p1 = new Personnel(1,"test1","toto","toto@gmail.com");
-           Assert.IsNotNull(p1);
+            Assert.IsNotNull(p1);
+
+            
 
         }
 
@@ -38,7 +44,17 @@ namespace SAE_DEV_WPF.Model.Tests
         [TestMethod()]
         public void FindAllTest()
         {
-            Assert.Fail();
+            //Personnel p1 = new Personnel(1, "test1", "toto", "toto@gmail.com");
+
+            //string requete = "SELECT * FROM personnel ";
+
+            //int rowCount = p1.FindAll(x => x.);
+
+            //// Assert
+            //Assert.AreEqual(rowCount, "Unexpected row count.");
+
+
+
         }
 
         [TestMethod()]

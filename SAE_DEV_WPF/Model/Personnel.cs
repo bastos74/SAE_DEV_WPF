@@ -152,5 +152,9 @@ namespace SAE_DEV_WPF.Model
             requeteUpdate = $"UPDATE personnel SET emailpersonnel = '{Email}' , nompersonnel = '{Nom}' , prenompersonnel = '{Prenom}'  WHERE idpersonnel = {Id};";
             accesBD.SetData(requeteUpdate);
         }
+
+
+
+
     }
 }
