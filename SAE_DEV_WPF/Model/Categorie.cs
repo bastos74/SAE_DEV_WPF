@@ -139,6 +139,11 @@ namespace SAE_DEV_WPF.Model
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return this.Nom;
+        }
     }
 }
 

@@ -178,5 +178,10 @@ namespace SAE_DEV_WPF.Model
             requeteUpdate = $"UPDATE materiel SET nommateriel = '{Nom}' , referenceconstructeurmateriel = '{RefConstructeur}' , codebarreinventaire = '{CodeBarre}' , idcategorie = {Categorie.Id} WHERE idmateriel = {Id};";
             accesBD.SetData(requeteUpdate);
         }
+
+        public override string ToString()
+        {
+            return this.Nom;
+        }
     }
 }

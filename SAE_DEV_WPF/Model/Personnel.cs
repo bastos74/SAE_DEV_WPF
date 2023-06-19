@@ -153,8 +153,9 @@ namespace SAE_DEV_WPF.Model
             accesBD.SetData(requeteUpdate);
         }
 
-
-
-
+        public override string ToString()
+        {
+            return this.Nom;
+        }
     }
 }

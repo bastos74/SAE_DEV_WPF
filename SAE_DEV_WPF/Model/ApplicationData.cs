@@ -20,7 +20,7 @@ namespace SAE_DEV_WPF.Model
         // Attribution
         public ObservableCollection<Attribution> LesAttributions { get; set; }
 
-        //Catégorie
+        // Catégorie
         public ObservableCollection<Categorie> LesCategories { get; set; }
 
         public ApplicationData()

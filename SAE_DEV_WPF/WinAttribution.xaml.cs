@@ -184,5 +184,23 @@ namespace SAE_DEV_WPF
                 }
             }
         }
+
+        private void lvfiltre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            switch (lvFiltreMat.SelectedIndex)
+            {
+                case 0:
+                    //applicationData.LesAttributions.ToList().FindAll(x => x.)
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+            
+        }
     }
 }
