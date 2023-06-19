@@ -125,10 +125,10 @@
                     VerticalContentAlignment="Center"
                     Content="Catégorie"
                     FontWeight="Bold" />
-                <TextBox
+                <ComboBox
                     x:Name="tbCategorieM"
                     Text=""
-                    TextWrapping="Wrap" />
+                    ItemsSource="{Binding LesCategories}"/>
             </StackPanel>
         </Grid>
 

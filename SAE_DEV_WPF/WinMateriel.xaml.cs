@@ -126,7 +126,7 @@ namespace SAE_DEV_WPF
         //On vérifie la taille des champs
         private bool TailleChampCorrect()
         {
-            if (!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
+            if (!Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
             {
                 return false;
             }
@@ -147,7 +147,6 @@ namespace SAE_DEV_WPF
         private void ChangeColorChampVide()
         {
             List<TextBox> lesTextBox = new List<TextBox>();
-            lesTextBox.Add(tbCategorieM);
             lesTextBox.Add(tbNomM);
             lesTextBox.Add(tbRefConstM);
             lesTextBox.Add(tbCodeBarreM);
@@ -159,6 +158,7 @@ namespace SAE_DEV_WPF
                     tb.BorderBrush = Brushes.Red;
                 }
             }
+            tbCategorieM.BorderBrush= Brushes.Red;
         }
     }
 }
