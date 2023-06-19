@@ -64,31 +64,39 @@ namespace SAE_DEV_WPF
                 return;
             }
 
-            Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
+            if (materielEstSelectionne())
+            {
+                Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
 
-            // Si le champ est nul, on ne le modifie pas
-            m.Nom = tbNomM.Text == "" ? m.Nom : tbNomM.Text;
-            m.RefConstructeur = tbRefConstM.Text == "" ? m.RefConstructeur : tbRefConstM.Text;
-            m.CodeBarre = tbCodeBarreM.Text == "" ? m.CodeBarre : tbCodeBarreM.Text;
-            m.Categorie = tbCategorieM.Text == "" ? m.Categorie : applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.Text);
+                // Si le champ est nul, on ne le modifie pas
+                m.Nom = tbNomM.Text == "" ? m.Nom : tbNomM.Text;
+                m.RefConstructeur = tbRefConstM.Text == "" ? m.RefConstructeur : tbRefConstM.Text;
+                m.CodeBarre = tbCodeBarreM.Text == "" ? m.CodeBarre : tbCodeBarreM.Text;
+                m.Categorie = tbCategorieM.Text == "" ? m.Categorie : applicationData.LesCategories.ToList().Find(x => x.Nom == tbCategorieM.Text);
 
-            dgMateriel.Items.Refresh();
-            m.Update();
-            applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
+                dgMateriel.Items.Refresh();
+                m.Update();
+                applicationData.LesCategories.Last().FindAll(); // tentative d'actualisation
 
-            ((Button)sender).Background = Util.GetBaseColor();
+                ((Button)sender).Background = Util.GetBaseColor();
+            }
+            
 
         }
 
         private void lSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            if (Util.ShowMessageBoxSupp(applicationData, dgMateriel))
+            if (materielEstSelectionne())
             {
-                Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
-                applicationData.LesMateriels.Remove(m);
-                dgMateriel.Items.Refresh();
-                m.Delete();
-            }     
+                if (Util.ShowMessageBoxSupp(applicationData, dgMateriel))
+                {
+                    Materiel m = applicationData.LesMateriels[dgMateriel.SelectedIndex];
+                    applicationData.LesMateriels.Remove(m);
+                    dgMateriel.Items.Refresh();
+                    m.Delete();
+                }
+            }
+               
         }
 
         // On reset les champs
@@ -115,10 +123,22 @@ namespace SAE_DEV_WPF
             return verif;
         }
 
+        //On vérifie la taille des champs
         private bool TailleChampCorrect()
         {
             if (!Util.HasTheGoodLength(tbCategorieM.Text, 50) || !Util.HasTheGoodLength(tbNomM.Text, 100) || !Util.HasTheGoodLength(tbRefConstM.Text, 100) || !Util.HasTheGoodLength(tbCodeBarreM.Text, 100))
             {
+                return false;
+            }
+            else return true;
+        }
+
+        //On vérifie si un matériel est sélectionné
+        private bool materielEstSelectionne()
+        {
+            if (dgMateriel.SelectedIndex == -1)
+            {
+                MessageBoxResult mes = MessageBox.Show("Vous devez sélectionner un matériel.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             else return true;
